@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 _book
+**/*.sty
+**/*.otf
+_main.*

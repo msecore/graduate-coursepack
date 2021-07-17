@@ -1,0 +1,92 @@
+%%
+\documentclass[11pt]{article} 
+\usepackage{jde_course}
+\input{preamble}
+
+\title{Northwestern University
+\\Materials Science and Engineering
+\\Graduate Core Coursepack}
+\date{\today}
+\author{Jonathan D. Emery and Lincoln J. Lauhon
+\\Northwestern University 
+\\Department of Materials Science and Engineering}
+
+% Start document
+\begin{document}
+
+\maketitle
+
+\vspace{4em}
+\begin{abstract}
+\noindent This coursepack is intended to serve matriculating graduate students as a resource for the foundational knowledge necessary to succeed in the Materials Science and Engineering Department's graduate core curriculum. Students should review this coursepack prior to and during their enrollment. This coursepack contains references and original material with focus on Materials Science and Engineering background, mathematics, and coding. 
+
+%Add intended outcomes. 
+\end{abstract}
+\newpage
+
+\section*{Disclaimer}
+The coursepack is intended to be an evergreen document. Improvements, corrections, and updates will be completed with feedback from graduate students and core instructors. Tentative release dates for new material are noted in section headings. 
+
+Students and instructors are invited to comment directly on the PDF or to contact Jonathan Emery at \href{mailto:jonathan.emery@northwestern.edu}{jonathan.emery@northwestern.edu} with suggestions.
+
+\section*{Intended Outcomes}
+Students that study this coursepack and referenced documents should be able to:
+
+\begin{enumerate}
+	\item Demonstrate familiarity with foundational undergraduate-level Materials Science concepts as covered in Chapter 1 of Kasap\cite{kasap2006principles}.
+	\item Navigate constitutive relations using tensor notation and operations.
+	\item Employ various techniques --- such as separation of variables and Fourier analysis --- to solve introductory boundary value problems (e.g. diffusion, heat transfer, linear elasticity).
+	\item Construct rudimentary MATLAB or Mathematica scripts to solve problems and visualize/analyze data.
+\end{enumerate}
+
+%Multimedia disclaimer:
+\section*{Multimedia Content}
+This document contains multimedia content including video and imbedded interactive 3D graphics. This content is supported through Adobe products (e.g. Adobe Acrobat Reader DC), but the reader must approve the use of multimedia content in Adobe. This can be done when opening the document for the first time: \verb=Allow Multimedia Content= or by navigating to \texttt{Edit} $\rightarrow$ \texttt{Preferences} $\rightarrow$ \texttt{Multimedia Trust}: \texttt{Allow Multimedia Operations}.
+
+Interaction with multimedia is done directly within the PDF. Click on content to play short videos or animations. Click-and-twist to rotate 3D interactive content such as crystal structures.
+
+%E-reserves Disclaimer:
+\section*{Northwestern Materials Science and Engineering eReserves}
+The department has made available portions of select introductory texts suitable for students who have limited background in materials science. These texts are stored in an online repository hosted on Northwestern box, and are available to all Northwestern Materials Science students \href{https://northwestern.box.com/s/13myp0an8snmmfjqfbx9gt1gbfrah0aj}{here}. Brief descriptions of these texts are available in Sec. \ref{sec:Intro}.
+
+By utilizing these texts, you are agreeing to \href{is not to be used for any purpose other than private study, scholarship, or research. If electronic transmission of reserve material is used for purposes in excess of what constitutes ``fair use'', that user may be liable for copyright infringement.}{Northwestern's policies on eReserve}, which are compliant with US copyright law (Title 17, United States Code): 
+
+\begin{displayquote}
+$\left[\text{Sources are}\right]$ not to be used for any purpose other than private study, scholarship, or research. If electronic transmission of reserve material is used for purposes in excess of what constitutes ``fair use,'' that user may be liable for copyright infringement.
+\end{displayquote}
+\newpage
+
+%TOC---------------------------------------------
+{\hypersetup{linkcolor=NUpurp120}
+\tableofcontents}
+\newpage
+
+\section{The Graduate Core:}
+
+\input{./Courses/MatSci401} \newpage
+\input{./Courses/MatSci402} \newpage
+\input{./Courses/MatSci404} \newpage
+\input{./Courses/MatSci405} \newpage
+\input{./Courses/MatSci406} \newpage
+\input{./Courses/MatSci408} \newpage
+
+%%Introduction to Materials Science-------------------------------------
+\input{./MaterialsScience/MaterialsScience} \newpage
+
+%%Mathematics-----------------------------------------------------------
+\input{./Mathematics/Mathematics} \newpage
+
+%%Coding-----------------------------------------------------------------
+\input{./Coding/Coding}\newpage
+
+%\includepdf[pages={-}]{PorterEasterlingCh1}
+
+\input{./Appendices/AppendixA}\newpage
+%\input{./Appendices/AppendixB}\newpage
+%\input{./Appendices/AppendixC}
+
+\clearpage
+\bibliography{Coursepack} %Where's my correct bibliography? Courspack.bib?
+
+\end{document}
+			

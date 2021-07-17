@@ -1,0 +1,635 @@
+\subsection{Differential Equations} \label{sec:DiffEQ}
+
+
+%\epigraph{Among all of the mathematical disciplines, the theory of differential equations is the most important... It furnishes the explanation of all those those elementary manifestations of nature which involve time.}{\textit{Sophus Lie}}
+
+Differential equations --- equations that relate functions with their derivatives --- are central to the description of natural phenomena in physics, chemistry, biology and engineering. In the sections below, we will outline basic classification of differential equations and describe methods and techniques used in solving equations that are encountered in the MSE graduate core.
+
+The information provide below is distilled and specific to the MSE core, but is by \emph{no means} a equivalent to a thorough 1- or 2-quarter course in ODEs and PDEs. For students who are completely unfamiliar with the material below; i.e., those who have not taken a course in differential equations, we highly recommend enrollment in Applied Math 311-1 and 311-2 \footnote{these may be combined to a 1-quarter class in the future}.
+
+%------------------------------------
+	\subsubsection{Classification of Differential Equations \hfill (Release: 11/2016)}
+	
+	\textit{\textbf{Encountered in: MAT\texttt{\_}SCI 405, 406, 408}} 
+	
+		Classification of differential equations provide intuition about the physical process that the equation describes, as well as providing context we use as we go about solving the equation. A differential equation can be classified as either ordinary or partial, linear or non-linear, and by its homogeneity and equation order. These are described briefly below, with examples.
+		
+		\paragraph{Ordinary and Partial Differential Equations ---} The primary classification we use to organize types of differential equations is whether they are \textit{ordinary} or \textit{partial} differential equations. \emph{Ordinary differential equations} (ODEs) involve functions of a single variable. All derivatives present in the ODE are relative to that one variable. Partial differential equations are functions of more than one variable and the partial derivatives of these functions are taken with respect to those variables.
+			
+An example of an ODE is shown in Eq. \ref{eq:RLC}. This equation has two functions $q(t)$ (charge) and $V(t)$ (voltage), the values of which depend on time $t$. All of the derivatives are with respect the independent variable $t$. $L$, $R$, and $C$ are constants.
+%
+\begin{align}	
+	L \FullDiff{2}{q(t)}{t} + R \FullDiff{}{q(t)}{t} + \frac{1}{C} q(t) = V(t) \label{eq:RLC}
+\end{align}
+%
+This general example describes the flow of charge as a function of time in a \href{https://en.wikipedia.org/wiki/RLC_circuit}{RLC circuit} with an applied voltage that changes with time. Other examples of ODEs you may encounter in the MSE core include ODEs for grain growth as a function of time and the equations of motion.
+
+\emph{Partial differential equations} (PDEs) contain multivariable functions and their partial derivatives i.e., a derivative with respect to one variable with others held constant. As physical phenomenon often vary in both space and time, PDEs --- and methods of solving them --- will be encountered in many of the core MSE courses. These phenomena include wave behavior, diffusion, the Sch\"odinger equation, heat conduction, the Cahn-Hilliard equation, and many others. A typical example of a PDEs you will encounter is Fick's Second Law. In 1D, this is:
+%
+\begin{align}
+	\Partial{}{\varphi(x,t)}{t} = D\Partial{2}{\varphi(x,t)}{x} \label{eq:Ficks2}
+\end{align}
+%
+where $\varphi$ is the concentration as a function of position $x$ and time $t$. This expression equates the change in the concentration over time to the shape (concavity) of the concentration profile. Partial differential equations are, by nature, often more difficult to solve than ODEs, but, as with ODEs, there exist simple, analytic, and systematic methods for solving many of these equations.
+			\paragraph{Equation Order ---} The \emph{order} of a differential equation is simply the order of the highest derivative that is present in the equation. In the preceding section, Eq. \ref{eq:RLC} is a second-order equation. Eq. \ref{eq:Ficks2} is also a second-order equation. Students in the MSE core will encounter 4\textsuperscript{th}-order equations such as the Cahn-Hilliard equation, which describes phase separation and is discussed in detail in MAT\texttt{\_}SCI 408. One note concerning notation --- when writing higher-order differential equations it is common to abandon Leibniz's notation (where an $n^{\text{th}}$-order derivative is denoted as $\FullDiff{n}{f}{x}$) in favor of Lagrange's notation in which the following representations are equivalent:
+%
+\begin{align}
+	\text{Leibniz}:& F\big[x,f(x),\FullDiff{}{f(t)}{x},\FullDiff{2}{f(t)}{x}...\FullDiff{n}{f(t)}{x}\big] = 0 \rightarrow\\
+	\text{Lagrange}:& F\big[x,f,f\prime,f\prime\prime...f^{(n)}\big] = 0 \label{eq:LagrangeNote}
+\end{align}
+%
+An example would be be the 3\textsuperscript{rd}-order differential equation:
+%
+\begin{align}
+	f\prime\prime\prime + 3f\prime + f\exp{x} = x
+\end{align}
+%			
+			%Add partial differntial notation
+%			
+			\paragraph{Linearity ---} While considering how to solve a differential equation, it is crucial to consider whether an equation is linear or non-linear. For example, an ODE like that represented in Eq. \ref{eq:LagrangeNote} is linear if the $F$ is a linear function of the variables $f, f', f\prime\prime...f^{(n)}$. This definition also applies to PDEs. The  expression for the general linear ODE of order $n$ is:
+%						
+\begin{align}
+	a_0(x)f^{(n)}+a_1(x)f^{(n-1)} + ... + a_n(x)f = g(t) \label{eq:LinearODE}
+\end{align}
+%			
+Any expression that is not of this form	is considered \textit{nonlinear}. The presence of a product such as $f\cdot f\prime$, a power such as $(f\prime)^2$, or a sinusoidal function of $f$ would make the equation nonlinear.
+
+The methods of solving linear differential equations are well-developed. Nonlinear differential equations, on the other hand, often require more complex analysis. As you will see, methods of \textit{linearization} (small-angle approximations, stability theory) as well as numerical techniques are powerful ways to approach these problems.
+			
+			\paragraph{Homogeneity ---} Homogeneity of a linear differential equation, such as that shown in Eq. \ref{eq:LinearODE} is satisfied if $g(x) = 0$. This property of a differential equation is often connected to the \textit{driving force} in a system. For example, the motion of a damped harmonic oscillator in 1D (derived from Newton's laws of motion, \href{https://en.wikipedia.org/wiki/Harmonic_oscillator}{here}) is described by a homogeneous linear, 2\textsuperscript{nd}-order ODE:
+%			
+\begin{align}
+	x\prime\prime+2\zeta \omega_0 x\prime \omega_0^2 x = 0
+\end{align}
+%
+where $x = x(t)$ is position as a function of time ($t$) , $\omega_0$ is the undamped angular frequency of the oscillator, and $\zeta$ is the damping ratio. If we add a sinusoidal driving force, however, the equation becomes inhomogeneous:
+%
+\begin{align}
+	x\prime\prime+2\zeta \omega_0 x\prime + \omega_0^2 x = \frac{1}{m} F_0 \sin{(\omega t)} \label{eq:DDSOscillator}
+\end{align}
+%
+One may notice that the form for Eq. \ref{eq:DDSOscillator} is exactly that of the first equation shown in this section (Eq. \ref{eq:RLC}) --- the ODE for a damped, driven harmonic oscillator is exactly the same form as that of the RLC circuit operating under a alternating driving voltage. 
+%
+	\paragraph{Boundary Conditions ---} Differential equations, when combined with a set of well-posed constraints, or boundary conditions, define a \textit{boundary value problem}. Well-posed boundary value problems have unique solutions from the imposed physical constraints on the system of interest. This analysis allows for the extraction of relevant physical information investigating a physical system --- the elemental composition at some position at time within a diffusion couple, the equilibrium displacement in a mechanically deformed body, or the energy eigenstate of a quantum system. While boundary conditions are not used not classify a differential equation itself, boundary conditions are used to classify the entire boundary value problem --- which is defined by both the differential equation and the boundary value conditions.
+	
+Boundary value problems are at the heart of physical description in science and engineering. Solving these types of problems allow for the extraction of information (concentration, deformation, stress state, quantum state, etc.) from a system. There are a few types of boundary conditions that you may encounter in the MSE core: %To describe these, we consider a 1D bar of metal which is attached to a heat sink on one side ($x = 0$) and a heater on the other side $x=x_1$. The temperature of the rod is defined as $u(x,t)$. and the temperature behavior of the rod is defined by the heat equation, a homogeneous The %Show in figure.
+\begin{enumerate}
+	\item A \textit{Dirichlet} (or first-type) boundary condition is one in which specific values are fixed on the boundary of a domain. An example of this is a system in which we have diffusion of carbon (in, for example, a carbourizing atmosphere) into iron (possessing a volume defined as domain $\Omega$) where the carbon concentration $C(\mathbf{r},t)$ at the interface is known for all time $t > 0$. Here, $\mathbf{r}$ is position vector and the domain boundary is denoted as $\partial \Omega$). If this concentration is a known function, $f(\textbf{r},t)$, then the Dirichlet condition is described as:
+%	
+\[C(\textbf{r},t) = f(\textbf{r},t), \quad	\forall\textbf{r} \in \partial \Omega\] %for t>0? 
+%	
+	\item A \textit{Neumann} (or second-type) boundary condition is the values of the normal derivative (a directional derivative with respect to the normal of a surface or boundary represented by the vector $\mathbf{n}$) of the solution are known at the domain boundary. Continuing with our example above, this would mean we know the diffusion flux normal to the the boundary at $r$ at all times $t$:
+%	
+	\[\Partial{}{C(\textbf{r},t)}{\mathbf{n}} = g(\textbf{r},t), \quad	\forall\textbf{r} \in \partial \Omega\] %for t>0? 
+%
+where $g(\textbf{r},t)$ is a known function, and the bold typesetting denotes a vector.
+	\item Two other types of boundary conditions you may encounter are Cauchy and Robin. Cauchy boundary conditions specifies both the solution value and its normal derivative at the boundary --- i.e., it provides both Dirichlet and Neumann conditions. The Robin condition provides a \textit{linear combination} of the solution and its normal derivative and is common in convection-diffusion equations.  
+	\item Periodic boundary conditions are applied in periodic media or large, ordered systems. Previously described boundary conditions can therefore combined into periodic sets using infinite sums of sine and cosine functions to create \textit{Fourier series}. This will be discussed in more detail in Sec. \ref{sec:FourierMethods}. 
+\end{enumerate}
+
+%	The solution for this equation is the exact		
+	\subsubsection{Solving Differential Equations  \hfill (Release: 11/2016)}
+	There are many ways to solve differential equations, including analytical and computational techniques. Below, we outline a number of methods that are used in the MSE core to solve relevant differential equations.
+		\paragraph{Separation of Variables}, also known as the \textit{Fourier Method}, is a general method used in both ODEs and PDEs to reconstruct a differential equation so that the two variables are separated to opposite sides of the equation and then solved using techniques covered in an ODE class. \label{sec:SepVar} 
+		
+This method will be used in the solving of many simpler differential equations such as the heat and diffusion equations. These equations must be linear and homogeneous for separation of variables to work. The main goal is to take some sort of differential equation, for example an ordinary differential equation:
+%
+\begin{align}
+	\FullDiff{}{y}{x} &= g(x)h(y)\\
+	\intertext{which we can rearrange as:}
+	\frac{1}{h(y)}\mathop{dy} &= g(x)dx\\
+	\intertext{We now integrate both sides of the equation to find the solution:} 
+	\int{\frac{1}{h(y)}\mathop{dy}} &= \int{g(x)\mathop{dx}}
+\end{align}	
+%
+Clearly, we have separated our two variables, $x$ and $y$, to opposite sides of the equation. If the functions are integrable and the resulting integration can be solved for $y$, then a solution can be obtained.
+
+Note here that we have treated the $\mathop{dy}/\mathop{dx}$ derivative as a fraction which we have separated. \ignore{This may bother you (which it should), but it is a useful method which can be validated through \href{https://en.wikipedia.org/wiki/Integration_by_substitution\#Relation_to_the_fundamental_theorem_of_calculus}{integration by substitution}.} 
+
+\begin{displayquote}
+	\textbf{Example 1:} Exponential growth behavior can be represented by the equation:
+	%
+	\begin{align*}
+		\FullDiff{}{y(t)}{t} &= k y(t)\\
+		\intertext{or}
+		\FullDiff{}{y}{t} &= k y\\
+		\intertext{This expression simply states that the growth rate of some quantity $y$ at  time, $t$, is proportional to the value of $y$ itself at that time. This is a seperable equation:}
+		\frac{1}{y}dy &= k dt\\
+		\intertext{We can integrated both sides to get:}
+		\int{\frac{1}{y}dy} &= k \int{dt}\\
+		\text{ln}(y)+C_1 &= k t + C_2\\
+		\intertext{where $C_1$ and $C_2$ are the constants of integration. These can be combined:}
+		\text{ln}(y) &= kt+\tilde{C}\\
+		y &= e^{(kt+\tilde{C})}\\
+		y &= Ce^{kt}
+	\end{align*}
+	%
+	This is clear exponential growth behavior as a function of time. Separation of variables is extremely useful in solving various ODEs and PDEs --- it is employed in the solving of the diffusion equation in \nameref{sec:Sturm-Liouville}.
+\end{displayquote}
+	
+		\paragraph{Sturm-Liouville Boundary Value Problems} \label{sec:Sturm-Liouville}
+In this section, we use Sturm-Liouville theory in solving a separable, linear, second-order homogeneous partial differential equation. Sturm-Liouville theory can be used on differential equations (here, in 1D) of the form:
+%
+\begin{align}
+	\FullDiff{}{}{x}\Big[p(x)\FullDiff{}{y}{x}\Big]-q(x)y+\lambda r(x)y = 0 \label{eq:SturmLiouville}
+	\intertext{or}
+	\big[p(x)y\prime]\prime-q(x)y+\lambda r(x)y = 0 \label{eq:SturmLiouville-2}
+\end{align}
+%
+This type of problem requires knowledge of many use of many concepts and techniques in solving ODEs, including \nameref{sec:SepVar}, Fundamental Solutions of Linear First- and Second-Order Homogeneous Equations, Fourier Series, and Orthogonal Solution Functions. It is important to note that the approach described below (adapted from JJ Hoyt's \textit{Phase Transformations}), which employs separation of variables and Fourier transforms, works only on linear equations. A different approach must be taken for non-linear equations (such as Cahn-Hilliard).
+
+We will use the example of a solid slab of material of length $L$ that has a constant concentration of some elemental species at time zero $ \varphi(x,0) = \varphi_0$ for all $x$ within the slab. On either end of the slab we have homogeneous boundary conditions defining the surface concentrations fixed at $\varphi(0,t) = \varphi(L,t) = 0$ for all $t$. The changing concentration profile, $\varphi(x,t)$ is dictated by Fick's second law, as described earlier in Eq. \ref{eq:Ficks2}:
+
+\begin{equation}	
+			\Partial{}{\varphi(x,t)}{t} = D\Partial{2}{\varphi(x,t)}{x} \label{eq:Ficks2-1}
+\end{equation}
+
+To use separation of variables, we define the concentration $\varphi(x,t)$, which is dependent on both position and time, to be a product of two functions, $T(t)$ and $X(x)$:
+
+\begin{align}	
+	\varphi(x,t) &= T(t)X(x) \label{eq:SepVar-1}
+	\intertext{or, in shorthand,}
+	\varphi &= TX
+\end{align}
+
+It isn't clear why we do this at this point, but stay tuned. Combining Eqs. \ref{eq:Ficks2-1} and \ref{eq:SepVar-1} yields:
+
+\begin{equation}
+	XT\prime = DTX\prime\prime
+\end{equation}
+
+Where the primed Lagrange notation denotes total derivatives.  $T$ and $X$ are functions only of $t$ and $x$, respectively. Now, we separate the variables completely to acquire:
+
+\begin{equation}
+	\frac{1}{DT}T\prime = \frac{1}{X}X\prime\prime
+\end{equation}
+
+This representation conveys something critical: each side of the equation must be equal to \emph{the same} constant. This is because the two sides of the equation are equal to each other and the only way a collection of time-dependent quantities can be equivilent to a selection of position-dependent quantities is for them to be constant with respect to both time and position. We select this constant --- for reasons that become clear of the convience of this selection later in the analysis --- as $-\lambda^2$: %Show and example here?
+%
+\begin{subequations}
+	\begin{align}
+		\frac{1}{DT}T\prime &= -\lambda^2 \label{eq:SepT}\\
+		\frac{1}{X}X\prime\prime &= -\lambda^2 \label{eq:SepX}
+	\end{align}  
+\end{subequations}	
+%
+Integration of Eq. \ref{eq:SepT} yields, from \nameref{sec:SepVar}:
+%
+\begin{align}
+	\frac{1}{DT}T\prime &= -\lambda^2 \nonumber\\
+	\frac{1}{T}\FullDiff{}{T}{t} &= -\lambda^2 D \nonumber\\
+	\int \frac{1}{T}\Diff{}{T} &= -\int \lambda^2 D \Diff{}{t} \nonumber\\
+	\ln{T} &= -\lambda^2 D t + T_0 \nonumber\\
+	\intertext{where $T_0$ is the combined constant of integration:}
+	T = T(t) &= \exp{(-\lambda^2 D t + T_0)} \nonumber\\
+	T(t) &= T_0 \exp{(-\lambda^2 D t)} \label{eq:Tt}
+\end{align}
+%
+Eq. \ref{eq:SepX}, on the other hand, is a linear, homogeneous, second-order ODE with constant coefficients that describes simple harmonic behavior. We can solve this by assessing its \href{https://en.wikipedia.org/wiki/Characteristic_equation_(calculus)}{characteristic equation}:
+\begin{align}
+	r^2+\lambda^2 = 0\\
+	\intertext{which has roots:}
+	r = \pm \lambda i
+\end{align}
+When the roots of the characteristic equation are of the form $r = \alpha \pm \beta i$, the \href{http://www.stewartcalculus.com/data/CALCULUS\%20Concepts\%20and\%20Contexts/upfiles/3c3-2ndOrderLinearEqns_Stu.pdf}{solution of the differential equation (Pg. 5)} is:
+\begin{equation}
+		y = e^{\alpha x}(c_1 \cos{\beta x} + c_2 \sin{\beta x})
+\end{equation}
+
+In this instance, $\alpha = 0$ and $\beta = \lambda$, so our solution is:
+
+\begin{equation}
+	X = X(x) = \tilde{A} \cos{\lambda x} + \tilde{B} \sin{\lambda x} \label{eq:Xx}
+\end{equation}
+		
+$\tilde{A}$ and $\tilde{B}$ are constants that will be further simplified later. Recalling Eq. \ref{eq:SepVar-1} and utilizing our results from Eqs. \ref{eq:Tt} and \ref{eq:Xx}, we find:
+%
+\begin{align}
+	\varphi(x,y) &= X(x)T(x) = T_0 \big[\tilde{A} \cos{\lambda x} + \tilde{B} \cos{\lambda x}\big]\exp{(-\lambda^2 D t)}\\
+	\intertext{where we now define $T_0 \tilde{A} = A$ and $T_0 \tilde{B} = B$ to get:}
+	\varphi(x,y) &= X(x)T(x) = \big[A\cos{\lambda x} + B\sin{\lambda x}\big]\exp{(-\lambda^2 D t)} \label{eq:DiffSol}
+\end{align}
+%
+Physially, this solution begins to make sense. At $t=0$ we have a constant concentration, but concentration begins to decay esponentially with time as $D$, $t$, and $\lambda$ are all positive, real constants. The concentration profile is a linear combination of sine and cosine functions, which does not yet yield any physical intuition for this system as we have yet to utilize boundary conditions. 
+
+Recall at this point that we have not specified any value for the constant $\lambda$, as is typical when solving this type of Sturm-Liouville problem. This suggests that there are possible solutions for all values of $\lambda_n$. The Principle of Superposition dictates, then, that if Eq. \ref{eq:DiffSol} is a solution, the complete solution to the problem is a summation of all possible solutions:
+
+\begin{align}
+	\Aboxed{\varphi(x,y) = 	\sum_{n=1}^\infty \big[A_n\cos{\lambda_n x} + B_n\sin{\lambda_n x}\big]\exp{(-\lambda_n^2 D t)}} \label{eq:DiffSolFull}
+\end{align}
+
+As the value of $\lambda$ influences the values of $A$ and $B$, these values must also be calculated for each $\lambda_n$.
+
+Now, to completely solve our well-posed boundary value problem, we utilize our boundary conditions:
+%
+\begin{subequations}
+	\begin{align}
+		\varphi(0,t) &= 0\, \quad t \geq 0 \label{eq:Boundx0}\\
+		\varphi(L,t) &= 0\, \quad t \geq 0 \label{eq:BoundxL}\\
+		\varphi(x,0) &= \varphi_0\, \quad 0<x<L \label{eq:Time0}
+	\end{align}
+\end{subequations}
+%
+At $x = 0$, the sine term in Eq. \ref{eq:DiffSolFull} is zero, and therefore the boundary condition in Eq. \ref{eq:Boundx0} can only be satisfied at all t if $A_n = 0$. At $x = L$, $\sin{\lambda_n x}$ must be zero for all values of $\lambda_n$, therefore $\lambda_n = n\pi/L$. We need only solve now for $B_n$ using the intial condition, Eq. \ref{eq:Time0}.
+
+Using our values of $A_n$ and $\lambda_n$ and assessing Eq. \ref{eq:DiffSolFull} at time $t=0$ yields
+
+\begin{equation}
+	\varphi_0 = \sum_{n=1}^\infty B_n \sin{\frac{n \pi x}{L}} \label{eq:Time0-1}
+\end{equation}
+
+Here, we must recognized the orthogonal property of the sine function, which states that
+
+\begin{equation}
+	\int_0^L \sin{\frac{n \pi x}{L}} \sin{\frac{m \pi x}{L}}
+	   \begin{cases}
+      = 0, & \text{if}\ n\neq m \\
+     \neq 0, & \text{if}\ n = m
+    \end{cases}
+\end{equation} 
+
+You can test this graphically using a plotting program if you like --- the integrated value of this product is only non-zero when $n=m$ --- or you can follow the proof \href{http://www.math.umd.edu/~psg/401/ortho.pdf}{here}. We can multiply both sides of the Eq. \ref{eq:Time0-1} by $\sin{n \pi x/L}$, then, and integrate both sides from 0 to $L$:
+%
+\begin{subequations}
+	\begin{align}
+		\varphi_0 \int_0^L\sin{\frac{m \pi x}{L}} &= \int_0^L \sum_{n=1}^\infty \big[B_n \sin{\frac{n \pi x}{L}} \sin{\frac{m \pi x}{L}}\big] \nonumber
+		\intertext{After integration, the only term that survives on the right-hand side is the $m=n$ term, and therefore:}
+		\varphi_0 \int_0^L\sin{\frac{n \pi x}{L}} &= B_n\int_0^L \sin{\frac{n \pi x}{L}}^2 \nonumber\\
+		\varphi_0 \int_0^L\sin{\frac{n \pi x}{L}} &= \frac{B_n L}{4} \big[2- \frac{\sin{2 n \pi}}{n \pi} \big] \nonumber\\
+		\intertext{the $\sin{2 n \pi}$ term is always zero:}
+		\varphi_0 \int_0^L\sin{\frac{n \pi x}{L}} &= \frac{B_n L}{2} \nonumber\\
+		2 \frac{\varphi_0}{L} \int_0^L\sin{{n \pi x}{L}} &= B_n \nonumber\\
+		B_n  &= 2 \frac{\varphi_0}{L} \big[\frac{L}{n \pi}(1-\cos{n \pi})\big] \nonumber\\
+		\Aboxed{B_n  &= 2 \frac{\varphi_0}{n \pi} (1-\cos{n \pi})}
+	\end{align}
+\end{subequations}
+%
+For even values of $n$, the $B_n$ constant is zero. For odd values of $n$, $B_n = \frac{4 \varphi_0}{n \pi}$. We utilize the values we acquired for $A_n$, $B_n$, and $\lambda$ and plug them into Eq. \ref{eq:DiffSolFull}. A change in summation index to account for the $B_n$ values yields:
+
+\begin{align}
+	\Aboxed{\varphi(x,t) = \frac{4 c_0}{\pi} \sum_{k=0}^\infty \frac{1}{2k+1} \sin{\frac{(2k+1)\pi x}{L}}\exp{\Big[-\big(\frac{(2k+1)\pi}{L}\big)^2 Dt\Big]}}
+\end{align}
+
+This summation converges quickly. We now have the ability to calculate the function $\varphi(x,t)$ at any position $0 < x < L$ and time $t > 0$!
+
+\newpage
+		\paragraph{Method of Integrating Factors} is a technique that is commonly used in the solving of first-order linear ordinary differential equations (but is not restricted to equations of that type). In thermodynamics, it is used to convert a differential equation that is not exact (i.e., path-dependent, See Sec. \ref{subsec:eidiff}) to an exact equation, such as in the derivation of entropy as an exact differential (Release TBD).
+
+\newpage
+		\paragraph{Fourier Integral Transforms} \label{sec:FourierMethods}
+		This section will introduce an extremely powerful technique in solving differential equations: the Fourier transform. This technique is useful because it allows us to transform a complicated problem --- a boundary value problem --- into a simpler problem which can often be approached with ODE techniques or even algebraically.
+		
+		There are many excellet sources provided for this section, listed below.
+		
+		\begin{enumerate}
+			\item Jos\'{e} Figueroa-O'Farrill's wonderful \textit{Integral Transforms} from \textit{Mathematical Techniques III} at the University of Edinborough.
+			\item W.E Olmstead and V.A. Volpert's \textit{Differential Equations in Applied Mathematics} at Northwestern University.
+			\item J.J. Hoyt's chapter on the \textit{Mathematics of Diffusion} in his \textit{Phase Transformations} text.
+			\item Paul Shewman's \textit{Diffusion in Solids}.
+			\item J.W. Brown and R.V. Churchill's \textit{Fourier Series and Boundary Values Problems}, 6\textsuperscript{th} Edition.
+		\end{enumerate}
+		
+		The primary goal behind the Fourier transform is to solve a differential equation with some unknown function $f$. We apply the transform ($\mathscr{F}$) to convert the function into something that can be solved more easily: $f \xrightarrow{\mathscr{F}} F$. The transformed function is often also represented using a $\hat{f}$. We solve for $F$ and then perform an inverse Fourier transform ($\mathscr{F}^{-1}$) to recover the solution for $f$.
+		
+		We find that Fourier \textit{series} --- which are used to when working with periodic functions --- can be generalized to Fourier integral transforms (or Fourier transforms) when the period of the function becomes infinitely long. Let's begin with the Fourier series an build on our results from our discussion above where we found that a continuous function $f(x)$ defined on some finite interval $x \in[0,L]$ and vanishing at the boundaries, $f(0) = f(L) = 0$ can be expanded as shown in \ref{eq:DiffSolFull}. 
+		
+		The following derivation is adapted from Olmstead and Volpert. In general, we can attempt to represent \textit{any} function that is periodic over period $[0,L]$ with a Fourier series of form:
+
+\begin{equation}
+f(x) = a_0 + \sum_{n=1}^\infty\left[a_n \cos{\frac{2 \pi n x}{L}} + b_n \sin{\frac{2 \pi n x}{L}}\right]
+\label{eq:GenSol}
+\end{equation}
+		
+However, we need to know how to find the coefficients $a_0$, $a_n$, and $b_n$ for this representation of $f(x)$. For this analysis we must utilize the following integral identities:
+
+%Kronecker delta?
+%
+\begin{equation}
+\int_0^L{\sin{\frac{2 \pi n x}{L}}\cos{\frac{2 \pi n x}{L}}}dx= 0 \quad n,m = 1,2,3,...,
+\end{equation}
+
+\begin{equation}
+\int_0^L{\cos{\frac{2 \pi n x}{L}}\cos{\frac{2 \pi m x}{L}}} dx= 
+	\begin{cases}
+		0, \text{\,if} \quad n,m = 1,2,3,..., n\neq m\\
+		L/2, \text{\,if} \quad n = m = 1,2,3,...,\\
+	\end{cases}
+\end{equation}
+
+\begin{equation}
+\int_0^L{\sin{\frac{2 \pi n x}{L}}\sin{\frac{2 \pi m x}{L}}} dx = 
+	\begin{cases}
+		0, \text{\,if} \quad  n,m = 1,2,3,..., n\neq m\\
+		L/2, \text{\,if} \quad n = m = 1,2,3,...,\\
+	\end{cases}
+\end{equation}
+
+\begin{equation}
+\int_0^L{\cos{\frac{2 \pi n x}{L}}} dx = 
+	\begin{cases}
+		0, \text{\,if} \quad n,m = 1,2,3,...,\\
+		L, \text{\,if} \quad n = 0\\
+	\end{cases}
+\end{equation}
+
+\begin{equation}
+\int_0^L{\sin{\frac{2 \pi n x}{L}}} dx = 
+		0, \text{\,if} \quad n,m = 0,1,2,3,...,\\
+\end{equation}
+		
+These identities state  the orthogonal properties of sines and cosines that will be used to derive the coefficients $a_0$, $a_n$, and $b_n$. Recall that two functions are orthogonal on an interval if 
+
+\begin{equation}
+\int_a^b f(x)g(x)dx = 0
+\end{equation}
+
+We can therefore multiply Eq. \ref{eq:GenSol} by $\cos{\frac{2 \pi x}{L}}$ (note $n = 1$) and integrate over $[0,L]$:
+
+\begin{align}
+	\int_0^L f(x)\cos{\frac{2 \pi x}{L}} dx &= a_0 \int_0^L \cos{\frac{2 \pi x}{L}} dx +\\
+	&a_1 \int_0^L \cos{\frac{2 \pi x}{L}} \cos{\frac{2 \pi x}{L}} dx +b_1 \int_0^L \sin{\frac{2 \pi x}{L}} cos{\frac{2 \pi x}{L}} dx +\\
+	&a_2 \int_0^L \cos{\frac{4 \pi x}{L}} \cos{\frac{2 \pi x}{L}} dx +b_2 \int_0^L \sin{\frac{4 \pi x}{L}} cos{\frac{2 \pi x}{L}} dx + ...\\
+\end{align}
+
+Applying the orthogonal properties of the integral products finds that all terms on the right-hand side of this equation are zero apart from the $a_1$ term. The equation therefore reduces to:
+
+\begin{equation}
+\int_0^L f(x)\cos{\frac{2 \pi x}{L}} dx = a_1 \int_0^L \cos{\frac{2 \pi x}{L}} cos{\frac{2 \pi x}{L}} dx= a_1\frac{L}{2}
+\end{equation}
+
+and 
+
+\[a_1 = \frac{2}{L} \int_0^L f(x)\cos{\frac{2 \pi x}{L}} dx\].
+
+The other Fourier coefficients can be solved for in a similar manner, which yields the general solutions:
+
+\begin{align}
+	a_0 &= \frac{1}{L} \int_0^L f(x)\\
+		a_n &= \frac{2}{L} \int_0^L f(x)\cos{\frac{2 n \pi x}{L}}dx \quad (n = 1,2,3...)\\
+			b_n &= \frac{2}{L} \int_0^L f(x)\sin{\frac{2 n \pi x}{L}}dx\quad (n = 1,2,3...)
+\end{align}
+
+To this point we've solved, generally, for the coefficients of a Fourier series over a finite interval. This is useful, but we my want to use the full complex form of the Fourier series in later discussion of the Fourier transform. We know that \href{https://en.wikipedia.org/wiki/Euler's_formula#Relationship_to_trigonometry}{Euler's formula} can be used to express trigonometric functions with the complex exponential function:
+
+\begin{align}
+	\sin{\frac{2 \pi n x}{L}} &= \frac{1}{2i}\left(e^{i\frac{n \pi x}{L}}+e^{-i\frac{n \pi x}{L}}\right) \nonumber \\
+	\cos{\frac{2 \pi n x}{L}} &= \frac{1}{2}\left(e^{i\frac{n \pi x}{L}}+e^{-i\frac{n \pi x}{L}}\right) \label{eq:Euler}
+\end{align}
+
+and we define the wavenumbers to be:
+
+\begin{equation}
+	k_n = 2 \pi n/L \quad n=0,1,2,...,
+\label{eq:Wavenumber}
+\end{equation}
+
+and therefore Eq. \ref{eq:Euler} is written as:
+
+\begin{align}
+	\sin{k_n x} &= \frac{1}{2i}\left(e^{i k_n x}+e^{-i k_n x}\right) \nonumber \\
+	\cos{k_n x} &= \frac{1}{2}\left(e^{i k_n x}+e^{-i\ k_n x}\right) \label{eq:Euler}
+\end{align}
+
+This allows us to write the complete Fourier series (Substitute Eq. \ref{eq:Euler} into \ref{eq:GenSol}): 
+
+\begin{equation}
+	f_{L}(x) \sim \sum_{n=-\infty}^{\infty} c_n e^{i k_n x}
+\label{eq:ComplexFourierSeries}
+\end{equation}
+
+For convenience, we'll define the integral to be $[-\frac{L}{2},\frac{L}{2}]$. The $\sim$ notation indicates that the series representation is an approximation, and the $L$ represents the period over which the series is applied. The orthogonality condition holds for these complex exponential and its complex conjugate over this interval:
+
+\begin{equation}
+	\int_{-\frac{L}{2}}^{\frac{L}{2}} e^{i k_n x} e^{-i k_m x} dx =
+		\begin{cases}
+		0, \text{\,if} \quad n \neq m\\
+		L, \text{\,if} \quad n = m\\
+	\end{cases}
+\end{equation}
+
+Therefore, if we multiply Eq. \ref{eq:ComplexFourierSeries} by $e^{-i k_m x}$ and solve we find the only term that survives is when $n=m$:
+
+\begin{equation}
+	\int_{-\frac{L}{2}}^{\frac{L}{2}} f_L(x) e^{-i k_m x} dx = L c_m.
+\end{equation}
+
+We can revert the place-keeping subscript $m$ to $n$ and solve for the Fourier coefficients to find:
+
+\begin{equation}
+	 c_n = \frac{1}{L}\int_{-\frac{L}{2}}^{\frac{L}{2}} f_L(x) e^{-i k_n x} dx \quad \text{for\,} n = 0, \pm1, \pm2,...
+	\label{eq:FourierComps}
+\end{equation}
+
+Alright, we've defined an interval $[-L/2, L/2]$, but we want to investigate this interval as $L \rightarrow \infty$ in an attempt to eliminate the periodicity of the Fourier series. If $L \rightarrow \infty$, we know that our function $f_L(x)$ will be non-zero over only a very small range --- say an interval of $[-a/2, a/2]$ where $a << L$. This means that
+
+\begin{equation}
+	f_L{x} =
+	\begin{cases}
+		1 \quad \text{for} |x|<a/2\\
+		0 \quad \text{for} a/2 < |x| < L/2
+	\end{cases}
+\label{eq:Linfty}
+\end{equation}
+
+This function is zero except for a small bump at the origin of height 1 and width $a$. Let's assess our function over the non-zero interval:
+
+\begin{equation}
+	\int_{-\frac{a}{2}}^{\frac{a}{2}} e^{-i k_n x} dx = \frac{\sin k_n a/2}{k_n L/2} = \frac{\sin n \pi a/L}{n \pi}.
+	\label{eq:Thing}
+\end{equation}
+
+But how does this allow us to consider a continuous Fourier integral transform? Well, we need to consider the function $f_L(x)$ as $L \rightarrow \infty$. By doing so, we drive all the harmonics of the Fourier function --- apart from the central one --- out beyond infinity. $f(x)$ then has a single bump of width $L$ centered at the origin. That is, the separation between the $n$ harmonics goes to zero, and the representation contains all harmonics. Further, as $L \rightarrow \infty$ we no longer have a periodic function and we can i.e., the fundamental period becomes so large that we no longer have non-periodic function at all. %This needs work
+
+This allows us to transition from a discrete description to a continuum and our Fourier sum can now be described as a Fourier integral. Recall the Fourier series (Eq/ \ref{eq:ComplexFourierSeries}):
+
+\begin{equation}
+	f_{L}(x) \sim \sum_{n=-\infty}^{\infty} c_n e^{i k_n x}
+\end{equation}
+
+Which we now write as:
+
+\begin{equation}
+	f_{L}(x) \sim \sum_{n=-\infty}^{\infty} \frac{\Delta k}{2\pi/L} c_n e^{i k_n x} = \sum_{n=-\infty}^{\infty} \frac{\Delta k}{2\pi} L c_n e^{i k_n x} 
+	\label{eq:Thing2}
+\end{equation}
+
+where $\Delta k = 2\pi/L$ is the difference between successive values of $k_n$. We now define a function $F(k)$ as
+
+\begin{equation}
+	F(k) \equiv \Lim{L \rightarrow \infty} L c_n = \Lim{L \rightarrow \infty} L c_{kL/2 \pi}
+	\label{eq:DefFourierTransform}
+\end{equation}
+
+Combining this definition with Eq. \ref{eq:Thing} gives:
+
+\begin{equation}
+	F(k) = \frac{\sin{(ka/2)}}{k/2}
+\end{equation}
+
+and as $L \rightarrow \infty$, Eq. \ref{eq:Thing2} goes as
+
+\begin{align}
+	f(x) &= \Lim{L \rightarrow \infty} \sum_{n=-\infty}^{\infty} \frac{\Delta k}{2\pi} L c_n e^{i k_n x} \\
+	\Aboxed{f(x) &= \frac{1}{2\pi}\int_{-\infty}^{\infty}F(k) e^{ikx} dk}
+\label{eq:FourierInversion}
+\end{align}
+
+The function $F(x)$ is the Fourier transform of $f(x)$ and Eq. \ref{eq:FourierInversion} as a continuous superposition of Fourier component, with each component now represented by a \emph{continuous} function $f(x)$. Similarly, from Eq. \ref{eq:DefFourierTransform} and Eq. \ref{eq:FourierComps}:
+
+\begin{align}
+	\Aboxed{F(k) &= \int_{\infty}^{\infty} f(x) e^{-i k x} dx}
+	\label{eq:FourierTransform}
+\end{align}
+
+Eq. \ref{eq:FourierTransform} is non-periodic analog to the expression for deriving the Fourier coefficients $c_n$ in the periodic case. We call this function the \emph{Fourier (Integral) Transform} of the function $f(x)$ and it is often written as 
+
+\begin{equation}
+F(k) \equiv \mathscr{F}\big[f(t)\big]
+\label{eq:InversionFormula}
+\end{equation} 
+
+Similarly, Eq. \ref{eq:InversionFormula} is known as the \emph{Inversion Formula} or \emph{Inverse Fourier (Integral) Transform} and is used to return the Fourier-transformed function from frequency space. It is often represented as:
+
+\begin{equation}
+f(x) \equiv \mathscr{F}^{-1}\big[F(k)\big]
+\end{equation} 
+
+\begin{displayquote}
+	\textbf{Example:} Let's do a simple Fourier transform of a \href{https://en.wikipedia.org/wiki/Square-integrable_function}{square-integrable function} (this condition establishes that the function has a Fourier transform). We'll try a square pulse over the interval [-\pi, \pi]:
+
+	\begin{equation}
+		f(x) =
+			\begin{cases}
+				1, \text{\,if\,} |x| < \pi\\
+				0, \text{\,otherwise}\\
+			\end{cases}
+	\end{equation}
+
+	We take the Fourier integral transform over the non-zero interval:
+
+	\begin{align}
+	F(x) &= \frac{1}{2 \pi}\int_{-\infty}^{\infty} f(x) e^{-i k x} dx\\
+	&= \frac{1}{2 \pi}\int_{-\pi}^{\pi} e^{-i k x} dx\\
+	&= -\frac{1}{2i \pi k} e^{-i k x}\Big|_{-\pi}^{\pi}\\
+	&= -\frac{1}{2i \pi k} (e^{-i k \pi}-e^{i k \pi})\\
+	&= \frac{\sin{\pi k }}{\pi k}
+	\end{align}
+
+	\end{displayquote}
+
+Integral transforms will prove massively useful in solving boundary value problems in the MAT\texttt{\_}SCI core.
+
+\begin{displayquote}
+\textbf{Example} One example is diffusion in the thin film problem. Imagine that there is thin region of finite width with high concentration of some species \textbf{B} situated between two ``infinite'' (thick) plate of pure \textbf{A} (after Hoyt, 1-6). Diffusion from the thin film is allowed to proceed over time into the adjacent plates. The thin film is centered at $x = 0$, so the concentration profile will be an even function $[\varphi(x,t) = \varphi(-x,t)]$  How do we solve for the evolution of the concentration profile over time?
+
+This is an example in which we want to interpret this geometry as one with infinite period. When doing so we should consider using a Fourier integral transform.
+
+From the section above, we understand that the concentration profile $c(x,t)$ can be obtained from the inverse transform of the Fourier space function $\Phi(k,t)$. Above, we derived the full Fourier integral transform, but here we know that the function is even, and so we can perform a Fourier Cosine integral transform, which simplifies the mathematics and allows us to perform the transform from $[0,\infty]$. The following derivation is after Hoyt, Ch. 1-8.
+
+\begin{align}
+	f(x) = \frac{1}{\pi} \int_{-\infty}^{\infty} F(x) \cos{(kx)} dk\\
+	F(x) = \frac{1}{\pi} \int_0^{\infty} f(x) \cos{(kx)} dx
+\end{align}
+
+In our case, we have:
+
+\begin{align}
+	\varphi(x,t) = \frac{1}{\pi} \int_{-\infty}^{\infty} \Phi(k,t) \cos{(kx)} dk\\
+	\Phi(k,t) = \frac{1}{\pi} \int_0^{\infty} \varphi(x,t) \cos{(kx)} dx
+	\label{eq:OddSol1}
+\end{align}
+
+The utility of utilizing the Fourier intergral transform is that the PDEs in space and time can be converted to ODEs in the time domain alone, which are often much easier to solve. The ability for us to do this hinges on a key property of a Fourier transform that relates the Fourier transform of the $n$\textsuperscript{th} derivative of a function to the Fourier transform of the function itself. 
+
+\begin{equation}
+	\mathscr{F}\big[f^{(n)}(x)\big](k) = (ik)^{n}\mathscr{F}\big[f(x)\big](k)
+\label{eq:}
+\end{equation}
+
+This, as you will see, allows us to convert a PDE in $t$ and $x$ to a ODE in $t$ alone. Let's apply this property to the 1D diffusion equation. First, we know we are performing a Fourier transform in $x$, so the time derivative can be pulled from the integral on the left-hand side of the equation.
+
+\begin{align}
+	\mathscr{F}[\Partial{}{\varphi(x,t)}{t}] &= \frac{1}{\pi}\int_{0}^{\infty} \Partial{}{\varphi(x,t)}{t} \cos{(-ikx)} dx\\
+	&= \frac{1}{\pi}\Partial{}{}{t}\left[\int_{0}^{\infty}\varphi(x,t)\cos{(-ikx)} dx\right]\\
+	&= \frac{1}{\pi}\Partial{}{}{t}\left[\Phi(k,t)\right]
+\end{align}
+
+and the right-hand side of the equation is:
+
+\begin{align}
+		\mathscr{F}\big[D\Partial{2}{}{x}\varphi(x,t)\big] &= (ik)^2D\mathscr{F}\big[\varphi(x,t)\big]\\
+	&= -D\frac{k^2}{\pi}\int_0^{\infty}\varphi(x,t)\cos{(-ikx)} dx\\ 
+	&= -D\frac{k^2}{\pi} \Phi(k,t)
+\end{align}
+
+and therefore:
+
+\begin{align}
+	\frac{1}{\cancel{\pi}}\Partial{}{}{t}\left[\Phi(k,t)\right] &= -D\frac{k^2}{\cancel{\pi}} \Phi(k,t)\\
+	\Aboxed{\Partial{}{}{t}\left[\Phi(k,t)\right] &= -Dk^2 \Phi(k,t)}
+\end{align}
+
+This differential equation can be solved by inspection\footnote{If you don't see this, that's fine, review \textit{Separation of Variables} --- this equation is separable} to be:
+
+\begin{equation}
+	\Phi(k,t) = A^{0}(k) e^{-k^2Dt}
+	\label{eq:Sol1}
+\end{equation}
+
+Where $A^0(k)$ is a constant that that defines the Fourier space function $\Phi$ at $t=0$. To fully solve this problem and derive $\varphi(x,t)$ we must next solve this value $A^0(k)$ and apply the inverse Fourier transform.
+
+Let us consider our initial condition. Our concentration profile can be modeled as a $delta$-function concentration profile, $\varphi(x,0) = \alpha \delta(x)$) fixed between two infinite plates, where the integrated concentration is $\alpha$:
+
+\begin{equation}
+	\int_{\infty}^{\infty} \varphi(x,0)dx = \int_{\infty}^{\infty} \alpha \delta(x) dx = \alpha
+\end{equation}
+
+The constant $A^0(k)$ is, at $t = 0$, defined by Eq. \ref{eq:Sol1} and Eq. \ref{eq:OddSol1}  to be:
+
+\begin{align}
+	\Phi(k,t) &= A^{0}(k)e^{0}\\ 
+	&= \frac{1}{2\pi}\int_{0}^{\infty}\varphi(x,t) \cos{(kx)} dx
+\end{align}
+
+Inserting the delta function for \varphi(x,t) yields:
+
+\begin{equation}
+	A^{0}(k) = \frac{\alpha}{\pi}\int_{0}^{\infty} \delta(x) \cos{(kx)} dx
+\end{equation}
+
+We'll take advantage of the evenness of this function and instead integrate over $[\infty, \infty]$. This allows us to avoid the messiness at $x=0$ as well circumvent using the Heaviside step function.
+
+\begin{align}
+	A^{0}(k) &= \frac{\alpha}{2\pi}\int_{-\infty}^{\infty} \delta(x) \cos{(kx)} dx\\
+	A^{0}(k) &= \frac{\alpha}{2\pi} \cos{(0)} dx\\ %Deltafunction fundamental property
+	\Aboxed{A^{0}(k) &= \frac{\alpha}{2\pi}}
+\end{align}
+
+Finally, now that we have $A^{0}$, we must perform the inverse transformation to find the expression for $\varphi(x,t)$.
+
+\begin{align}
+	\varphi(x,t) &= \frac{\alpha}{2\pi}\int_{-\infty}^{\infty} e^{-k^2Dt} \cos{(kx)} dk\\
+	\intertext{This can be completed through integration by parts, trigonometric identities, and completing the square... for explicit step-by-step analysis use Wolfram$|$Alpha or \href{http://www.integral-calculator.com/}{Scherfgen's Integral Calculator}. Let's state the result:}
+	\varphi(x,t) &= \frac{\alpha}{2\sqrt{\pi D t}} e^{-x^2/4Dt}
+\end{align}
+
+This is a Gaussian distribution centered at $x = 0$ and which increases in width with time. This is good --- it certainly makes sense intuitively.
+
+	%\intertext{say:} 
+	%u = e^{-k^2Dt} \quad du &= 2kDt e^{-k^2Dt}dk\\ 
+	%v = \frac{1}{x}\sin(kx) \quad dv &= \cos{(kx)}dk\\
+	%\int e^{-k^2Dt} \cos{(k x)}dk &= e^{-k^2Dt} \frac{1}{x}\sin{(kx)} - 2kDt \int e^{-k^2Dt} \sin{(x)}dk\\
+%\end{align}
+
+\end{displayquote}	
+	
+\paragraph{Bessel Functions}
+\paragraph{Legendre Polynomials}
+\paragraph{Euler's Method}
+\subsubsection{Solving Second-order Linear ODEs \hfill (Release TBD)}
+	\begin{enumerate}
+		\item Principle of Superposition
+		\item Series Solutions
+	\end{enumerate}
+\subsubsection{Laplace Transforms \hfill (Release TBD)}
+\subsubsection{Stability Theory \hfill (Release TBD)}

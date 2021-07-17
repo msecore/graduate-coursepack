@@ -1,0 +1,81 @@
+\subsection{Summation Notation}
+
+Often, it is useful to simplify notation when performing matrix operations. to do this, we utilize Einstein summation notation, or simply \emph{summation notation}. This notation says that \emph{if an index is repeated twice (and only twice) in a single term we assume summation over the range of the repeated subscript}. The simplest example of this is the representation of the trace of a matrix:
+
+\[tr(\sigma) = \underbrace{\sigma_{kk}}_{\substack{\text{summation} \\ \text{notation}}} = \sum_{k}^{3}\sigma_{kk} = \sigma_{11}+\sigma_{22}+\sigma_{33}\]
+
+In $\sigma_{kk}$ the index $k$ is repeated, and this means that we assume summation of the index over the range of the subscript (in this case, 1-3 as we are working with the stress tensor).
+
+This comes in very useful when representing matrix multiplication. Let's say we have an ($M \times N$) matrix, $\mathbf{A} = a_{ij}$ and an $R \times P$ matrix $\mathbf{B}$. We know from linear algebra that the matrix product $\mathbf{AB}$ is defined only when $R = N$, and the result is a ($M \times P$) matrix, ($\mathbf{C} = c_{ij}$). Here's an example with a ($2 \times 3$) matrix times a ($3 \times 2$) in conventional representation:
+
+\begin{align*}
+\mathbf{AB} =
+	\begin{bmatrix}
+		a_{11} & a_{12} & a_{13}\\
+		a_{21} & a_{22} & a_{23}\\
+	\end{bmatrix}
+	&\begin{bmatrix}
+		b_{11} & b_{12}\\
+		b_{21} & b_{22}\\
+		b_{31} & b_{32}\\
+	\end{bmatrix}
+	= \\
+	&\begin{bmatrix}
+		a_{11}b_{11} + a_{12}b{21} + a_{13}b_{31} & a_{11}b_{12} + a_{12}b{22} + a_{13}b_{32}\\
+		a_{21}b_{11} + a_{22}b{21} + a_{23}b_{31} & a_{21}b_{12} + a_{22}b{22} + a_{23}b_{32}\\
+	\end{bmatrix}
+	=c_{ij}
+\end{align*}
+
+Here, we can use summation notation to greatly simply the expression. The components of the matrix $c_{ij}$ are $c_{11}$, $c_{12}$, $c_{21}$, and $c_{22}$ and are defined:
+
+\begin{align*}
+	c_{11} = a_{11}b_{11} + a_{12}b{21} + a_{13}b_{31}\\
+	c_{12} = a_{11}b_{12} + a_{12}b{22} + a_{13}b_{32}\\
+	c_{21} = a_{21}b_{11} + a_{22}b{21} + a_{23}b_{31}\\
+	c_{22} = a_{21}b_{12} + a_{22}b{22} + a_{23}b_{32}\\
+\end{align*} 
+
+These terms can all be represented using the following expression:
+
+\begin{equation}
+	c_{ij} = \sum_{k=1}^{3} a_{ik}b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + a_{i3}b_{3j}
+\end{equation}
+
+So, in general for any matrix product:
+
+\begin{equation}
+	c_{ij} = \sum_{k=1}^{N} a_{ik}b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots +  a_{iN}b_{Nj}
+\end{equation}
+
+Or, by dropping the summation symbol and fully utilizing the summation convention:
+
+\begin{equation}
+	c_{ij} = a_{ik}b_{ki}
+\end{equation}
+
+Note that the term $c_{ij}$ \emph{has no repeated subscript - there is no summation implied here. It is simply a matrix}. Summation \emph{is} implied in the $a_{ik}b_{kj}$ term because of the repeated index $k$.
+
+Another example is a $3 \times 3$ matrix multiplied by a (3 \times 1) column vector:
+
+\begin{equation}
+	\begin{bmatrix}
+		a_{11} & a_{12} & a_{13}\\
+		a_{21} & a_{22} & a_{23}\\
+		a_{31} & a_{32} & a_{33}\\
+	\end{bmatrix}
+	\begin{bmatrix}
+		b_1\\
+		b_2\\
+		b_3\\
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		a_{11}b_{1} + a_{12}b_{2} + a_{13}b_{3} \\
+		a_{21}b_{1} + a_{22}b_{2} + a_{23}b_{3}\\
+		a_{31}b_{1} + a_{32}b_{2} + a_{33}b_{3}\\
+	\end{bmatrix}
+	= a_{ij}b_{j}
+\end{equation}
+
+It will be important to learn how to read such summation notation, so if you see a repeated dummy index (often represented with $k$ or $l$, see Cai and Nix, 2.1.3), that you can recognize the notation.

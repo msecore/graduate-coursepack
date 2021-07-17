@@ -1,0 +1,48 @@
+\begin{table}[!b]%
+	\centering
+	\begin{tabularx}{5.6in}{lcc}
+	\toprule
+		Description & Syntax & Example \\
+	\midrule
+		 \multicolumn{3}{c}{Array Creation}\\
+	\midrule
+		Row Vector & {\lstinline[style=Matlab-editor]![. . .]!} & {\lstinline[style=Matlab-editor]!a = [1 2 3 4]!} \\
+		Column Vector & {\lstinline[style=Matlab-editor]![. ; . ; .]!} & {\lstinline[style=Matlab-editor]!a = [1; 2; 3; 4]!} \\
+		2 $\times$ 2 Matrix & {\lstinline[style=Matlab-editor]![. . ; . . ;]!} & {\lstinline[style=Matlab-editor]!a = [1 2; 3 4]!} \\
+		Create $n \times m$ matrix  & \pbox{20em}{
+		{\lstinline[style=Matlab-editor]!zeroes(n,m)!}\\
+		{\lstinline[style=Matlab-editor]!ones(n,m)!}\\
+		{\lstinline[style=Matlab-editor]!randi([-b,b],n,m)!}} &
+		\pbox{20em}{
+		{\lstinline[style=Matlab-editor]!zeroes(3,1)!}\\
+		{\lstinline[style=Matlab-editor]!ones(3,5)!}\\
+		{\lstinline[style=Matlab-editor]!rand([-5,5],4,4)!}}\\
+	\midrule
+		 \multicolumn{3}{c}{Accessing Matrix Elements}\\
+	\midrule
+		Access Row $i$, column $j$ of $A$ & {\lstinline[style=Matlab-editor]!A(i,j)!} & {\lstinline[style=Matlab-editor]!A(3,2)!} \\
+		Access $i$\textsuperscript{th} row of $A$ & {\lstinline[style=Matlab-editor]!A(i,:)!} & {\lstinline[style=Matlab-editor]!A(1,:)!} \\
+		Access $j$\textsuperscript{th} column of $A$ & {\lstinline[style=Matlab-editor]!A(:,j)!} & {\lstinline[style=Matlab-editor]!A(:,2)!} \\
+		Access submatrix of $A$ & {\lstinline[style=Matlab-editor]!A([i1 i2],[j1, j2 ,3])!} & {\lstinline[style=Matlab-editor]!A([1 2], [1 2 4])!} \\
+	\midrule
+		 \multicolumn{3}{c}{Matrix Operations}\\
+	\midrule
+		Matrix Transpose & {\lstinline[style=Matlab-editor]!A'!} &  \\
+		Matrix Inverse & {\lstinline[style=Matlab-editor]!inv(A)!} &  \\
+		Matrix Multiplication & {\lstinline[style=Matlab-editor]!A*B!} &  \\
+		Matrix Inverse Multiplication & {\lstinline[style=Matlab-editor]!A/B!} or {\lstinline[style=Matlab-editor]!A*inv(B)!} & \\
+		Matrix Exponentiation to $n$ & {\lstinline[style=Matlab-editor]!A^n!} &  \\
+		Matrix Cross-product & {\lstinline[style=Matlab-editor]!cross(A,B)!}  & \\
+		Matrix Dot-product {\lstinline[style=Matlab-editor]!dot(A,B)!}  & \\
+		Element-by-element operations & 	\pbox{20em}{
+		{\lstinline[style=Matlab-editor]!A.*B!}\\
+		{\lstinline[style=Matlab-editor]!A./B!}\\
+		{\lstinline[style=Matlab-editor]!A.^n!}} & \\
+		Return $n \times m$ size of A & {\lstinline[style=Matlab-editor]!size(A)!} &  \\
+ 		Concatenate column X onto A & {\lstinline[style=Matlab-editor]![A X]!} &  \\
+		Concatenate row Y onto A & {\lstinline[style=Matlab-editor]![A; Y]!} &  \\
+	\bottomrule
+	\end{tabularx}
+	\caption{MATLAB syntax for creating and operating on matrices. To test operations possesing A, B, X or Y you must first create those matrices.}
+	\label{tab:ArrayMATLABSyntax}
+\end{table}

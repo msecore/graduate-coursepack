@@ -1,0 +1,50 @@
+\subsection{Arrays --- Scalars, Vectors, Matrices, and Tensors}
+
+Arrays, which are broadly defined as systematic arrangements of entities with similar properties, are at the basis of mathematical description of nature. In the MSE graduate core, students will encounter arrays as tensors of various rank. In physical science, tensors characterize the properties of a physical system. Tensors are the \textit{de facto} tool used to describe, for example, diffusion, nucleation and growth, states of stress and strain, Hamiltonians in quantum mechanics, and many, many, more physical phenomenon. Physical processes of interest to Materials Scientists take place in Euclidean 3-space (${\rm I\!R}^3$) are are well-described by tensor representations.
+
+We build up our description of the notation and handling of tensors starting by separately describing rank-0, rank-1, rank-2, and rank-3 tensors. Tensors of lower ranks should be familiar --- students will have encountered them previously as scalars (rank-0), vectors (rank-1), matrices (rank-2). \emph{Tensors} are defined to be arrays of higher dimensionality higher dimensionality (rank $\geq3$). Classifications of tensors by  rank allows us to quickly identify the number of tensor components we will work with: a tensor of order $p$ has $N^p$ components, where $N$ is the dimensionality of space in which we are operating. In general, you will be operating in Eucledian 3-space, so the number of components of a tensor is defined as $3^p$. 
+
+\paragraph{Scalars}are considered tensors with \emph{order} or \emph{rank} of 0. Scalars represent physical quantities (often accompanied by a unit of measurement) that possess only a magnitude: e.g., temperature, mass, charge, and distance. Scalars are typically represented by Latin or Greek symbols and are have $3^{0} = 1$ component.
+
+\paragraph{Vectors}are tensors with a \emph{rank} of 1. In symbolic notation, vectors are typically represented using lowercase bold or bold-italic symbols such as $\mathbf{u}$ or $\pmb{a}$. Bold typeface is not always amenable to handwriting, however, and so the a right arrow accent is employed: $\vec{u}$ or $\vec{a}$.  In this document we will use the bold serifed typeface: $\mathbf{a}$, but students are likely to encounter numerous conventions.
+
+In ${\rm I\!R}^3$ a vector is defined by $3^{1} = 3$ components. In \textit{xyz} Cartesian coordinates we utilize the Cartesian basis with 3 orthogonal unit vectors $\{\mathbf{e}_{\mathbf{x}}\text{, } \mathbf{e}_{\mathbf{y}}\text{, } \mathbf{e}_{\mathbf{z}}\}$. We define 3D vector $\mathbf{u}$ in this basis with the components ($u_x$, $u_y$, $u_z$), or equivalently  ($u_1$, $u_2$, $u_3$). Often, we represent the vector $\mathbf{u}$ using the shorthand $u_i$, where the $i$ subscript denotes an index that ranges of the dimensionality of the system (1,2,3 for ${\rm I\!R}^3$, 1,2 for ${\rm I\!R}^2$). %Need to figure out \bm!
+
+Vectors are often encountered in a bracketed vertical list to facilitate matrix operations. Using some of the notation defined above:
+
+\begin{equation}
+\mathbf{u} = u_i = 
+	\begin{bmatrix}
+    u_x \\
+    u_y \\
+    u_z
+	\end{bmatrix} =
+	\begin{bmatrix}
+    u_1 \\
+    u_2 \\
+    u_3
+	\end{bmatrix}
+	\label{eq:Vector}
+\end{equation}
+
+We will use $u_i$ and $x$, $y$, and $z$ subscripts as we proceed.
+
+\paragraph{Matrices} are tensors with a \emph{rank} of 2.  In ${\rm I\!R}^2$ a matrix has $2^{2} = 4$ components and in ${\rm I\!R}^3$ a matrix has $3^{2} = 9$ components. As with vectors, we will use the range convention when denoting a matrix, which now possesses two subscripts, $i$ and $j$. We use the example of the true stress, or \href{https://en.wikipedia.org/wiki/Cauchy_stress_tensor}{Cauchy stress tensor}, $\sigma_{ij}$:
+
+\begin{equation}
+\sigma_{ij} =  
+	\begin{bmatrix}
+    \sigma_{xx} & \sigma_{xy} & \sigma_{xz}\\
+    \sigma_{yx} & \sigma_{yy} & \sigma_{yz}\\
+    \sigma_{zx} & \sigma_{zy} & \sigma_{zz}\\
+	\end{bmatrix}
+\end{equation}
+
+In this notation the first index denotes the row while the second denotes the column ($x = 1$, $y = 2$, $z = 3$).
+
+\paragraph{Tensors}
+
+
+	%\subsubsection{Vector Calculus \hfill(Release TBD)}
+	%
+	%\textit{\textbf{Encountered in: MAT\texttt{\_}SCI 406, 408}} 

@@ -40,7 +40,7 @@ Below is a basic introduction to working with MATLAB. Some good resources and tu
 
 When a user first opens MATLAB (this guide is written for the current version of MATLAB as of 2/2017: MATLAB 9.1) as shown in Fig. [1](#fig:MatlabApplication){reference-type="ref" reference="fig:MatlabApplication"} with various sub-windows visible.
 
-![The MATLAB user interface, MATLAB 9.1.](MatlabApplication){#fig:MatlabApplication width="0.8\\columnwidth"}
+![The MATLAB user interface, MATLAB 9.1.](figures/MatlabApplication.png){#fig:MatlabApplication width="0.8\\columnwidth"}
 
 -   This window (at the far left) shows the files that are present in your current directory. This can be changed by navigating to a different directory, shown in the field directly above the windows.
 
@@ -236,7 +236,7 @@ ylabel('-8 < y < 8') % y-axis label
 zlabel('sinc(x*R)')  %z-axis label
 ```
 
-![A meshplot of a sinc function.](SincResult){#fig:SincPlot width="0.5\\columnwidth"}
+![A meshplot of a sinc function.](figures/SincResult.png){#fig:SincPlot}
 
 ### Scripting and Debugging the m-file {#subsubsection:mFile}
 
@@ -267,7 +267,7 @@ Script m-files usually possess at least four sections (examples of all these sec
 
 MATLAB provides a number of interactive tools to simplify coding and debugging. Useful tools exist in the editor ribbon, including insert of sections of functions (from a library) or indent and comment control. Arguably, the most valuable tool is the setting and handling of breakpoints. Breakpoints are especially useful when constructing loops because the calculations can be monitored step-by-step through the loop.
 
-![Debugging MATLAB scripts.](MATLABDebug){#fig:Breakpoint width="0.7\\columnwidth"}
+![Debugging MATLAB scripts.](figures/MATLABDebug.png){#fig:Breakpoint width="0.7\\columnwidth"}
 
 To set a breakpoint simply left click on the horizontal dash next to the line you would like to break at (indicated with a red arrow, Fig. [3](#fig:Breakpoint){reference-type="ref" reference="fig:Breakpoint"}). Run the code. Your script will stop at this point and you can investigate variable values. Then, you can advance the code to the next breakpoint (Fig. [3](#fig:Breakpoint){reference-type="ref" reference="fig:Breakpoint"}, green square). When in a loop this command will iterate the loop one step. When ready, you can use the breakpoints button to eliminate all breakpoints and run the code.
 

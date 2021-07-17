@@ -70,7 +70,7 @@ Where the diagonal represents the normal components of stress and the off-diagon
 
 **Tensors** A rank-3 tensor in ${\rm I\!R}^3$ has $3^{3} = 27$ components and is represented in range notation using subscripts $i$, $j$, and $k$, e.g., $T_{ijk}$ . At rank-3 (and it is even worse in rank-4, requiring an array of rank-3 tensors) it begins to become difficult to represent clearly on paper. An example of a simple tensor --- [the rank-3 permutation tensor](https://en.wikipedia.org/wiki/Levi-Civita_symbol#Three_dimensions_2) --- is shown in Fig. [1](#fig:PermutationTensor){reference-type="ref" reference="fig:PermutationTensor"}. You can also watch [this video](https://www.youtube.com/watch?v=f5liqUk0ZTw) which helps with the visualization.
 
-![The rank-3 permutation tensor, by Arian Kriesch. corrections made by Xmaster1123 and Luxo (Own work) \[GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)](PermutationTensor){#fig:PermutationTensor}
+![The rank-3 permutation tensor, by Arian Kriesch. corrections made by Xmaster1123 and Luxo (Own work) \[GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)](figures/PermutationTensor.png){#fig:PermutationTensor}
 
 One can write the $i = 1,2,3$ matrices that stack to form this tensor as:
 
@@ -170,24 +170,19 @@ $$\begin{bmatrix}
 	= a_{ij}b_{j}$$
 :::
 
-::: {#tab:SummationIdentities}
-  -------------------------- -------------------------------------------------------------------- ------------------------------------------------------------------------------
-                                                                                                  
-          convention                                                                              
-          convention                                   Full expression                            
-      $\lambda = a_ib_i$                   $\lambda = \sum\limits_{i=1}^{3}a_ib_i$                                     $\lambda = a_1b_1 + a_2b_2 + a_3b_3$
-      $c_i = S_{ik}x_k$                     $c_i = \sum\limits_{i=1}^{3}S_{ik}x_k$                                             $c_i = \begin{cases}
-                                                                                                                  			c_1 = S_{11}x_1 + S_{12}x_2 + S_{13}x_3\\ 
-                                                                                                                   			c_2 = S_{21}x_1 + S_{22}x_2 + S_{23}x_3\\
-                                                                                                                   			c_3 = S_{31}x_1 + S_{32}x_2 + S_{33}x_3\\
-                                                                                                                                  		\end{cases}$
-   $\lambda = S_{ij}S_{ij}$   $\lambda = \sum\limits_{j=1}^{3}\sum\limits_{i=1}^{3}S_{ij}S_{ij}$   $\lambda = S_{11}S_{11} + S_{12}S_{12} + \cdots + S_{32}S_{32}+S_{33}S_{33}$
-   $C_{ij} = A_{ik}B_{kj}$              $\lambda = \sum\limits_{k=1}^{3}A_{ik}B_{kj}$                                  $\big[C\big]=\big[A\big]\big[B\big]$
-   $C_{ij} = A_{ki}B_{kj}$              $\lambda = \sum\limits_{k=1}^{3}A_{ki}B_{kj}$                                $\big[C\big]=\big[A\big]^{T}\big[B\big]$
-  -------------------------- -------------------------------------------------------------------- ------------------------------------------------------------------------------
+| Summation convention | Non-summation Convention | Full expression |
+| -------------------- | ------------------------ | --------------- |
+| $\lambda = a_ib_i$   | $\lambda = \sum\limits_{i=1}^{3}a_ib_i$ | $\lambda = a_1b_1 + a_2b_2 + a_3b_3$ | 
+| $c_i = S_{ik}x_k$    | $c_i = \sum\limits_{i=1}^{3}S_{ik}x_k$ | $c_i = \begin{cases}
+                                                                  c_1 = S_{11}x_1 + S_{12}x_2 + S_{13}x_3\\ 
+                                                                	c_2 = S_{21}x_1 + S_{22}x_2 + S_{23}x_3\\
+                                                                	c_3 = S_{31}x_1 + S_{32}x_2 + S_{33}x_3\\
+                                                                	\end{cases}$ | 
+| $\lambda = S_{ij}S_{ij}$ | $\lambda = \sum\limits_{j=1}^{3}\sum\limits_{i=1}^{3}S_{ij}S_{ij}$ | $\lambda = S_{11}S_{11} + S_{12}S_{12} + \cdots + S_{32}S_{32}+S_{33}S_{33}$ |
+| $C_{ij} = A_{ik}B_{kj}$ | $\lambda = \sum\limits_{k=1}^{3}A_{ik}B_{kj}$ | $\big[C\big]=\big[A\big]\big[B\big]$\ignore{\footnote{see Eq. \ref{eq:MatrixMultiply} and preceding derivation.}} |
+| $C_{ij} = A_{ki}B_{kj}$ | $\lambda = \sum\limits_{k=1}^{3}A_{ki}B_{kj}$ | $\big[C\big]=\big[A\big]^{T}\big[B\big]$ |
 
-  : Uses of summation notation that students may encounter in the graduate core. Bracketed symbols indicate $3 \times 3$ matrices
-:::
+: Uses of summation notation that students may encounter in the graduate core. Bracketed symbols indicate $3 \times 3$ matrices (tab:SummationIdentities)
 
 It will be important to learn how to read such summation notation, so if you see a repeated dummy index (often represented with $k$ or $l$, see Cai and Nix, 2.1.3), that you can recognize the notation.
 
@@ -201,7 +196,7 @@ Cartesian coordinates are not the only coordinate system that MSE graduate stude
 
 **Cartesian** coordinates, as mentioned in Sec. [1.2](#subsec:Tensors){reference-type="ref" reference="subsec:Tensors"} utilize an orthogonal basis set and are often the easiest to use when describing and visualizing vector operations and physical laws. The rank-2 stress tensor (introduced in Sec. [1.2](#subsec:Tensors){reference-type="ref" reference="subsec:Tensors"}) is represented using the following $3 \times 3 \times 3$ matrix and is shown in Fig.  [2](#fig:StressTensors){reference-type="ref" reference="fig:StressTensors"}:
 
-![Stress tensors for (a.) Cartesian, (b.) cylindrical, and (c.) spherical coordinate systems. From Nix and Cai.](StressTensors){#fig:StressTensors}
+![Stress tensors for (a.) Cartesian, (b.) cylindrical, and (c.) spherical coordinate systems. From Nix and Cai.](figures/StressTensors.png){#fig:StressTensors}
 
 $$\sigma_{ij}
 	\begin{bmatrix}
@@ -261,7 +256,9 @@ $$\begin{bmatrix}
 	\end{bmatrix}\\
 	%Q_{jl} \equiv (\hat{e}_{j}^{xyz} \cdot \hat{e}_l^{r \theta z}) \\$$
 
-And therefore: $$\begin{aligned}
+And therefore: 
+
+$$\begin{aligned}
 	Q_{ik} &\equiv (\hat{e}_{i}^{xy} \cdot \hat{e}_k^{r \theta}) =
 	\begin{bmatrix}
 		(\hat{e}_{x} \cdot \hat{e}_{r}) & (\hat{e}_{x} \cdot \hat{e}_{\theta})\\
@@ -314,7 +311,9 @@ $$\begin{aligned}
 %\theta)) + \cos(\theta)(\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta)
 	%\end{bmatrix}\end{aligned}$$
 
-Completing the math yields: $$\begin{aligned}
+Completing the math yields: 
+
+$$\begin{aligned}
 	\sigma_{xx} &= \cos(\theta) \left[\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(
 \theta)\right] - \sin(\theta)\left[\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta)\right]\\
 	\sigma_{xy} &= \sin(\theta) \left[\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(

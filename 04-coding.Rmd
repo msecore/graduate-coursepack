@@ -274,3 +274,21 @@ To set a breakpoint simply left click on the horizontal dash next to the line yo
 [^1]: This is somewhat dated. I'm looking for a more up-to-date version.
 
 [^2]: You can also create a MATALB `function` that accepts inputs and can be called from the command line.
+
+## *Mathematica* (Release TBD)
+
+*Mathematica* is useful for symbolic mathematical computation. It is free for all students.
+
+### Suggested Resources: 
+
+[The Wolfram Language: Fast Introduction for Programmers](https://www.wolfram.com/language/fast-introduction-for-programmers/interactive-usage/),
+
+1.  Symbolic and Numeric Representations and Calculations
+
+2.  Basic Plotting: 2D, 3D and interactive
+
+3.  Linear Algebra: Matrix Operations and Notations
+
+4.  Equation Solvers ($\rightarrow$ step-by-step solutions with WolframAlpha access).
+
+## Python (Release TBD)

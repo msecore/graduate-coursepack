@@ -12,8 +12,7 @@ output:
   bookdown::gitbook: default
   bookdown::pdf_book:
     latex_engine: xelatex
-    includes:
-      in_header: preamble.tex
+    template: graduate-coursepack.tex
 ---
 
 # Abstract {-}

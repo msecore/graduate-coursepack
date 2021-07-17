@@ -1,0 +1,20 @@
+% Custom Template file for PDF Output
+
+\documentclass[11pt]{book}
+
+\usepackage{jde_course}
+\input{preamble}
+
+
+% Pandoc commands and packages
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{longtable,booktabs}
+
+\begin{document}
+
+$body$
+
+\clearpage
+\bibliography{coursepack} %Where's my correct bibliography? Courspack.bib?
+\end{document}

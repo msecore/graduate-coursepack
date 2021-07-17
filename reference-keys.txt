@@ -50,4 +50,7 @@ creating-and-using-functions
 control-flow-and-iterative-loops
 subsubsection:BasicPlotting
 subsubsection:mFile
+mathematica-release-tbd
+suggested-resources-1
+python-release-tbd
 release-history

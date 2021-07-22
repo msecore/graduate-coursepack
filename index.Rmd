@@ -9,7 +9,9 @@ bibliography: coursepack.bib
 biblio-style: apalike
 link-citations: yes
 output:
-  bookdown::gitbook: default
+  bookdown::gitbook: 
+    includes:
+      in_header: mathjax.html
   bookdown::pdf_book:
     latex_engine: xelatex
     template: graduate-coursepack.tex
@@ -45,7 +47,7 @@ Interaction with multimedia is done directly within the PDF. Click on content to
 
 ## Northwestern Materials Science and Engineering eReserves {-}
 
-The department has made available portions of select introductory texts suitable for students who have limited background in materials science. These texts are stored in an online repository hosted on Northwestern box, and are available to all Northwestern Materials Science students [here](https://northwestern.box.com/s/13myp0an8snmmfjqfbx9gt1gbfrah0aj). Brief descriptions of these texts are available in Sec. [\[sec:Intro\]](#sec:Intro){reference-type="ref" reference="sec:Intro"}.
+The department has made available portions of select introductory texts suitable for students who have limited background in materials science. These texts are stored in an online repository hosted on Northwestern box, and are available to all Northwestern Materials Science students [here](https://northwestern.box.com/s/13myp0an8snmmfjqfbx9gt1gbfrah0aj). Brief descriptions of these texts are available in [the intro](#introduction-to-materials-science).
 
 By utilizing these texts, you are agreeing to [Northwestern's policies on eReserve](is not to be used for any purpose other than private study, scholarship, or research. If electronic transmission of reserve material is used for purposes in excess of what constitutes ``fair use'', that user may be liable for copyright infringement.), which are compliant with US copyright law (Title 17, United States Code):
 

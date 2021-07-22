@@ -179,7 +179,7 @@ $$\begin{bmatrix}
                                                                 	c_3 = S_{31}x_1 + S_{32}x_2 + S_{33}x_3\\
                                                                 	\end{cases}$ | 
 | $\lambda = S_{ij}S_{ij}$ | $\lambda = \sum\limits_{j=1}^{3}\sum\limits_{i=1}^{3}S_{ij}S_{ij}$ | $\lambda = S_{11}S_{11} + S_{12}S_{12} + \cdots + S_{32}S_{32}+S_{33}S_{33}$ |
-| $C_{ij} = A_{ik}B_{kj}$ | $\lambda = \sum\limits_{k=1}^{3}A_{ik}B_{kj}$ | $\big[C\big]=\big[A\big]\big[B\big]$\ignore{\footnote{see Eq. \ref{eq:MatrixMultiply} and preceding derivation.}} |
+| $C_{ij} = A_{ik}B_{kj}$ | $\lambda = \sum\limits_{k=1}^{3}A_{ik}B_{kj}$ | $\big[C\big]=\big[A\big]\big[B\big]$ |
 | $C_{ij} = A_{ki}B_{kj}$ | $\lambda = \sum\limits_{k=1}^{3}A_{ki}B_{kj}$ | $\big[C\big]=\big[A\big]^{T}\big[B\big]$ |
 
 : Uses of summation notation that students may encounter in the graduate core. Bracketed symbols indicate $3 \times 3$ matrices (tab:SummationIdentities)
@@ -301,15 +301,7 @@ $$\begin{aligned}
 		\cos(\theta) & \sin(\theta)\\
 		-\sin(\theta) & con(\theta)	
 	\end{bmatrix}
-	%&=
-	%\begin{bmatrix}
-	%\cos(\theta) (\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(\
-%\theta)) - \sin(\theta)(\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta) & \sin(\theta) (\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(\
-%\theta)) + \cos(\theta)(\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta)\\
-	%\cos(\theta) (\sigma_{\theta r} \cos(\theta) + \sigma_{rr} \sin(\
-%\theta)) - \sin(\theta)(\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta) & \sin(\theta) (\sigma_{\theta r} \cos(\theta) + \sigma_{rr} \sin(\
-%\theta)) + \cos(\theta)(\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta)
-	%\end{bmatrix}\end{aligned}$$
+	\end{aligned}$$
 
 Completing the math yields: 
 
@@ -335,10 +327,19 @@ Any college-level calculus text is suitable for supplemental study. The sections
 
 ***Encountered in: MAT`_`SCI 401***
 
-When there exists an explicit function of several variables such as $f = f(x,y,t)$, which has $f$ has a *total* differential of form: $$\begin{aligned}
-	\Diff{}{f} = \Big(\Partial{}{f}{t}\Big)_{x,y}\Diff{}{t} + \Big(\Partial{}{f}{x}\Big)_{t,y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{t,x} \Diff{}{y}\end{aligned}$$ Here, we do not assume that $f$ is constant with respect any of the arguments $(x\text{,}\, y\text{, or } t)$. This equation defines the differential change in the function $\Diff{}{f}$ and accounts for all interdependencies between $x$, $y$, and $t$. In general, the total differential can be defined as: $$\begin{aligned}
+When there exists an explicit function of several variables such as $f = f(x,y,t)$, which has $f$ has a *total* differential of form: 
+
+$$\begin{aligned}
+	\Diff{}{f} = \Big(\Partial{}{f}{t}\Big)_{x,y}\Diff{}{t} + \Big(\Partial{}{f}{x}\Big)_{t,y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{t,x} \Diff{}{y}
+\end{aligned}$$ 
+	
+Here, we do not assume that $f$ is constant with respect any of the arguments $(x\text{,}\, y\text{, or } t)$. This equation defines the differential change in the function $\Diff{}{f}$ and accounts for all interdependencies between $x$, $y$, and $t$. In general, the total differential can be defined as: 
+
+$$\begin{aligned}
  \label{eq:TotDiff}
-	\Diff{}{f} = \sum\limits_{i=1}^n \Big(\Partial{}{f}{x_i}\Big)_{x_{j\neq i}}\Diff{}{x_i}\end{aligned}$$ The total differential is important when working with thermodynamic systems which is described by thermodynamic parameters (e.g. $P$, $T$, $V$) which are not necessary independent. For example, the internal energy $U$ for some homogeneous system can be defined in terms of entropy $S$ and volume $V$; $U = U(S,V)$. According to Eq. [\[eq:TotDiff\]](#eq:TotDiff){reference-type="ref" reference="eq:TotDiff"}, the infinitesimal change in internal entropy is therefore: $$\begin{aligned}
+	\Diff{}{f} = \sum\limits_{i=1}^n \Big(\Partial{}{f}{x_i}\Big)_{x_{j\neq i}}\Diff{}{x_i}\end{aligned}$$ 
+	
+total differential is important when working with thermodynamic systems which is described by thermodynamic parameters (e.g. $P$, $T$, $V$) which are not necessary independent. For example, the internal energy $U$ for some homogeneous system can be defined in terms of entropy $S$ and volume $V$; $U = U(S,V)$. According to Eq. [\[eq:TotDiff\]](#eq:TotDiff){reference-type="ref" reference="eq:TotDiff"}, the infinitesimal change in internal entropy is therefore: $$\begin{aligned}
 	\Diff{}{U} = \Big(\Partial{}{U}{S}\Big)_{V}\Diff{}{S} + \Big(\Partial{}{U}{V}\Big)_{S} \Diff{}{V}\end{aligned}$$
 
 ### Exact and Inexact Differentials (Release 11/2016) {#subsec:eidiff}
@@ -348,11 +349,21 @@ When there exists an explicit function of several variables such as $f = f(x,y,t
 Suppose we are assessing the infinitesimal change of some value: $\Diff{}{f}$, in which $\Diff{}{f}$ is a linear differential of the form: $$\begin{aligned}
 	\Diff{}{f} = \sum\limits_{i=1}^m M_i(x_1,x_2,...x_m)\Diff{}{x_i}.\end{aligned}$$ In thermodynamics we are often concerned with linear differentials of two independent variables such that $$\begin{aligned}
  \label{eq:LinearDiff}
-	\Diff{}{f} = M(x,y) \Diff{}{x} + N(x,y) \Diff{}{y}.\end{aligned}$$ An exact differential is one in which $\int{\Diff{}{z}}$ is path-independent. It can be shown (e.g. [Wolfram Exact Differential](http://mathworld.wolfram.com/ExactDifferential.html)) that this means: $$\begin{aligned}
+	\Diff{}{f} = M(x,y) \Diff{}{x} + N(x,y) \Diff{}{y}.\end{aligned}$$ An exact differential is one in which $\int{\Diff{}{z}}$ is path-independent. It can be shown (e.g. [Wolfram Exact Differential](http://mathworld.wolfram.com/ExactDifferential.html)) that this means: 
+	
+$$\begin{aligned}
  \label{eq:ExactDiff}
-	\Diff{}{f} = \Big(\Partial{}{f}{x}\Big)_{y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{x} \Diff{}{y}.\end{aligned}$$ Which means that $$\begin{aligned}
+	\Diff{}{f} = \Big(\Partial{}{f}{x}\Big)_{y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{x} \Diff{}{y}.
+\end{aligned}$$ 
+
+Which means that 
+
+$$\begin{aligned}
  \label{eq:ExactDiff2}
- \Big(\Partial{}{M}{y}\Big)_{x} = \Big(\Partial{}{N}{x}\Big)_{y}. %Wolfram proof.\end{aligned}$$ An inexact differential is one in which the equality defined in Eq. [\[eq:ExactDiff\]](#eq:ExactDiff){reference-type="ref" reference="eq:ExactDiff"} (and therefore Eq. [\[eq:ExactDiff2\]](#eq:ExactDiff2){reference-type="ref" reference="eq:ExactDiff2"}) is not necessary true. An inexact differential is typically denoted using *bar* notation to define the infinitesimal value: $$\begin{aligned}
+ \Big(\Partial{}{M}{y}\Big)_{x} = \Big(\Partial{}{N}{x}\Big)_{y}.
+\end{aligned}$$ 
+ 
+An inexact differential is one in which the equality defined in Eq. [\[eq:ExactDiff\]](#eq:ExactDiff){reference-type="ref" reference="eq:ExactDiff"} (and therefore Eq. [\[eq:ExactDiff2\]](#eq:ExactDiff2){reference-type="ref" reference="eq:ExactDiff2"}) is not necessary true. An inexact differential is typically denoted using *bar* notation to define the infinitesimal value: $$\begin{aligned}
 	\text{\dj} f = \Big(\Partial{}{f}{x}\Big)_{y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{x} \Diff{}{y}.\end{aligned}$$ Two physical examples make this more clear:
 
 ::: displayquote

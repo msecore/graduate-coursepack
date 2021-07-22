@@ -24,7 +24,7 @@
 <meta name="author" content="Jonathan D. Emery and Lincoln J. Lauhon" />
 
 
-<meta name="date" content="2021-07-17" />
+<meta name="date" content="2021-07-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,19 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- MathJax documentation: https://docs.mathjax.org/en/v2.7-latest/tex.html#tex-macros -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      Diff: ["{\mathop{}\!\mathrm{d^{#1}}{#2}}", 2],
+      Partial: ["{\mathop{}\!\frac{\partial^{#1}{#2}}{\partial{#3}^{#1}}}", 3],
+      FullDiff: ["{\mathop{}\!\frac{\mathrm{d}^{#1}{#2}}{\mathrm{d}{#3}^{#1}}}", 3],
+      rfrac: ["{{}^{#1}\!/_{#2}}", 2]
+    }
+  }
+});
+</script>
 
 
 
@@ -294,6 +307,7 @@
     = a_{ij}b_{j}\]</span></p>
 </div>
 <table>
+<caption>Uses of summation notation that students may encounter in the graduate core. Bracketed symbols indicate <span class="math inline">\(3 \times 3\)</span> matrices (tab:SummationIdentities)</caption>
 <colgroup>
 <col width="33%" />
 <col width="40%" />
@@ -322,13 +336,18 @@
 <td><span class="math inline">\(\lambda = \sum\limits_{j=1}^{3}\sum\limits_{i=1}^{3}S_{ij}S_{ij}\)</span></td>
 <td><span class="math inline">\(\lambda = S_{11}S_{11} + S_{12}S_{12} + \cdots + S_{32}S_{32}+S_{33}S_{33}\)</span></td>
 </tr>
+<tr class="even">
+<td><span class="math inline">\(C_{ij} = A_{ik}B_{kj}\)</span></td>
+<td><span class="math inline">\(\lambda = \sum\limits_{k=1}^{3}A_{ik}B_{kj}\)</span></td>
+<td><span class="math inline">\(\big[C\big]=\big[A\big]\big[B\big]\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_{ij} = A_{ki}B_{kj}\)</span></td>
+<td><span class="math inline">\(\lambda = \sum\limits_{k=1}^{3}A_{ki}B_{kj}\)</span></td>
+<td><span class="math inline">\(\big[C\big]=\big[A\big]^{T}\big[B\big]\)</span></td>
+</tr>
 </tbody>
 </table>
-| <span class="math inline">\(C_{ij} = A_{ik}B_{kj}\)</span> | <span class="math inline">\(\lambda = \sum\limits_{k=1}^{3}A_{ik}B_{kj}\)</span> | <span class="math inline">\(\big[C\big]=\big[A\big]\big[B\big]\)</span>
-
-<div class="line-block"><br />
-<span class="math inline">\(C_{ij} = A_{ki}B_{kj}\)</span> | <span class="math inline">\(\lambda = \sum\limits_{k=1}^{3}A_{ki}B_{kj}\)</span> | <span class="math inline">\(\big[C\big]=\big[A\big]^{T}\big[B\big]\)</span> |</div>
-<p>: Uses of summation notation that students may encounter in the graduate core. Bracketed symbols indicate <span class="math inline">\(3 \times 3\)</span> matrices (tab:SummationIdentities)</p>
 <p>It will be important to learn how to read such summation notation, so if you see a repeated dummy index (often represented with <span class="math inline">\(k\)</span> or <span class="math inline">\(l\)</span>, see Cai and Nix, 2.1.3), that you can recognize the notation.</p>
 <p>Some useful representations of summation notation are shown in Table <a href="#tab:SummationIdentities" reference-type="ref" reference="tab:SummationIdentities">1</a>:</p>
 <p>In future releases I will add summation notation for the Kronecker delta, <span class="math inline">\(\delta_{ij}\)</span>, the LeviCivita <span class="math inline">\(\epsilon\)</span>, the dot product, and the cross product, determinants, the <code>del</code> operator (<span class="math inline">\(\nabla\)</span>), and others as references.</p>
@@ -425,15 +444,7 @@
         \cos(\theta) &amp; \sin(\theta)\\
         -\sin(\theta) &amp; con(\theta) 
     \end{bmatrix}
-    %&amp;=
-    %\begin{bmatrix}
-    %\cos(\theta) (\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(\
-%\theta)) - \sin(\theta)(\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta) &amp; \sin(\theta) (\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(\
-%\theta)) + \cos(\theta)(\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta)\\
-    %\cos(\theta) (\sigma_{\theta r} \cos(\theta) + \sigma_{rr} \sin(\
-%\theta)) - \sin(\theta)(\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta) &amp; \sin(\theta) (\sigma_{\theta r} \cos(\theta) + \sigma_{rr} \sin(\
-%\theta)) + \cos(\theta)(\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta)
-    %\end{bmatrix}\end{aligned}\]</span></p>
+    \end{aligned}\]</span></p>
 <p>Completing the math yields:</p>
 <p><span class="math display">\[\begin{aligned}
     \sigma_{xx} &amp;= \cos(\theta) \left[\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(
@@ -453,10 +464,15 @@
 <div id="subsec:totdiff" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Total Differentials: (Release 11/2016)</h3>
 <p><strong><em>Encountered in: MAT<code>_</code>SCI 401</em></strong></p>
-<p>When there exists an explicit function of several variables such as <span class="math inline">\(f = f(x,y,t)\)</span>, which has <span class="math inline">\(f\)</span> has a <em>total</em> differential of form: <span class="math display">\[\begin{aligned}
-    \Diff{}{f} = \Big(\Partial{}{f}{t}\Big)_{x,y}\Diff{}{t} + \Big(\Partial{}{f}{x}\Big)_{t,y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{t,x} \Diff{}{y}\end{aligned}\]</span> Here, we do not assume that <span class="math inline">\(f\)</span> is constant with respect any of the arguments <span class="math inline">\((x\text{,}\, y\text{, or } t)\)</span>. This equation defines the differential change in the function <span class="math inline">\(\Diff{}{f}\)</span> and accounts for all interdependencies between <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(t\)</span>. In general, the total differential can be defined as: <span class="math display">\[\begin{aligned}
+<p>When there exists an explicit function of several variables such as <span class="math inline">\(f = f(x,y,t)\)</span>, which has <span class="math inline">\(f\)</span> has a <em>total</em> differential of form:</p>
+<p><span class="math display">\[\begin{aligned}
+    \Diff{}{f} = \Big(\Partial{}{f}{t}\Big)_{x,y}\Diff{}{t} + \Big(\Partial{}{f}{x}\Big)_{t,y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{t,x} \Diff{}{y}
+\end{aligned}\]</span></p>
+<p>Here, we do not assume that <span class="math inline">\(f\)</span> is constant with respect any of the arguments <span class="math inline">\((x\text{,}\, y\text{, or } t)\)</span>. This equation defines the differential change in the function <span class="math inline">\(\Diff{}{f}\)</span> and accounts for all interdependencies between <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(t\)</span>. In general, the total differential can be defined as:</p>
+<p><span class="math display">\[\begin{aligned}
  \label{eq:TotDiff}
-    \Diff{}{f} = \sum\limits_{i=1}^n \Big(\Partial{}{f}{x_i}\Big)_{x_{j\neq i}}\Diff{}{x_i}\end{aligned}\]</span> The total differential is important when working with thermodynamic systems which is described by thermodynamic parameters (e.g. <span class="math inline">\(P\)</span>, <span class="math inline">\(T\)</span>, <span class="math inline">\(V\)</span>) which are not necessary independent. For example, the internal energy <span class="math inline">\(U\)</span> for some homogeneous system can be defined in terms of entropy <span class="math inline">\(S\)</span> and volume <span class="math inline">\(V\)</span>; <span class="math inline">\(U = U(S,V)\)</span>. According to Eq. <a href="#eq:TotDiff" reference-type="ref" reference="eq:TotDiff"><span class="math display">\[eq:TotDiff\]</span></a>, the infinitesimal change in internal entropy is therefore: <span class="math display">\[\begin{aligned}
+    \Diff{}{f} = \sum\limits_{i=1}^n \Big(\Partial{}{f}{x_i}\Big)_{x_{j\neq i}}\Diff{}{x_i}\end{aligned}\]</span></p>
+<p>total differential is important when working with thermodynamic systems which is described by thermodynamic parameters (e.g. <span class="math inline">\(P\)</span>, <span class="math inline">\(T\)</span>, <span class="math inline">\(V\)</span>) which are not necessary independent. For example, the internal energy <span class="math inline">\(U\)</span> for some homogeneous system can be defined in terms of entropy <span class="math inline">\(S\)</span> and volume <span class="math inline">\(V\)</span>; <span class="math inline">\(U = U(S,V)\)</span>. According to Eq. <a href="#eq:TotDiff" reference-type="ref" reference="eq:TotDiff"><span class="math display">\[eq:TotDiff\]</span></a>, the infinitesimal change in internal entropy is therefore: <span class="math display">\[\begin{aligned}
     \Diff{}{U} = \Big(\Partial{}{U}{S}\Big)_{V}\Diff{}{S} + \Big(\Partial{}{U}{V}\Big)_{S} \Diff{}{V}\end{aligned}\]</span></p>
 </div>
 <div id="subsec:eidiff" class="section level3">
@@ -465,11 +481,17 @@
 <p>Suppose we are assessing the infinitesimal change of some value: <span class="math inline">\(\Diff{}{f}\)</span>, in which <span class="math inline">\(\Diff{}{f}\)</span> is a linear differential of the form: <span class="math display">\[\begin{aligned}
     \Diff{}{f} = \sum\limits_{i=1}^m M_i(x_1,x_2,...x_m)\Diff{}{x_i}.\end{aligned}\]</span> In thermodynamics we are often concerned with linear differentials of two independent variables such that <span class="math display">\[\begin{aligned}
  \label{eq:LinearDiff}
-    \Diff{}{f} = M(x,y) \Diff{}{x} + N(x,y) \Diff{}{y}.\end{aligned}\]</span> An exact differential is one in which <span class="math inline">\(\int{\Diff{}{z}}\)</span> is path-independent. It can be shown (e.g. <a href="http://mathworld.wolfram.com/ExactDifferential.html">Wolfram Exact Differential</a>) that this means: <span class="math display">\[\begin{aligned}
+    \Diff{}{f} = M(x,y) \Diff{}{x} + N(x,y) \Diff{}{y}.\end{aligned}\]</span> An exact differential is one in which <span class="math inline">\(\int{\Diff{}{z}}\)</span> is path-independent. It can be shown (e.g. <a href="http://mathworld.wolfram.com/ExactDifferential.html">Wolfram Exact Differential</a>) that this means:</p>
+<p><span class="math display">\[\begin{aligned}
  \label{eq:ExactDiff}
-    \Diff{}{f} = \Big(\Partial{}{f}{x}\Big)_{y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{x} \Diff{}{y}.\end{aligned}\]</span> Which means that <span class="math display">\[\begin{aligned}
+    \Diff{}{f} = \Big(\Partial{}{f}{x}\Big)_{y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{x} \Diff{}{y}.
+\end{aligned}\]</span></p>
+<p>Which means that</p>
+<p><span class="math display">\[\begin{aligned}
  \label{eq:ExactDiff2}
- \Big(\Partial{}{M}{y}\Big)_{x} = \Big(\Partial{}{N}{x}\Big)_{y}. %Wolfram proof.\end{aligned}\]</span> An inexact differential is one in which the equality defined in Eq. <a href="#eq:ExactDiff" reference-type="ref" reference="eq:ExactDiff"><span class="math display">\[eq:ExactDiff\]</span></a> (and therefore Eq. <a href="#eq:ExactDiff2" reference-type="ref" reference="eq:ExactDiff2"><span class="math display">\[eq:ExactDiff2\]</span></a>) is not necessary true. An inexact differential is typically denoted using <em>bar</em> notation to define the infinitesimal value: <span class="math display">\[\begin{aligned}
+ \Big(\Partial{}{M}{y}\Big)_{x} = \Big(\Partial{}{N}{x}\Big)_{y}.
+\end{aligned}\]</span></p>
+<p>An inexact differential is one in which the equality defined in Eq. <a href="#eq:ExactDiff" reference-type="ref" reference="eq:ExactDiff"><span class="math display">\[eq:ExactDiff\]</span></a> (and therefore Eq. <a href="#eq:ExactDiff2" reference-type="ref" reference="eq:ExactDiff2"><span class="math display">\[eq:ExactDiff2\]</span></a>) is not necessary true. An inexact differential is typically denoted using <em>bar</em> notation to define the infinitesimal value: <span class="math display">\[\begin{aligned}
     \text{\dj} f = \Big(\Partial{}{f}{x}\Big)_{y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{x} \Diff{}{y}.\end{aligned}\]</span> Two physical examples make this more clear:</p>
 <div class="displayquote">
 <p><strong>Example 1:</strong> Imagine you are speaking with a classmate who recently traveled from from Chicago to Minneapolis. You know he is now in Minneapolis. Is it possible for you to know how much money he spent gas (<span class="math inline">\(G\)</span>)? No, you can’t. <span class="math inline">\(G\)</span> is dependent on <em>how</em> your friend traveled to Minneapolis: his gas mileage, the cost of gas, and, of course, the route he took. <span class="math inline">\(G\)</span> cannot be known without understanding the details of the path, and is therefore not path independent. The differenitial of <span class="math inline">\(G\)</span> is therefore <em>inexact</em>: <span class="math inline">\(G\)</span>.</p>

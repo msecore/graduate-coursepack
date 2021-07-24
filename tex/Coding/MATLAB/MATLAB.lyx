@@ -1,0 +1,1719 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/ken/Mydocs/MSEcore/graduate-coursepack/tex/Coding/MATLAB/
+\textclass article
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+MATLAB 
+\begin_inset space \hfill{}
+
+\end_inset
+
+
+\size normal
+(Release 2/2016)
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:MATLAB"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+
+\series bold
+Encountered in: MAT
+\family typewriter
+_
+\family default
+SCI 405, 408
+\series default
+
+\shape default
+
+\end_layout
+
+\begin_layout Standard
+MATLAB is a powerful computing environment that is commonly used by scientists and engineers of all disciplines for numerical simulation, data analysis, data visualization, hardware control, and creation of custom graphical user interfaces.
+\end_layout
+
+\begin_layout Standard
+MATLAB's built-in functional utility is vast, and this is further supported by an active user community that interacts at the 
+\begin_inset CommandInset href
+LatexCommand href
+name "MathWorks File Exchange"
+target "https://www.mathworks.com/matlabcentral/fileexchange/"
+literal "false"
+
+\end_inset
+
+. There, you can find free user-generated content — functions, applictions, examples, drivers, etc, that may prove useful in your coursework and research.
+\end_layout
+
+\begin_layout Standard
+MATLAB is installed on the computers in the Bodeen Laboratory and is also available for purchase by students ($72/yr on campus, including VPN; $130 off campus). Many research groups also have license subscriptions that can be utilized for your academic projects.
+\end_layout
+
+\begin_layout Standard
+Below is a basic introduction to working with MATLAB. Some good resources and tutorials are linked below for further investigation.
+\end_layout
+
+\begin_layout Subsubsection*
+Suggested Resources:
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Introduction to MATLAB
+\shape default
+, David Houcque, Northwestern University (2005) 
+\begin_inset CommandInset href
+LatexCommand href
+name "eReserve Link"
+target "https://northwestern.box.com/s/13myp0an8snmmfjqfbx9gt1gbfrah0aj"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+This is somewhat dated. I'm looking for a more up-to-date version.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%Is there a more recent version? This text is for MATLAB R2006.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Ilya Mikhelson (Northwestern EECS) has developed a series of MATLAB tutorials and posted them on YouTube. Specifically useful tutorials are following 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB Script Tutorial"
+target "https://www.youtube.com/watch?v=n1a4g2Z8Lb8&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=1"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB Indexing Tutorial"
+target "https://www.youtube.com/watch?v=JE7I4Krj1PU&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=2"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB Logical Expression Tutorial"
+target "https://www.youtube.com/watch?v=HfRv3NMV6Ys&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=3"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB Subarray Tutorial"
+target "https://www.youtube.com/watch?v=HfRv3NMV6Ys&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=6"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB Concatenation Tutorial"
+target "https://www.youtube.com/watch?v=HfRv3NMV6Ys&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=7"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB Variable Declaration Tutorial"
+target "https://www.youtube.com/watch?v=HfRv3NMV6Ys&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=8"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB For Loops Tutorial"
+target "https://www.youtube.com/watch?v=HfRv3NMV6Ys&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=10"
+literal "false"
+
+\end_inset
+
+and 
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB While Loops Tutorial"
+target "https://www.youtube.com/watch?v=HfRv3NMV6Ys&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=11"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB Function Tutorial"
+target "https://www.youtube.com/watch?v=HfRv3NMV6Ys&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=12"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset CommandInset href
+LatexCommand href
+name "MATLAB Debugging Tutorial"
+target "https://www.youtube.com/watch?v=HfRv3NMV6Ys&list=PL1ec5YBm_crwcmeR8pKB9shvnriE8UbFE&index=13"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Interfacing with MATLAB
+\end_layout
+
+\begin_layout Standard
+When a user first opens MATLAB (this guide is written for the current version of MATLAB as of 2/2017: MATLAB 9.1) as shown in Fig. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MatlabApplication"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ with various sub-windows visible.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement !b
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename MatlabApplication
+	width 80col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The MATLAB user interface, MATLAB 9.1.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MatlabApplication"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+[align=left] 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\begin_inset Argument item:1
+status collapsed
+
+
+\begin_layout Standard
+
+\series bold
+Current Folder:
+\series default
+
+\end_layout
+
+\end_inset
+
+This window (at the far left) shows the files that are present in your current directory. This can be changed by navigating to a different directory, shown in the field directly above the windows. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Argument item:1
+status collapsed
+
+
+\begin_layout Standard
+
+\series bold
+Command Window:
+\series default
+
+\end_layout
+
+\end_inset
+
+This window allows you to directly input commands in a command-line format. This is useful for simple, quick calculations and plots. For more extensive calculations you will need to write a script in the Editor. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Argument item:1
+status collapsed
+
+
+\begin_layout Standard
+
+\series bold
+Editor:
+\series default
+
+\end_layout
+
+\end_inset
+
+You will use this space to write and edit your code. While you can, in principle, edit MATLAB code in 
+\emph on
+any
+\emph default
+ text editor, MATLAB's editor is ideally suited to editing its own code and provides utilities that facilitate your scripting, including color-coded syntax, debugging options, and script comparison tools. These scripts are saved as so-called 
+\begin_inset Quotes eld
+\end_inset
+
+m-files
+\begin_inset Quotes erd
+\end_inset
+
+, with extension 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+verb|.m|
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Argument item:1
+status collapsed
+
+
+\begin_layout Standard
+
+\series bold
+Workspace:
+\series default
+
+\end_layout
+
+\end_inset
+
+The workspace contains data structures (scalars, vectors, matrices, tensors, and structure/cell arrays) that are created during your session. The woskpace provides you with at-a-glance information about, for example the data name, value, class, size, and statistics. You can view the data values by double-clicking on the data icon. This will open a sub-tab within the editor window which allows you to easily access and edit your data. 
+\end_layout
+
+\begin_layout Subsubsection
+Basic Commands and Arithmetic Syntax
+\end_layout
+
+\begin_layout Standard
+MATLAB possess its own scripting language and possess unique syntax. Below we list a selection — and some examples — of the most basic MATLAB commands. When appropriate, you can copy these examples directly into the command line or m-file and execute. The output will appear in the Command Window. This list is sourced from a document compiled from the 
+\begin_inset Formula $\Eta \Kappa \Nu$
+\end_inset
+
+ society at the University of Minnesota. The full source can be found 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://www.hkn.umn.edu/resources/files/matlab/MatlabCommands.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When operating in the command window there are a useful set of session managing commands that will streamline your workflow. These are listed in Tab. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:SessionMATLABSyntax"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "MATLAB-Session.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Simple arithmetic operations and special variables are tabulated in Fig. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:ArthmeticMATLABSyntax"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "MATLAB-Arithmetic.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Matrix Notation and Operations
+\end_layout
+
+\begin_layout Standard
+MATLAB is recognized for its strength in writing, representing, and operating on arrays. The construction of matrices in MATLAB is straightforward — examples are shown in Tab. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:ArrayMATLABSyntax"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When entering the example commands in the command line, a matrix-form output will be created. You can also see and edit these matrices by using the Workspace and accessing the Variable Spreadsheet.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "MATLAB-Arrays.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Creating and Using Functions
+\end_layout
+
+\begin_layout Standard
+MATLAB has a large number of built-in function that can provided with input and provide an output. Simple examples include 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+cos(x)
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+sqrt(x)
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+. When functions are called from script files they must be saved as individual files within the working directory (or a directory which has been added to the path). Example syntax for defining a 
+\begin_inset Quotes eld
+\end_inset
+
+Power
+\begin_inset Quotes erd
+\end_inset
+
+ function, which takes a input variable and outputs the computed result is shown below. This function can be called within a script to return variable 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+p
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+. The syntax here is: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+function [out1,out2, ..., outN] = myfun(in1,in2,in3, ..., inN)
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+, where in1 ... inN are input variables and out1, ..., outN are output variables.
+\end_layout
+
+\begin_layout Standard
+Autonomous functions are another way to define a user-supplied function without necessitating the creation of a new file when calling them in a script. These can be defined in the command line or in-line within the m-file. An example of use of an autonomous function is shown in Fig. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsubsection:mFile"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+preview false
+filename "Power.lyx"
+lstparams " 					style=Matlab-editor, 					basicstyle=\mlttfamily, 					escapechar=`, 					tabsize=2, 				"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Control Flow and Iterative Loops
+\end_layout
+
+\begin_layout Standard
+A core component of any numerical calculation is the iterative loop that controls the simulation steps. These statements direct MATLAB to perform a certain calculation either 
+\emph on
+while
+\emph default
+ certain conditions are true or 
+\emph on
+for
+\emph default
+ certain a specific range/specific number of times. The general syntax here is 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+disp
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+preview false
+filename "ForSyntax.lyx"
+lstparams " 					style=Matlab-editor, 					basicstyle=\mlttfamily, 					escapechar=`, 					tabsize=2, 				"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Below, we show an example of a 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+for
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ loop that simply displays the values over each iteration — here from -2 (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+start
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+) to 4 (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+finish
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+) in steps of 0.5 (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+del
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+). In place of the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+disp
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ command you can place any command or series of commands, of course.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+preview false
+filename "ForDisplay.lyx"
+lstparams " 					style=Matlab-editor, 					basicstyle=\mlttfamily, 					escapechar=`, 					tabsize=2, 				"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+while
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ loop is shown below. This statement is useful when you are unsure about when the condition may become untrue (e.g. convergence criteria, etc.). The same example as shown above is show below, but now for the case which the index is less than or equal to the number of elements in the matrix. This job is more suitable for a 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+for
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ loop, but we show it below using a 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+while
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ loop for comparison.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+preview false
+filename "WhileDisplay.lyx"
+lstparams " 					style=Matlab-editor, 					basicstyle=\mlttfamily, 					escapechar=`, 					tabsize=2, 				"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Basic Plotting
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsubsection:BasicPlotting"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You will inevitably want to visualize your data or computational results. MATLAB has a variety of tools to facility this. There are many, many options to plot data. Below we show a simple 2D plot that has some plotting options defined including axis ranges and labels.
+\end_layout
+
+\begin_layout Standard
+The plot command 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+mesh
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ renders a wireframe figure of a scaled 
+\begin_inset Formula $sinc$
+\end_inset
+
+ function with 
+\begin_inset Formula $Z$
+\end_inset
+
+ values plotted with color. Thre sult is shown in Fig. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SincPlot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ values are vectors that describe the plane. The example below shows a full, annotated m-file in which the last section (the plot section) defines plotting options including 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+axis
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ for axis range and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+xlabel
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ for axis labels.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+preview false
+filename "./Coding/MATLAB/mFileExample.m"
+lstparams " 					style=Matlab-editor, 					basicstyle=\mlttfamily, 					escapechar=`, 					tabsize=2, 				"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename SincResult
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A meshplot of a sinc function.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SincPlot"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Scripting and Debugging the m-file
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsubsection:mFile"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Working with the command line is convenient for quickly accessing and working with data, or running scripts or creating custom functions. The examples above can be simply executed line-by-line in the the command window (although they were written as m-files), in doing so you will soon find, however, that it is much more convenient to write a script — a series of commands — in a m-file within the MATLAB editor. A script m-file operates simply by executing any commands listed in the file. A somewhat more advanced example is shown in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsubsection:BasicPlotting"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. A very simple example for an m-file that uses the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+disp
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ command to print 
+\begin_inset Quotes eld
+\end_inset
+
+Hello World
+\begin_inset Quotes erd
+\end_inset
+
+in the command window is shown below.
+\end_layout
+
+\begin_layout Standard
+The example below also contains a commented-out % preamble with file information as well as section breaks %% for organization.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+preview false
+filename "HelloWorld.lyx"
+lstparams " 					style=Matlab-editor, 					basicstyle=\mlttfamily, 					escapechar=`, 					tabsize=2, 				"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Script m-files usually possess at least four sections (examples of all these sections, as well as a plotting section are shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsubsection:BasicPlotting"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+[align=left] 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\begin_inset Argument item:1
+status collapsed
+
+
+\begin_layout Standard
+
+\series bold
+The Preamble:
+\series default
+
+\end_layout
+
+\end_inset
+
+This is where you will record pertinent notes about the file such as version history, authorship, licensing, or other comments. These are usually commented out with % symbols. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Argument item:1
+status collapsed
+
+
+\begin_layout Standard
+
+\series bold
+Variable Declaration and Array Preallocation:
+\series default
+
+\end_layout
+
+\end_inset
+
+After the preamble there is typically a section where you define the variables that will be used in the script
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+You can also create a MATALB 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+function
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ that accepts inputs and can be called from the command line.
+\end_layout
+
+\end_inset
+
+. Preallocation of arrays with 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+zeros(n,m)
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+lstparams "style=Matlab-editor"
+inline true
+status open
+
+\begin_layout Plain Layout
+ones(n,m)
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ can greatly reduce the amount of memory consumed by MATLAB — especially when arrays iteratively grow when the script is run. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Argument item:1
+status collapsed
+
+
+\begin_layout Standard
+
+\series bold
+Anonymous Function:
+\series default
+
+\end_layout
+
+\end_inset
+
+Often, you will want to add a function that is not built into MATLAB syntax or that does not need its own program file. These functions are often added at the end the m-file and are accessed when the script is run. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Argument item:1
+status collapsed
+
+
+\begin_layout Standard
+
+\series bold
+Main Script:
+\series default
+
+\end_layout
+
+\end_inset
+
+This is where the calculations are performed and the data is saved or plotted. 
+\end_layout
+
+\begin_layout Standard
+MATLAB provides a number of interactive tools to simplify coding and debugging. Useful tools exist in the editor ribbon, including insert of sections of functions (from a library) or indent and comment control. Arguably, the most valuable tool is the setting and handling of breakpoints. Breakpoints are especially useful when constructing loops because the calculations can be monitored step-by-step through the loop.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement b!
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename MATLABDebug
+	width 70col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Debugging MATLAB scripts.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Breakpoint"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To set a breakpoint simply left click on the horizontal dash next to the line you would like to break at (indicated with a red arrow, Fig. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Breakpoint"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+). Run the code. Your script will stop at this point and you can investigate variable values. Then, you can advance the code to the next breakpoint (Fig. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Breakpoint"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, green square). When in a loop this command will iterate the loop one step. When ready, you can use the breakpoints button to eliminate all breakpoints and run the code.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,902 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/ken/Mydocs/MSEcore/graduate-coursepack/tex/Mathematics/
+\textclass article
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+Summation Notation
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:SummationNotation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Often, it is useful to simplify notation when manipulating tensor equations. To do this, we utilize Einstein summation notation, or simply 
+\emph on
+summation notation
+\emph default
+. This notation says that 
+\emph on
+if an index is repeated twice (and only twice) in a single term we assume summation over the range of the repeated subscript
+\emph default
+. The simplest example of this is the representation of the trace of a matrix:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[tr(\sigma) = \underbrace{\sigma_{kk}}_{\substack{\text{summation} \\ \text{notation}}} = \sum_{k}^{3}\sigma_{kk} = \sigma_{11}+\sigma_{22}+\sigma_{33}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset Formula $\sigma_{kk}$
+\end_inset
+
+ the index 
+\begin_inset Formula $k$
+\end_inset
+
+ is repeated, and this means that we assume summation of the index over the range of the subscript (in this case, 1-3 as we are working with the stress tensor).
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{displayquote}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Example 1:
+\series default
+This comes in very useful when representing matrix multiplication. Let's say we have an (
+\begin_inset Formula $M \times N$
+\end_inset
+
+) matrix, 
+\begin_inset Formula $\mathbf{A} = a_{ij}$
+\end_inset
+
+ and an 
+\begin_inset Formula $R \times P$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\mathbf{B} = b_{ij}$
+\end_inset
+
+. We know from linear algebra that the matrix product 
+\begin_inset Formula $\mathbf{AB}$
+\end_inset
+
+ is defined only when 
+\begin_inset Formula $R = N$
+\end_inset
+
+, and the result is a (
+\begin_inset Formula $M \times P$
+\end_inset
+
+) matrix, 
+\begin_inset Formula $\mathbf{C} = c_{ij}$
+\end_inset
+
+. Here's an example with a (
+\begin_inset Formula $2 \times 3$
+\end_inset
+
+) matrix times a (
+\begin_inset Formula $3 \times 2$
+\end_inset
+
+) in conventional representation:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align*}
+\mathbf{AB} =
+	\begin{bmatrix}
+		a_{11} & a_{12} & a_{13}\\
+		a_{21} & a_{22} & a_{23}\\
+	\end{bmatrix}
+	&\begin{bmatrix}
+		b_{11} & b_{12}\\
+		b_{21} & b_{22}\\
+		b_{31} & b_{32}\\
+	\end{bmatrix}
+	= \\
+	&\begin{bmatrix}
+		a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31} & a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32}\\
+		a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31} & a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32}\\
+	\end{bmatrix}
+	=c_{ij}
+\end{align*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, we can use summation notation to greatly simply the expression. The components of the matrix 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ are 
+\begin_inset Formula $c_{11}$
+\end_inset
+
+, 
+\begin_inset Formula $c_{12}$
+\end_inset
+
+, 
+\begin_inset Formula $c_{21}$
+\end_inset
+
+, and 
+\begin_inset Formula $c_{22}$
+\end_inset
+
+ and are defined:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align*}
+	c_{11} = a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31}\\
+	c_{12} = a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32}\\
+	c_{21} = a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31}\\
+	c_{22} = a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32}\\
+\end{align*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These terms can all be represented using the following expression:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	c_{ij} = \sum_{k=1}^{3} a_{ik}b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + a_{i3}b_{3j}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, in general for any matrix product:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	c_{ij} = \sum_{k=1}^{N} a_{ik}b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots +  a_{iN}b_{Nj}
+	\label{eq:MatrixMultiply}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or, by dropping the summation symbol and fully utilizing the summation convention:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	c_{ij} = a_{ik}b_{ki}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the term 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ 
+\emph on
+has no repeated subscript - there is no summation implied here. It is simply a matrix
+\emph default
+. Summation 
+\emph on
+is
+\emph default
+ implied in the 
+\begin_inset Formula $a_{ik}b_{kj}$
+\end_inset
+
+ term because of the repeated index 
+\begin_inset Formula $k$
+\end_inset
+
+, often called the dummy index. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{displayquote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{displayquote}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Example 2:
+\series default
+ Another example is a 
+\begin_inset Formula $3 \times 3$
+\end_inset
+
+ matrix multiplied by a (3 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+times
+\end_layout
+
+\end_inset
+
+ 1) column vector:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\begin{bmatrix}
+		a_{11} & a_{12} & a_{13}\\
+		a_{21} & a_{22} & a_{23}\\
+		a_{31} & a_{32} & a_{33}\\
+	\end{bmatrix}
+	\begin{bmatrix}
+		b_1\\
+		b_2\\
+		b_3\\
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		a_{11}b_{1} + a_{12}b_{2} + a_{13}b_{3} \\
+		a_{21}b_{1} + a_{22}b_{2} + a_{23}b_{3}\\
+		a_{31}b_{1} + a_{32}b_{2} + a_{33}b_{3}\\
+	\end{bmatrix}
+	= a_{ij}b_{j}
+\end{equation}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{displayquote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{tabularx}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+6in
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ccc
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+toprule
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pbox
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+20em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Summation 
+\begin_inset Newline newline
+\end_inset
+
+ convention
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ & 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pbox
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+20em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Non-summation 
+\begin_inset Newline newline
+\end_inset
+
+ convention
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ & Full expression 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+midrule
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\lambda = a_ib_i$
+\end_inset
+
+ & 
+\begin_inset Formula $\lambda = \sum\limits_{i=1}^{3}a_ib_i$
+\end_inset
+
+ & 
+\begin_inset Formula $\lambda = a_1b_1 + a_2b_2 + a_3b_3$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+midrule
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $c_i = S_{ik}x_k$
+\end_inset
+
+ & 
+\begin_inset Formula $c_i = \sum\limits_{i=1}^{3}S_{ik}x_k$
+\end_inset
+
+ & 
+\begin_inset Formula $c_i = \begin{cases}
+			c_1 = S_{11}x_1 + S_{12}x_2 + S_{13}x_3\\ 
+			c_2 = S_{21}x_1 + S_{22}x_2 + S_{23}x_3\\
+			c_3 = S_{31}x_1 + S_{32}x_2 + S_{33}x_3\\
+		\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+midrule
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\lambda = S_{ij}S_{ij}$
+\end_inset
+
+ & 
+\begin_inset Formula $\lambda = \sum\limits_{j=1}^{3}\sum\limits_{i=1}^{3}S_{ij}S_{ij}$
+\end_inset
+
+ & 
+\begin_inset Formula $\lambda = S_{11}S_{11} + S_{12}S_{12} + \cdots + S_{32}S_{32}+S_{33}S_{33}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+midrule
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $C_{ij} = A_{ik}B_{kj}$
+\end_inset
+
+ & 
+\begin_inset Formula $\lambda = \sum\limits_{k=1}^{3}A_{ik}B_{kj}$
+\end_inset
+
+ & 
+\begin_inset Formula $\big[C\big]=\big[A\big]\big[B\big]$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ignore
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+see Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:MatrixMultiply"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and preceding derivation.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+midrule
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $C_{ij} = A_{ki}B_{kj}$
+\end_inset
+
+ & 
+\begin_inset Formula $\lambda = \sum\limits_{k=1}^{3}A_{ki}B_{kj}$
+\end_inset
+
+ & 
+\begin_inset Formula $\big[C\big]=\big[A\big]^{T}\big[B\big]$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+bottomrule
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{tabularx}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Uses of summation notation that students may encounter in the graduate core. Bracketed symbols indicate 
+\begin_inset Formula $3 \times 3$
+\end_inset
+
+ matrices
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:SummationIdentities"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It will be important to learn how to read such summation notation, so if you see a repeated dummy index (often represented with 
+\begin_inset Formula $k$
+\end_inset
+
+ or 
+\begin_inset Formula $l$
+\end_inset
+
+, see Cai and Nix, 2.1.3), that you can recognize the notation.
+\end_layout
+
+\begin_layout Standard
+Some useful representations of summation notation are shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:SummationIdentities"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+In future releases I will add summation notation for the Kronecker delta, 
+\begin_inset Formula $\delta_{ij}$
+\end_inset
+
+, the LeviCivita 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, the dot product, and the cross product, determinants, the 
+\family typewriter
+del
+\family default
+ operator (
+\begin_inset Formula $\nabla$
+\end_inset
+
+), and others as references.
+\end_layout
+
+\end_body
+\end_document

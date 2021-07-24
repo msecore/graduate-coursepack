@@ -1,0 +1,904 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/ken/Mydocs/MSEcore/graduate-coursepack/tex/Mathematics/
+\textclass article
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+Coordinate Transformations 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release 1/2017)
+\end_layout
+
+\begin_layout Standard
+Cartesian coordinates are not the only coordinate system that MSE graduate students will encounter in the core. Cylindrical coordinates and spherical coordinates are both useful in, for example, describing stress and strain fields around dislocations and vacancies.
+\end_layout
+
+\begin_layout Paragraph
+Cartesian
+\end_layout
+
+\begin_layout Standard
+coordinates, as mentioned in Sec. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Tensors"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ utilize an orthogonal basis set and are often the easiest to use when describing and visualizing vector operations and physical laws. The rank-2 stress tensor (introduced in Sec. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Tensors"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is represented using the following 
+\begin_inset Formula $3 \times 3 \times 3$
+\end_inset
+
+ matrix and is shown in Fig.
+\begin_inset space ~
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:StressTensors"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset Graphics 
+	filename StressTensors
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Stress tensors for (a.) Cartesian, (b.) cylindrical, and (c.) spherical coordinate systems. From Nix and Cai.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:StressTensors"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\sigma_{ij}
+	\begin{bmatrix}
+		\sigma_{xx} & \sigma_{xy} & \sigma_{xz}\\
+    \sigma_{yx} & \sigma_{yy} & \sigma_{yz}\\
+    \sigma_{zx} & \sigma_{zy} & \sigma_{zz}\\
+	\end{bmatrix}
+	\label{eq:CartesianStressTensor}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Cylindrical
+\end_layout
+
+\begin_layout Standard
+coordinates are also an orthogonal coordinate system defined in Fig. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:StressTensors"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(b). The stress tensor in this coordinate system is defined by the cylinderical components 
+\begin_inset Formula $r$
+\end_inset
+
+, 
+\begin_inset Formula $\theta$
+\end_inset
+
+, and 
+\begin_inset Formula $z$
+\end_inset
+
+. Here, 
+\begin_inset Formula $r$
+\end_inset
+
+ is the distance from the 
+\begin_inset Formula $z$
+\end_inset
+
+-axis to the point. 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the angle between the reference direction (we use the 
+\begin_inset Formula $x$
+\end_inset
+
+-direction) and the vector that points from the origin to the coordinates projected onto the 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane. 
+\begin_inset Formula $z$
+\end_inset
+
+ is the distance from the point's coordinates projected onto 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane and the point itself. The stress tensor is represented as
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\sigma_{ij}=
+	\begin{bmatrix}
+		\sigma_{rr} & \sigma_{r \theta} & \sigma_{r z}\\
+    \sigma_{\theta r} & \sigma_{\theta\theta} & \sigma_{\theta z}\\
+    \sigma_{z r} & \sigma_{z \theta} & \sigma_{zz}\\
+	\end{bmatrix}
+	\label{eq:CylindricalStressTensor}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Spherical
+\end_layout
+
+\begin_layout Standard
+coordinates are defined by 
+\begin_inset Formula $r$
+\end_inset
+
+, 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi$
+\end_inset
+
+. Here 
+\begin_inset Formula $r$
+\end_inset
+
+ is the radial distance from the origin to the point. 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the polar angle, or the angle between the 
+\begin_inset Formula $x$
+\end_inset
+
+-axis and the point, projected onto the 
+\begin_inset Formula $xy$
+\end_inset
+
+ plane. 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is the azimuthal angle, or the angle between the 
+\begin_inset Formula $z$
+\end_inset
+
+-axis and the vector pointing from the origin to the point. The stress tensor is
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\sigma_{ij}=
+	\begin{bmatrix}
+		\sigma_{rr} & \sigma_{r \theta} & \sigma_{r \phi}\\
+    \sigma_{\theta r} & \sigma_{\theta\theta} & \sigma_{\theta \phi}\\
+    \sigma_{\phi r} & \sigma_{\phi \theta} & \sigma_{\phi\phi}\\
+	\end{bmatrix}
+	\label{eq:SphericalStressTensor}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will often want to transform tensor values from one coordinate system to another in 
+\begin_inset Formula ${\rm I\!R}^3$
+\end_inset
+
+. As an example, we will convert the stress state from a cylinderical coordinate system to a Cartesian coordinate system. This transformation from stress state in the original coordinate system (
+\begin_inset Formula $\sigma_{kl
+} = \sigma_{kl}^{r \theta z}$
+\end_inset
+
+) to the new coordinate system (
+\begin_inset Formula $\sigma_{ij
+}^{'} = \sigma_{ij}^{xyz}$
+\end_inset
+
+) is performed using the following relationship:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\sigma_{ij}' = Q_{ik}Q_{jk}\sigma_{kl}
+	\label{eq:GeneralTransform}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where the summation notation (Sec. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:SummationNotation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is implicit. In our example the indices 
+\begin_inset Formula $kl$
+\end_inset
+
+ indicate the original cylindrical coordinate system (
+\begin_inset Formula $r$
+\end_inset
+
+, 
+\begin_inset Formula $\theta$
+\end_inset
+
+, 
+\begin_inset Formula $z$
+\end_inset
+
+) and the indices 
+\begin_inset Formula $ij$
+\end_inset
+
+ indicate the new coordinate system (
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+, 
+\begin_inset Formula $z$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Note that Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:GeneralTransform"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can be written in matrix form as:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[\sigma = Q \cdot \sigma \cdot Q^{T}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $Q$
+\end_inset
+
+ matrix is defined the dot products between the unit vectors in the coordinate systems of interest. In simplified 2D transformation from polar to Cartesian, there is no 
+\begin_inset Formula $z$
+\end_inset
+
+ component in either coordinate system and terms with those indices can be dropped.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+begin{multline}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%Q_{ik} 
+\backslash
+equiv (
+\backslash
+hat{e}_{i}^{xyz} 
+\backslash
+cdot 
+\backslash
+hat{e}_k^{r 
+\backslash
+theta z}) =
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%(
+\backslash
+hat{e}_{x} 
+\backslash
+cdot 
+\backslash
+hat{e}_{r}) & (
+\backslash
+hat{e}_{x} 
+\backslash
+cdot 
+\backslash
+hat{e}_{
+\backslash
+theta}) & (
+\backslash
+hat{e}_{x} 
+\backslash
+cdot 
+\backslash
+hat{e}_{z})
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%(
+\backslash
+hat{e}_{y} 
+\backslash
+cdot 
+\backslash
+hat{e}_{r}) & (
+\backslash
+hat{e}_{y} 
+\backslash
+cdot 
+\backslash
+hat{e}_{
+\backslash
+theta}) & (
+\backslash
+hat{e}_{y} 
+\backslash
+cdot 
+\backslash
+hat{e}_{z})
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%(
+\backslash
+hat{e}_{z} 
+\backslash
+cdot 
+\backslash
+hat{e}_{r}) & (
+\backslash
+hat{e}_{z} 
+\backslash
+cdot 
+\backslash
+hat{e}_{
+\backslash
+theta}) & (
+\backslash
+hat{e}_{z} 
+\backslash
+cdot 
+\backslash
+hat{e}_{z})
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+end{bmatrix}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%%Q_{jl} 
+\backslash
+equiv (
+\backslash
+hat{e}_{j}^{xyz} 
+\backslash
+cdot 
+\backslash
+hat{e}_l^{r 
+\backslash
+theta z}) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+end{multline}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	Q_{ik} \equiv (\hat{e}_{i}^{xy} \cdot \hat{e}_k^{r \theta}) =
+	\begin{bmatrix}
+		(\hat{e}_{x} \cdot \hat{e}_{r}) & (\hat{e}_{x} \cdot \hat{e}_{\theta})\\
+		(\hat{e}_{y} \cdot \hat{e}_{r}) & (\hat{e}_{y} \cdot \hat{e}_{\theta})\\
+	\end{bmatrix}\\
+	%Q_{jl} \equiv (\hat{e}_{j}^{xyz} \cdot \hat{e}_l^{r \theta z}) \\
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\hat{e}_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{e}_{\theta}$
+\end_inset
+
+ is related geometrically to 
+\begin_inset Formula $\hat{e}_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{e}_{y}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\begin{bmatrix}
+		\hat{e}_{r} = \hat{e}_{x} \cos(\theta) + \hat{e}_{y} \sin(\theta)\\
+		\hat{e}_{\theta} = -\hat{e}_{x} \sin(\theta) + \hat{e}_{y} \cos(\theta)\\
+	\end{bmatrix}\\
+	%Q_{jl} \equiv (\hat{e}_{j}^{xyz} \cdot \hat{e}_l^{r \theta z}) \\
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore: 
+\begin_inset Formula \begin{align}
+	Q_{ik} &\equiv (\hat{e}_{i}^{xy} \cdot \hat{e}_k^{r \theta}) =
+	\begin{bmatrix}
+		(\hat{e}_{x} \cdot \hat{e}_{r}) & (\hat{e}_{x} \cdot \hat{e}_{\theta})\\
+		(\hat{e}_{y} \cdot \hat{e}_{r}) & (\hat{e}_{y} \cdot \hat{e}_{\theta})\\
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		Q_{xr} & Q_{x\theta}\\
+		Q_{yr} & Q_{y\theta}\\
+	\end{bmatrix} \\
+	&=
+		\begin{bmatrix}
+		\left(\hat{e}_{x} \cdot \left[\hat{e}_{x} \cos(\theta) + \hat{e}_{y} \sin(\theta)\right]\right) & \left(\hat{e}_{x} \cdot \left[-\hat{e}_{x} \sin(\theta) + \hat{e}_{y} \cos(\theta)\right]\right)\\
+		\left(\hat{e}_{y} \cdot \left[\hat{e}_{x} \cos(\theta) + \hat{e}_{y} \sin(\theta)\right]\right) & \left(\hat{e}_{y} \cdot \left[-\hat{e}_{x} \sin(\theta) + \hat{e}_{y} \cos(\theta)\right]\right)	
+		\end{bmatrix}\\
+		&=
+		\begin{bmatrix}
+		\cos(\theta) & -\sin(\theta)\\
+		\sin(\theta) & \cos(\theta)	
+		\end{bmatrix}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, to convert the stress tensor in polar coordinates (
+\begin_inset Formula $\sigma_{kl}^{r\theta}$
+\end_inset
+
+) to Cartesian (
+\begin_inset Formula $\sigma_{ij}^{xy}$
+\end_inset
+
+), we take the triple dot-product:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\sigma' &= Q \cdot \sigma \cdot Q^{T} =
+	\begin{bmatrix}
+		\sigma_{xx} & \sigma_{xy}\\
+		\sigma_{yx} & \sigma_{yy}
+	\end{bmatrix}=
+	\begin{bmatrix}
+		\cos(\theta) & -\sin(\theta)\\
+		\sin(\theta) & con(\theta)	
+	\end{bmatrix}\cdot
+	\begin{bmatrix}
+		\sigma_{rr} & \sigma_{r\theta}\\
+		\sigma_{\theta r} & \sigma_{\theta \theta}
+	\end{bmatrix}
+\cdot
+	\begin{bmatrix}
+		\cos(\theta) & \sin(\theta)\\
+		-\sin(\theta) & con(\theta)	
+	\end{bmatrix}
+	%&=
+	%\begin{bmatrix}
+	%\cos(\theta) (\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(\
+%\theta)) - \sin(\theta)(\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta) & \sin(\theta) (\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(\
+%\theta)) + \cos(\theta)(\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta)\\
+	%\cos(\theta) (\sigma_{\theta r} \cos(\theta) + \sigma_{rr} \sin(\
+%\theta)) - \sin(\theta)(\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta) & \sin(\theta) (\sigma_{\theta r} \cos(\theta) + \sigma_{rr} \sin(\
+%\theta)) + \cos(\theta)(\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta)
+	%\end{bmatrix}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Completing the math yields: 
+\begin_inset Formula \begin{align}
+	\sigma_{xx} &= \cos(\theta) \left[\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(
+\theta)\right] - \sin(\theta)\left[\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta)\right]\\
+	\sigma_{xy} &= \sin(\theta) \left[\sigma_{rr} \cos(\theta) - \sigma_{\theta r} \sin(
+\theta)\right] + \cos(\theta)\left[\sigma_{r\theta}\cos(\theta) - \sigma_{\theta\theta}\sin(\theta)\right]\\
+	\sigma_{yx} &= \cos(\theta) \left[\sigma_{\theta r} \cos(\theta) + \sigma_{rr} \sin(
+\theta)\right] - \sin(\theta)\left[\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta)\right]\\
+	\sigma_{yy} &= \sin(\theta) \left[\sigma_{\theta r} \cos(\theta) + \sigma_{rr} \sin(
+\theta)\right] + \cos(\theta)\left[\sigma_{\theta \theta}\cos(\theta) + \sigma_{r\theta}\sin(\theta)\right]
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In as system with only one or two stress components these coordinate transformations simplify greatly. Remember, though, in 
+\begin_inset Formula ${\rm I\!R}^3$
+\end_inset
+
+ there will be 
+\begin_inset Formula $N = 3^2$
+\end_inset
+
+ components due to increased dimentionality.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%Q_{jl} 
+\backslash
+equiv (
+\backslash
+hat{e}_{j}^{xyz} 
+\backslash
+cdot 
+\backslash
+hat{e}_l^{r 
+\backslash
+theta z}) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+subsubsection{Vector Calculus 
+\backslash
+hfill(Release TBD)}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+textit{
+\backslash
+textbf{Encountered in: MAT
+\backslash
+texttt{
+\backslash
+_}SCI 406, 408}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

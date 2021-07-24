@@ -1,0 +1,3319 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/ken/Mydocs/MSEcore/graduate-coursepack/tex/Mathematics/
+\textclass article
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+Differential Equations
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:DiffEQ"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+epigraph{Among all of the mathematical disciplines, the theory of differential equations is the most important... It furnishes the explanation of all those those elementary manifestations of nature which involve time.}{
+\backslash
+textit{Sophus Lie}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Differential equations — equations that relate functions with their derivatives — are central to the description of natural phenomena in physics, chemistry, biology and engineering. In the sections below, we will outline basic classification of differential equations and describe methods and techniques used in solving equations that are encountered in the MSE graduate core.
+\end_layout
+
+\begin_layout Standard
+The information provide below is distilled and specific to the MSE core, but is by 
+\emph on
+no means
+\emph default
+ a equivalent to a thorough 1- or 2-quarter course in ODEs and PDEs. For students who are completely unfamiliar with the material below; i.e., those who have not taken a course in differential equations, we highly recommend enrollment in Applied Math 311-1 and 311-2 
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+these may be combined to a 1-quarter class in the future
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Classification of Differential Equations 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release: 11/2016)
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+
+\series bold
+Encountered in: MAT
+\family typewriter
+_
+\family default
+SCI 405, 406, 408
+\series default
+
+\shape default
+
+\end_layout
+
+\begin_layout Standard
+Classification of differential equations provide intuition about the physical process that the equation describes, as well as providing context we use as we go about solving the equation. A differential equation can be classified as either ordinary or partial, linear or non-linear, and by its homogeneity and equation order. These are described briefly below, with examples.
+\end_layout
+
+\begin_layout Paragraph
+Ordinary and Partial Differential Equations —
+\end_layout
+
+\begin_layout Standard
+The primary classification we use to organize types of differential equations is whether they are 
+\shape italic
+ordinary
+\shape default
+ or 
+\shape italic
+partial
+\shape default
+ differential equations. 
+\emph on
+Ordinary differential equations
+\emph default
+ (ODEs) involve functions of a single variable. All derivatives present in the ODE are relative to that one variable. Partial differential equations are functions of more than one variable and the partial derivatives of these functions are taken with respect to those variables.
+\end_layout
+
+\begin_layout Standard
+An example of an ODE is shown in Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:RLC"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. This equation has two functions 
+\begin_inset Formula $q(t)$
+\end_inset
+
+ (charge) and 
+\begin_inset Formula $V(t)$
+\end_inset
+
+ (voltage), the values of which depend on time 
+\begin_inset Formula $t$
+\end_inset
+
+. All of the derivatives are with respect the independent variable 
+\begin_inset Formula $t$
+\end_inset
+
+. 
+\begin_inset Formula $L$
+\end_inset
+
+, 
+\begin_inset Formula $R$
+\end_inset
+
+, and 
+\begin_inset Formula $C$
+\end_inset
+
+ are constants. 
+\begin_inset Formula \begin{align}	
+	L \FullDiff{2}{q(t)}{t} + R \FullDiff{}{q(t)}{t} + \frac{1}{C} q(t) = V(t) \label{eq:RLC}
+\end{align}
+\end_inset
+
+This general example describes the flow of charge as a function of time in a 
+\begin_inset CommandInset href
+LatexCommand href
+name "RLC circuit"
+target "https://en.wikipedia.org/wiki/RLC_circuit"
+literal "false"
+
+\end_inset
+
+with an applied voltage that changes with time. Other examples of ODEs you may encounter in the MSE core include ODEs for grain growth as a function of time and the equations of motion.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Partial differential equations
+\emph default
+ (PDEs) contain multivariable functions and their partial derivatives i.e., a derivative with respect to one variable with others held constant. As physical phenomenon often vary in both space and time, PDEs — and methods of solving them — will be encountered in many of the core MSE courses. These phenomena include wave behavior, diffusion, the Schödinger equation, heat conduction, the Cahn-Hilliard equation, and many others. A typical example of a PDEs you will encounter is Fick's Second Law. In 1D, this is: 
+\begin_inset Formula \begin{align}
+	\Partial{}{\varphi(x,t)}{t} = D\Partial{2}{\varphi(x,t)}{x} \label{eq:Ficks2}
+\end{align}
+\end_inset
+
+where 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is the concentration as a function of position 
+\begin_inset Formula $x$
+\end_inset
+
+ and time 
+\begin_inset Formula $t$
+\end_inset
+
+. This expression equates the change in the concentration over time to the shape (concavity) of the concentration profile. Partial differential equations are, by nature, often more difficult to solve than ODEs, but, as with ODEs, there exist simple, analytic, and systematic methods for solving many of these equations. 
+\end_layout
+
+\begin_layout Paragraph
+Equation Order —
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+order
+\emph default
+ of a differential equation is simply the order of the highest derivative that is present in the equation. In the preceding section, Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:RLC"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a second-order equation. Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Ficks2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is also a second-order equation. Students in the MSE core will encounter 4
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+th
+\end_layout
+
+\end_inset
+
+-order equations such as the Cahn-Hilliard equation, which describes phase separation and is discussed in detail in MAT
+\family typewriter
+_
+\family default
+SCI 408. One note concerning notation — when writing higher-order differential equations it is common to abandon Leibniz's notation (where an 
+\begin_inset Formula $n^{\text{th}}$
+\end_inset
+
+-order derivative is denoted as 
+\begin_inset Formula $\FullDiff{n}{f}{x}$
+\end_inset
+
+) in favor of Lagrange's notation in which the following representations are equivalent: 
+\begin_inset Formula \begin{align}
+	\text{Leibniz}:& F\big[x,f(x),\FullDiff{}{f(t)}{x},\FullDiff{2}{f(t)}{x}...\FullDiff{n}{f(t)}{x}\big] = 0 \rightarrow\\
+	\text{Lagrange}:& F\big[x,f,f\prime,f\prime\prime...f^{(n)}\big] = 0 \label{eq:LagrangeNote}
+\end{align}
+\end_inset
+
+An example would be be the 3
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+rd
+\end_layout
+
+\end_inset
+
+-order differential equation: 
+\begin_inset Formula \begin{align}
+	f\prime\prime\prime + 3f\prime + f\exp{x} = x
+\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%			
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%Add partial differntial notation
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%			
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Linearity —
+\end_layout
+
+\begin_layout Standard
+While considering how to solve a differential equation, it is crucial to consider whether an equation is linear or non-linear. For example, an ODE like that represented in Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LagrangeNote"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is linear if the 
+\begin_inset Formula $F$
+\end_inset
+
+ is a linear function of the variables 
+\begin_inset Formula $f, f', f\prime\prime...f^{(n)}$
+\end_inset
+
+. This definition also applies to PDEs. The expression for the general linear ODE of order 
+\begin_inset Formula $n$
+\end_inset
+
+ is: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%						
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{align}
+	a_0(x)f^{(n)}+a_1(x)f^{(n-1)} + ... + a_n(x)f = g(t) \label{eq:LinearODE}
+\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%			
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Any expression that is not of this form is considered 
+\shape italic
+nonlinear
+\shape default
+. The presence of a product such as 
+\begin_inset Formula $f\cdot f\prime$
+\end_inset
+
+, a power such as 
+\begin_inset Formula $(f\prime)^2$
+\end_inset
+
+, or a sinusoidal function of 
+\begin_inset Formula $f$
+\end_inset
+
+ would make the equation nonlinear.
+\end_layout
+
+\begin_layout Standard
+The methods of solving linear differential equations are well-developed. Nonlinear differential equations, on the other hand, often require more complex analysis. As you will see, methods of 
+\shape italic
+linearization
+\shape default
+ (small-angle approximations, stability theory) as well as numerical techniques are powerful ways to approach these problems.
+\end_layout
+
+\begin_layout Paragraph
+Homogeneity —
+\end_layout
+
+\begin_layout Standard
+Homogeneity of a linear differential equation, such as that shown in Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LinearODE"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is satisfied if 
+\begin_inset Formula $g(x) = 0$
+\end_inset
+
+. This property of a differential equation is often connected to the 
+\shape italic
+driving force
+\shape default
+ in a system. For example, the motion of a damped harmonic oscillator in 1D (derived from Newton's laws of motion, 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://en.wikipedia.org/wiki/Harmonic_oscillator"
+literal "false"
+
+\end_inset
+
+) is described by a homogeneous linear, 2
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+nd
+\end_layout
+
+\end_inset
+
+-order ODE: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%			
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{align}
+	x\prime\prime+2\zeta \omega_0 x\prime \omega_0^2 x = 0
+\end{align}
+\end_inset
+
+where 
+\begin_inset Formula $x = x(t)$
+\end_inset
+
+ is position as a function of time (
+\begin_inset Formula $t$
+\end_inset
+
+) , 
+\begin_inset Formula $\omega_0$
+\end_inset
+
+ is the undamped angular frequency of the oscillator, and 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ is the damping ratio. If we add a sinusoidal driving force, however, the equation becomes inhomogeneous: 
+\begin_inset Formula \begin{align}
+	x\prime\prime+2\zeta \omega_0 x\prime + \omega_0^2 x = \frac{1}{m} F_0 \sin{(\omega t)} \label{eq:DDSOscillator}
+\end{align}
+\end_inset
+
+One may notice that the form for Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DDSOscillator"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is exactly that of the first equation shown in this section (Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:RLC"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) — the ODE for a damped, driven harmonic oscillator is exactly the same form as that of the RLC circuit operating under a alternating driving voltage. 
+\end_layout
+
+\begin_layout Paragraph
+Boundary Conditions —
+\end_layout
+
+\begin_layout Standard
+Differential equations, when combined with a set of well-posed constraints, or boundary conditions, define a 
+\shape italic
+boundary value problem
+\shape default
+. Well-posed boundary value problems have unique solutions from the imposed physical constraints on the system of interest. This analysis allows for the extraction of relevant physical information investigating a physical system — the elemental composition at some position at time within a diffusion couple, the equilibrium displacement in a mechanically deformed body, or the energy eigenstate of a quantum system. While boundary conditions are not used not classify a differential equation itself, boundary conditions are used to classify the entire boundary value problem — which is defined by both the differential equation and the boundary value conditions.
+\end_layout
+
+\begin_layout Standard
+Boundary value problems are at the heart of physical description in science and engineering. Solving these types of problems allow for the extraction of information (concentration, deformation, stress state, quantum state, etc.) from a system. There are a few types of boundary conditions that you may encounter in the MSE core: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%To describe these, we consider a 1D bar of metal which is attached to a heat sink on one side ($x = 0$) and a heater on the other side $x=x_1$. The temperature of the rod is defined as $u(x,t)$. and the temperature behavior of the rod is defined by the heat equation, a homogeneous The %Show in figure.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+A 
+\shape italic
+Dirichlet
+\shape default
+ (or first-type) boundary condition is one in which specific values are fixed on the boundary of a domain. An example of this is a system in which we have diffusion of carbon (in, for example, a carbourizing atmosphere) into iron (possessing a volume defined as domain 
+\begin_inset Formula $\Omega$
+\end_inset
+
+) where the carbon concentration 
+\begin_inset Formula $C(\mathbf{r},t)$
+\end_inset
+
+ at the interface is known for all time 
+\begin_inset Formula $t > 0$
+\end_inset
+
+. Here, 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+ is position vector and the domain boundary is denoted as 
+\begin_inset Formula $\partial \Omega$
+\end_inset
+
+). If this concentration is a known function, 
+\begin_inset Formula $f(\textbf{r},t)$
+\end_inset
+
+, then the Dirichlet condition is described as: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%	
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \[C(\textbf{r},t) = f(\textbf{r},t), \quad	\forall\textbf{r} \in \partial \Omega\]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%for t>0? 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%	
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+A 
+\shape italic
+Neumann
+\shape default
+ (or second-type) boundary condition is the values of the normal derivative (a directional derivative with respect to the normal of a surface or boundary represented by the vector 
+\begin_inset Formula $\mathbf{n}$
+\end_inset
+
+) of the solution are known at the domain boundary. Continuing with our example above, this would mean we know the diffusion flux normal to the the boundary at 
+\begin_inset Formula $r$
+\end_inset
+
+ at all times 
+\begin_inset Formula $t$
+\end_inset
+
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%	
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \[\Partial{}{C(\textbf{r},t)}{\mathbf{n}} = g(\textbf{r},t), \quad	\forall\textbf{r} \in \partial \Omega\]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%for t>0? 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $g(\textbf{r},t)$
+\end_inset
+
+ is a known function, and the bold typesetting denotes a vector. 
+\end_layout
+
+\begin_layout Enumerate
+Two other types of boundary conditions you may encounter are Cauchy and Robin. Cauchy boundary conditions specifies both the solution value and its normal derivative at the boundary — i.e., it provides both Dirichlet and Neumann conditions. The Robin condition provides a 
+\shape italic
+linear combination
+\shape default
+ of the solution and its normal derivative and is common in convection-diffusion equations. 
+\end_layout
+
+\begin_layout Enumerate
+Periodic boundary conditions are applied in periodic media or large, ordered systems. Previously described boundary conditions can therefore combined into periodic sets using infinite sums of sine and cosine functions to create 
+\shape italic
+Fourier series
+\shape default
+. This will be discussed in more detail in Sec. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:FourierMethods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%	The solution for this equation is the exact		
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Solving Differential Equations 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release: 11/2016)
+\end_layout
+
+\begin_layout Standard
+There are many ways to solve differential equations, including analytical and computational techniques. Below, we outline a number of methods that are used in the MSE core to solve relevant differential equations. 
+\end_layout
+
+\begin_layout Paragraph
+Separation of Variables
+\end_layout
+
+\begin_layout Standard
+, also known as the 
+\shape italic
+Fourier Method
+\shape default
+, is a general method used in both ODEs and PDEs to reconstruct a differential equation so that the two variables are separated to opposite sides of the equation and then solved using techniques covered in an ODE class. 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:SepVar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This method will be used in the solving of many simpler differential equations such as the heat and diffusion equations. These equations must be linear and homogeneous for separation of variables to work. The main goal is to take some sort of differential equation, for example an ordinary differential equation: 
+\begin_inset Formula \begin{align}
+	\FullDiff{}{y}{x} &= g(x)h(y)\\
+	\intertext{which we can rearrange as:}
+	\frac{1}{h(y)}\mathop{dy} &= g(x)dx\\
+	\intertext{We now integrate both sides of the equation to find the solution:} 
+	\int{\frac{1}{h(y)}\mathop{dy}} &= \int{g(x)\mathop{dx}}
+\end{align}
+\end_inset
+
+Clearly, we have separated our two variables, 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+, to opposite sides of the equation. If the functions are integrable and the resulting integration can be solved for 
+\begin_inset Formula $y$
+\end_inset
+
+, then a solution can be obtained.
+\end_layout
+
+\begin_layout Standard
+Note here that we have treated the 
+\begin_inset Formula $\mathop{dy}/\mathop{dx}$
+\end_inset
+
+ derivative as a fraction which we have separated. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ignore
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+This may bother you (which it should), but it is a useful method which can be validated through 
+\begin_inset CommandInset href
+LatexCommand href
+name "integration by substitution"
+target "https://en.wikipedia.org/wiki/Integration_by_substitution\#Relation_to_the_fundamental_theorem_of_calculus"
+literal "false"
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{displayquote}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Example 1:
+\series default
+ Exponential growth behavior can be represented by the equation: 
+\begin_inset Formula \begin{align*}
+		\FullDiff{}{y(t)}{t} &= k y(t)\\
+		\intertext{or}
+		\FullDiff{}{y}{t} &= k y\\
+		\intertext{This expression simply states that the growth rate of some quantity $y$ at  time, $t$, is proportional to the value of $y$ itself at that time. This is a seperable equation:}
+		\frac{1}{y}dy &= k dt\\
+		\intertext{We can integrated both sides to get:}
+		\int{\frac{1}{y}dy} &= k \int{dt}\\
+		\text{ln}(y)+C_1 &= k t + C_2\\
+		\intertext{where $C_1$ and $C_2$ are the constants of integration. These can be combined:}
+		\text{ln}(y) &= kt+\tilde{C}\\
+		y &= e^{(kt+\tilde{C})}\\
+		y &= Ce^{kt}
+	\end{align*}
+\end_inset
+
+This is clear exponential growth behavior as a function of time. Separation of variables is extremely useful in solving various ODEs and PDEs — it is employed in the solving of the diffusion equation in 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Sturm-Liouville"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{displayquote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Sturm-Liouville Boundary Value Problems
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sturm-Liouville"
+
+\end_inset
+
+ In this section, we use Sturm-Liouville theory in solving a separable, linear, second-order homogeneous partial differential equation. Sturm-Liouville theory can be used on differential equations (here, in 1D) of the form: 
+\begin_inset Formula \begin{align}
+	\FullDiff{}{}{x}\Big[p(x)\FullDiff{}{y}{x}\Big]-q(x)y+\lambda r(x)y = 0 \label{eq:SturmLiouville}
+	\intertext{or}
+	\big[p(x)y\prime]\prime-q(x)y+\lambda r(x)y = 0 \label{eq:SturmLiouville-2}
+\end{align}
+\end_inset
+
+This type of problem requires knowledge of many use of many concepts and techniques in solving ODEs, including 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:SepVar"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, Fundamental Solutions of Linear First- and Second-Order Homogeneous Equations, Fourier Series, and Orthogonal Solution Functions. It is important to note that the approach described below (adapted from JJ Hoyt's 
+\shape italic
+Phase Transformations
+\shape default
+), which employs separation of variables and Fourier transforms, works only on linear equations. A different approach must be taken for non-linear equations (such as Cahn-Hilliard).
+\end_layout
+
+\begin_layout Standard
+We will use the example of a solid slab of material of length 
+\begin_inset Formula $L$
+\end_inset
+
+ that has a constant concentration of some elemental species at time zero 
+\begin_inset Formula $ \varphi(x,0) = \varphi_0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x$
+\end_inset
+
+ within the slab. On either end of the slab we have homogeneous boundary conditions defining the surface concentrations fixed at 
+\begin_inset Formula $\varphi(0,t) = \varphi(L,t) = 0$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+. The changing concentration profile, 
+\begin_inset Formula $\varphi(x,t)$
+\end_inset
+
+ is dictated by Fick's second law, as described earlier in Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Ficks2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}	
+			\Partial{}{\varphi(x,t)}{t} = D\Partial{2}{\varphi(x,t)}{x} \label{eq:Ficks2-1}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To use separation of variables, we define the concentration 
+\begin_inset Formula $\varphi(x,t)$
+\end_inset
+
+, which is dependent on both position and time, to be a product of two functions, 
+\begin_inset Formula $T(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $X(x)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}	
+	\varphi(x,t) &= T(t)X(x) \label{eq:SepVar-1}
+	\intertext{or, in shorthand,}
+	\varphi &= TX
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It isn't clear why we do this at this point, but stay tuned. Combining Eqs. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Ficks2-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SepVar-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ yields:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	XT\prime = DTX\prime\prime
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where the primed Lagrange notation denotes total derivatives. 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $X$
+\end_inset
+
+ are functions only of 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+, respectively. Now, we separate the variables completely to acquire:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\frac{1}{DT}T\prime = \frac{1}{X}X\prime\prime
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This representation conveys something critical: each side of the equation must be equal to 
+\emph on
+the same
+\emph default
+ constant. This is because the two sides of the equation are equal to each other and the only way a collection of time-dependent quantities can be equivilent to a selection of position-dependent quantities is for them to be constant with respect to both time and position. We select this constant — for reasons that become clear of the convience of this selection later in the analysis — as 
+\begin_inset Formula $-\lambda^2$
+\end_inset
+
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%Show and example here?
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{align}
+		\frac{1}{DT}T\prime &= -\lambda^2 \label{eq:SepT}\\
+		\frac{1}{X}X\prime\prime &= -\lambda^2 \label{eq:SepX}
+	\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ Integration of Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SepT"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ yields, from 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:SepVar"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\begin_inset Formula \begin{align}
+	\frac{1}{DT}T\prime &= -\lambda^2 \nonumber\\
+	\frac{1}{T}\FullDiff{}{T}{t} &= -\lambda^2 D \nonumber\\
+	\int \frac{1}{T}\Diff{}{T} &= -\int \lambda^2 D \Diff{}{t} \nonumber\\
+	\ln{T} &= -\lambda^2 D t + T_0 \nonumber\\
+	\intertext{where $T_0$ is the combined constant of integration:}
+	T = T(t) &= \exp{(-\lambda^2 D t + T_0)} \nonumber\\
+	T(t) &= T_0 \exp{(-\lambda^2 D t)} \label{eq:Tt}
+\end{align}
+\end_inset
+
+Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SepX"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, on the other hand, is a linear, homogeneous, second-order ODE with constant coefficients that describes simple harmonic behavior. We can solve this by assessing its 
+\begin_inset CommandInset href
+LatexCommand href
+name "characteristic equation"
+target "https://en.wikipedia.org/wiki/Characteristic_equation_(calculus)"
+literal "false"
+
+\end_inset
+
+: 
+\begin_inset Formula \begin{align}
+	r^2+\lambda^2 = 0\\
+	\intertext{which has roots:}
+	r = \pm \lambda i
+\end{align}
+\end_inset
+
+When the roots of the characteristic equation are of the form 
+\begin_inset Formula $r = \alpha \pm \beta i$
+\end_inset
+
+, the 
+\begin_inset CommandInset href
+LatexCommand href
+name "solution of the differential equation (Pg. 5)"
+target "http://www.stewartcalculus.com/data/CALCULUS\%20Concepts\%20and\%20Contexts/upfiles/3c3-2ndOrderLinearEqns_Stu.pdf"
+literal "false"
+
+\end_inset
+
+is: 
+\begin_inset Formula \begin{equation}
+		y = e^{\alpha x}(c_1 \cos{\beta x} + c_2 \sin{\beta x})
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this instance, 
+\begin_inset Formula $\alpha = 0$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta = \lambda$
+\end_inset
+
+, so our solution is:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	X = X(x) = \tilde{A} \cos{\lambda x} + \tilde{B} \sin{\lambda x} \label{eq:Xx}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{B}$
+\end_inset
+
+ are constants that will be further simplified later. Recalling Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SepVar-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and utilizing our results from Eqs. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Tt"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Xx"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we find: 
+\begin_inset Formula \begin{align}
+	\varphi(x,y) &= X(x)T(x) = T_0 \big[\tilde{A} \cos{\lambda x} + \tilde{B} \cos{\lambda x}\big]\exp{(-\lambda^2 D t)}\\
+	\intertext{where we now define $T_0 \tilde{A} = A$ and $T_0 \tilde{B} = B$ to get:}
+	\varphi(x,y) &= X(x)T(x) = \big[A\cos{\lambda x} + B\sin{\lambda x}\big]\exp{(-\lambda^2 D t)} \label{eq:DiffSol}
+\end{align}
+\end_inset
+
+Physially, this solution begins to make sense. At 
+\begin_inset Formula $t=0$
+\end_inset
+
+ we have a constant concentration, but concentration begins to decay esponentially with time as 
+\begin_inset Formula $D$
+\end_inset
+
+, 
+\begin_inset Formula $t$
+\end_inset
+
+, and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are all positive, real constants. The concentration profile is a linear combination of sine and cosine functions, which does not yet yield any physical intuition for this system as we have yet to utilize boundary conditions.
+\end_layout
+
+\begin_layout Standard
+Recall at this point that we have not specified any value for the constant 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, as is typical when solving this type of Sturm-Liouville problem. This suggests that there are possible solutions for all values of 
+\begin_inset Formula $\lambda_n$
+\end_inset
+
+. The Principle of Superposition dictates, then, that if Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DiffSol"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a solution, the complete solution to the problem is a summation of all possible solutions:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\Aboxed{\varphi(x,y) = 	\sum_{n=1}^\infty \big[A_n\cos{\lambda_n x} + B_n\sin{\lambda_n x}\big]\exp{(-\lambda_n^2 D t)}} \label{eq:DiffSolFull}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As the value of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ influences the values of 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+, these values must also be calculated for each 
+\begin_inset Formula $\lambda_n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Now, to completely solve our well-posed boundary value problem, we utilize our boundary conditions: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{align}
+		\varphi(0,t) &= 0\, \quad t \geq 0 \label{eq:Boundx0}\\
+		\varphi(L,t) &= 0\, \quad t \geq 0 \label{eq:BoundxL}\\
+		\varphi(x,0) &= \varphi_0\, \quad 0<x<L \label{eq:Time0}
+	\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ At 
+\begin_inset Formula $x = 0$
+\end_inset
+
+, the sine term in Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DiffSolFull"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is zero, and therefore the boundary condition in Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Boundx0"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can only be satisfied at all t if 
+\begin_inset Formula $A_n = 0$
+\end_inset
+
+. At 
+\begin_inset Formula $x = L$
+\end_inset
+
+, 
+\begin_inset Formula $\sin{\lambda_n x}$
+\end_inset
+
+ must be zero for all values of 
+\begin_inset Formula $\lambda_n$
+\end_inset
+
+, therefore 
+\begin_inset Formula $\lambda_n = n\pi/L$
+\end_inset
+
+. We need only solve now for 
+\begin_inset Formula $B_n$
+\end_inset
+
+ using the intial condition, Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Time0"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using our values of 
+\begin_inset Formula $A_n$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_n$
+\end_inset
+
+ and assessing Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DiffSolFull"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ at time 
+\begin_inset Formula $t=0$
+\end_inset
+
+ yields
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\varphi_0 = \sum_{n=1}^\infty B_n \sin{\frac{n \pi x}{L}} \label{eq:Time0-1}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, we must recognized the orthogonal property of the sine function, which states that
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\int_0^L \sin{\frac{n \pi x}{L}} \sin{\frac{m \pi x}{L}}
+	   \begin{cases}
+      = 0, & \text{if}\ n\neq m \\
+     \neq 0, & \text{if}\ n = m
+    \end{cases}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can test this graphically using a plotting program if you like — the integrated value of this product is only non-zero when 
+\begin_inset Formula $n=m$
+\end_inset
+
+ — or you can follow the proof 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://www.math.umd.edu/~psg/401/ortho.pdf"
+literal "false"
+
+\end_inset
+
+. We can multiply both sides of the Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Time0-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ by 
+\begin_inset Formula $\sin{n \pi x/L}$
+\end_inset
+
+, then, and integrate both sides from 0 to 
+\begin_inset Formula $L$
+\end_inset
+
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{align}
+		\varphi_0 \int_0^L\sin{\frac{m \pi x}{L}} &= \int_0^L \sum_{n=1}^\infty \big[B_n \sin{\frac{n \pi x}{L}} \sin{\frac{m \pi x}{L}}\big] \nonumber
+		\intertext{After integration, the only term that survives on the right-hand side is the $m=n$ term, and therefore:}
+		\varphi_0 \int_0^L\sin{\frac{n \pi x}{L}} &= B_n\int_0^L \sin{\frac{n \pi x}{L}}^2 \nonumber\\
+		\varphi_0 \int_0^L\sin{\frac{n \pi x}{L}} &= \frac{B_n L}{4} \big[2- \frac{\sin{2 n \pi}}{n \pi} \big] \nonumber\\
+		\intertext{the $\sin{2 n \pi}$ term is always zero:}
+		\varphi_0 \int_0^L\sin{\frac{n \pi x}{L}} &= \frac{B_n L}{2} \nonumber\\
+		2 \frac{\varphi_0}{L} \int_0^L\sin{{n \pi x}{L}} &= B_n \nonumber\\
+		B_n  &= 2 \frac{\varphi_0}{L} \big[\frac{L}{n \pi}(1-\cos{n \pi})\big] \nonumber\\
+		\Aboxed{B_n  &= 2 \frac{\varphi_0}{n \pi} (1-\cos{n \pi})}
+	\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ For even values of 
+\begin_inset Formula $n$
+\end_inset
+
+, the 
+\begin_inset Formula $B_n$
+\end_inset
+
+ constant is zero. For odd values of 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $B_n = \frac{4 \varphi_0}{n \pi}$
+\end_inset
+
+. We utilize the values we acquired for 
+\begin_inset Formula $A_n$
+\end_inset
+
+, 
+\begin_inset Formula $B_n$
+\end_inset
+
+, and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and plug them into Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DiffSolFull"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. A change in summation index to account for the 
+\begin_inset Formula $B_n$
+\end_inset
+
+ values yields:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\Aboxed{\varphi(x,t) = \frac{4 c_0}{\pi} \sum_{k=0}^\infty \frac{1}{2k+1} \sin{\frac{(2k+1)\pi x}{L}}\exp{\Big[-\big(\frac{(2k+1)\pi}{L}\big)^2 Dt\Big]}}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This summation converges quickly. We now have the ability to calculate the function 
+\begin_inset Formula $\varphi(x,t)$
+\end_inset
+
+ at any position 
+\begin_inset Formula $0 < x < L$
+\end_inset
+
+ and time 
+\begin_inset Formula $t > 0$
+\end_inset
+
+!
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Method of Integrating Factors
+\end_layout
+
+\begin_layout Standard
+is a technique that is commonly used in the solving of first-order linear ordinary differential equations (but is not restricted to equations of that type). In thermodynamics, it is used to convert a differential equation that is not exact (i.e., path-dependent, See Sec. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:eidiff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) to an exact equation, such as in the derivation of entropy as an exact differential (Release TBD).
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Fourier Integral Transforms
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:FourierMethods"
+
+\end_inset
+
+ This section will introduce an extremely powerful technique in solving differential equations: the Fourier transform. This technique is useful because it allows us to transform a complicated problem — a boundary value problem — into a simpler problem which can often be approached with ODE techniques or even algebraically.
+\end_layout
+
+\begin_layout Standard
+There are many excellet sources provided for this section, listed below.
+\end_layout
+
+\begin_layout Enumerate
+José Figueroa-O'Farrill's wonderful 
+\shape italic
+Integral Transforms
+\shape default
+ from 
+\shape italic
+Mathematical Techniques III
+\shape default
+ at the University of Edinborough. 
+\end_layout
+
+\begin_layout Enumerate
+W.E Olmstead and V.A. Volpert's 
+\shape italic
+Differential Equations in Applied Mathematics
+\shape default
+ at Northwestern University. 
+\end_layout
+
+\begin_layout Enumerate
+J.J. Hoyt's chapter on the 
+\shape italic
+Mathematics of Diffusion
+\shape default
+ in his 
+\shape italic
+Phase Transformations
+\shape default
+ text. 
+\end_layout
+
+\begin_layout Enumerate
+Paul Shewman's 
+\shape italic
+Diffusion in Solids
+\shape default
+. 
+\end_layout
+
+\begin_layout Enumerate
+J.W. Brown and R.V. Churchill's 
+\shape italic
+Fourier Series and Boundary Values Problems
+\shape default
+, 6
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+th
+\end_layout
+
+\end_inset
+
+ Edition. 
+\end_layout
+
+\begin_layout Standard
+The primary goal behind the Fourier transform is to solve a differential equation with some unknown function 
+\begin_inset Formula $f$
+\end_inset
+
+. We apply the transform (
+\begin_inset Formula $\mathscr{F}$
+\end_inset
+
+) to convert the function into something that can be solved more easily: 
+\begin_inset Formula $f \xrightarrow{\mathscr{F}} F$
+\end_inset
+
+. The transformed function is often also represented using a 
+\begin_inset Formula $\hat{f}$
+\end_inset
+
+. We solve for 
+\begin_inset Formula $F$
+\end_inset
+
+ and then perform an inverse Fourier transform (
+\begin_inset Formula $\mathscr{F}^{-1}$
+\end_inset
+
+) to recover the solution for 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We find that Fourier 
+\shape italic
+series
+\shape default
+ — which are used to when working with periodic functions — can be generalized to Fourier integral transforms (or Fourier transforms) when the period of the function becomes infinitely long. Let's begin with the Fourier series an build on our results from our discussion above where we found that a continuous function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ defined on some finite interval 
+\begin_inset Formula $x \in[0,L]$
+\end_inset
+
+ and vanishing at the boundaries, 
+\begin_inset Formula $f(0) = f(L) = 0$
+\end_inset
+
+ can be expanded as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DiffSolFull"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The following derivation is adapted from Olmstead and Volpert. In general, we can attempt to represent 
+\shape italic
+any
+\shape default
+ function that is periodic over period 
+\begin_inset Formula $[0,L]$
+\end_inset
+
+ with a Fourier series of form:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+f(x) = a_0 + \sum_{n=1}^\infty\left[a_n \cos{\frac{2 \pi n x}{L}} + b_n \sin{\frac{2 \pi n x}{L}}\right]
+\label{eq:GenSol}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, we need to know how to find the coefficients 
+\begin_inset Formula $a_0$
+\end_inset
+
+, 
+\begin_inset Formula $a_n$
+\end_inset
+
+, and 
+\begin_inset Formula $b_n$
+\end_inset
+
+ for this representation of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+. For this analysis we must utilize the following integral identities:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%Kronecker delta?
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{equation}
+\int_0^L{\sin{\frac{2 \pi n x}{L}}\cos{\frac{2 \pi n x}{L}}}dx= 0 \quad n,m = 1,2,3,...,
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+\int_0^L{\cos{\frac{2 \pi n x}{L}}\cos{\frac{2 \pi m x}{L}}} dx= 
+	\begin{cases}
+		0, \text{\,if} \quad n,m = 1,2,3,..., n\neq m\\
+		L/2, \text{\,if} \quad n = m = 1,2,3,...,\\
+	\end{cases}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+\int_0^L{\sin{\frac{2 \pi n x}{L}}\sin{\frac{2 \pi m x}{L}}} dx = 
+	\begin{cases}
+		0, \text{\,if} \quad  n,m = 1,2,3,..., n\neq m\\
+		L/2, \text{\,if} \quad n = m = 1,2,3,...,\\
+	\end{cases}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+\int_0^L{\cos{\frac{2 \pi n x}{L}}} dx = 
+	\begin{cases}
+		0, \text{\,if} \quad n,m = 1,2,3,...,\\
+		L, \text{\,if} \quad n = 0\\
+	\end{cases}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+\int_0^L{\sin{\frac{2 \pi n x}{L}}} dx = 
+		0, \text{\,if} \quad n,m = 0,1,2,3,...,\\
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These identities state the orthogonal properties of sines and cosines that will be used to derive the coefficients 
+\begin_inset Formula $a_0$
+\end_inset
+
+, 
+\begin_inset Formula $a_n$
+\end_inset
+
+, and 
+\begin_inset Formula $b_n$
+\end_inset
+
+. Recall that two functions are orthogonal on an interval if
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+\int_a^b f(x)g(x)dx = 0
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can therefore multiply Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:GenSol"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ by 
+\begin_inset Formula $\cos{\frac{2 \pi x}{L}}$
+\end_inset
+
+ (note 
+\begin_inset Formula $n = 1$
+\end_inset
+
+) and integrate over 
+\begin_inset Formula $[0,L]$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\int_0^L f(x)\cos{\frac{2 \pi x}{L}} dx &= a_0 \int_0^L \cos{\frac{2 \pi x}{L}} dx +\\
+	&a_1 \int_0^L \cos{\frac{2 \pi x}{L}} \cos{\frac{2 \pi x}{L}} dx +b_1 \int_0^L \sin{\frac{2 \pi x}{L}} cos{\frac{2 \pi x}{L}} dx +\\
+	&a_2 \int_0^L \cos{\frac{4 \pi x}{L}} \cos{\frac{2 \pi x}{L}} dx +b_2 \int_0^L \sin{\frac{4 \pi x}{L}} cos{\frac{2 \pi x}{L}} dx + ...\\
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Applying the orthogonal properties of the integral products finds that all terms on the right-hand side of this equation are zero apart from the 
+\begin_inset Formula $a_1$
+\end_inset
+
+ term. The equation therefore reduces to:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+\int_0^L f(x)\cos{\frac{2 \pi x}{L}} dx = a_1 \int_0^L \cos{\frac{2 \pi x}{L}} cos{\frac{2 \pi x}{L}} dx= a_1\frac{L}{2}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[a_1 = \frac{2}{L} \int_0^L f(x)\cos{\frac{2 \pi x}{L}} dx\]
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The other Fourier coefficients can be solved for in a similar manner, which yields the general solutions:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	a_0 &= \frac{1}{L} \int_0^L f(x)\\
+		a_n &= \frac{2}{L} \int_0^L f(x)\cos{\frac{2 n \pi x}{L}}dx \quad (n = 1,2,3...)\\
+			b_n &= \frac{2}{L} \int_0^L f(x)\sin{\frac{2 n \pi x}{L}}dx\quad (n = 1,2,3...)
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To this point we've solved, generally, for the coefficients of a Fourier series over a finite interval. This is useful, but we my want to use the full complex form of the Fourier series in later discussion of the Fourier transform. We know that 
+\begin_inset CommandInset href
+LatexCommand href
+name "Euler's formula"
+target "https://en.wikipedia.org/wiki/Euler's_formula#Relationship_to_trigonometry"
+literal "false"
+
+\end_inset
+
+can be used to express trigonometric functions with the complex exponential function:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\sin{\frac{2 \pi n x}{L}} &= \frac{1}{2i}\left(e^{i\frac{n \pi x}{L}}+e^{-i\frac{n \pi x}{L}}\right) \nonumber \\
+	\cos{\frac{2 \pi n x}{L}} &= \frac{1}{2}\left(e^{i\frac{n \pi x}{L}}+e^{-i\frac{n \pi x}{L}}\right) \label{eq:Euler}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and we define the wavenumbers to be:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	k_n = 2 \pi n/L \quad n=0,1,2,...,
+\label{eq:Wavenumber}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and therefore Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Euler"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is written as:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\sin{k_n x} &= \frac{1}{2i}\left(e^{i k_n x}+e^{-i k_n x}\right) \nonumber \\
+	\cos{k_n x} &= \frac{1}{2}\left(e^{i k_n x}+e^{-i\ k_n x}\right) \label{eq:Euler}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This allows us to write the complete Fourier series (Substitute Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Euler"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:GenSol"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	f_{L}(x) \sim \sum_{n=-\infty}^{\infty} c_n e^{i k_n x}
+\label{eq:ComplexFourierSeries}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For convenience, we'll define the integral to be 
+\begin_inset Formula $[-\frac{L}{2},\frac{L}{2}]$
+\end_inset
+
+. The 
+\begin_inset Formula $\sim$
+\end_inset
+
+ notation indicates that the series representation is an approximation, and the 
+\begin_inset Formula $L$
+\end_inset
+
+ represents the period over which the series is applied. The orthogonality condition holds for these complex exponential and its complex conjugate over this interval:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\int_{-\frac{L}{2}}^{\frac{L}{2}} e^{i k_n x} e^{-i k_m x} dx =
+		\begin{cases}
+		0, \text{\,if} \quad n \neq m\\
+		L, \text{\,if} \quad n = m\\
+	\end{cases}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore, if we multiply Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ComplexFourierSeries"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ by 
+\begin_inset Formula $e^{-i k_m x}$
+\end_inset
+
+ and solve we find the only term that survives is when 
+\begin_inset Formula $n=m$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\int_{-\frac{L}{2}}^{\frac{L}{2}} f_L(x) e^{-i k_m x} dx = L c_m.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can revert the place-keeping subscript 
+\begin_inset Formula $m$
+\end_inset
+
+ to 
+\begin_inset Formula $n$
+\end_inset
+
+ and solve for the Fourier coefficients to find:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	 c_n = \frac{1}{L}\int_{-\frac{L}{2}}^{\frac{L}{2}} f_L(x) e^{-i k_n x} dx \quad \text{for\,} n = 0, \pm1, \pm2,...
+	\label{eq:FourierComps}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Alright, we've defined an interval 
+\begin_inset Formula $[-L/2, L/2]$
+\end_inset
+
+, but we want to investigate this interval as 
+\begin_inset Formula $L \rightarrow \infty$
+\end_inset
+
+ in an attempt to eliminate the periodicity of the Fourier series. If 
+\begin_inset Formula $L \rightarrow \infty$
+\end_inset
+
+, we know that our function 
+\begin_inset Formula $f_L(x)$
+\end_inset
+
+ will be non-zero over only a very small range — say an interval of 
+\begin_inset Formula $[-a/2, a/2]$
+\end_inset
+
+ where 
+\begin_inset Formula $a << L$
+\end_inset
+
+. This means that
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	f_L{x} =
+	\begin{cases}
+		1 \quad \text{for} |x|<a/2\\
+		0 \quad \text{for} a/2 < |x| < L/2
+	\end{cases}
+\label{eq:Linfty}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This function is zero except for a small bump at the origin of height 1 and width 
+\begin_inset Formula $a$
+\end_inset
+
+. Let's assess our function over the non-zero interval:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\int_{-\frac{a}{2}}^{\frac{a}{2}} e^{-i k_n x} dx = \frac{\sin k_n a/2}{k_n L/2} = \frac{\sin n \pi a/L}{n \pi}.
+	\label{eq:Thing}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But how does this allow us to consider a continuous Fourier integral transform? Well, we need to consider the function 
+\begin_inset Formula $f_L(x)$
+\end_inset
+
+ as 
+\begin_inset Formula $L \rightarrow \infty$
+\end_inset
+
+. By doing so, we drive all the harmonics of the Fourier function — apart from the central one — out beyond infinity. 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ then has a single bump of width 
+\begin_inset Formula $L$
+\end_inset
+
+ centered at the origin. That is, the separation between the 
+\begin_inset Formula $n$
+\end_inset
+
+ harmonics goes to zero, and the representation contains all harmonics. Further, as 
+\begin_inset Formula $L \rightarrow \infty$
+\end_inset
+
+ we no longer have a periodic function and we can i.e., the fundamental period becomes so large that we no longer have non-periodic function at all. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%This needs work
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This allows us to transition from a discrete description to a continuum and our Fourier sum can now be described as a Fourier integral. Recall the Fourier series (Eq/ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ComplexFourierSeries"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	f_{L}(x) \sim \sum_{n=-\infty}^{\infty} c_n e^{i k_n x}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which we now write as:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	f_{L}(x) \sim \sum_{n=-\infty}^{\infty} \frac{\Delta k}{2\pi/L} c_n e^{i k_n x} = \sum_{n=-\infty}^{\infty} \frac{\Delta k}{2\pi} L c_n e^{i k_n x} 
+	\label{eq:Thing2}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Delta k = 2\pi/L$
+\end_inset
+
+ is the difference between successive values of 
+\begin_inset Formula $k_n$
+\end_inset
+
+. We now define a function 
+\begin_inset Formula $F(k)$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	F(k) \equiv \Lim{L \rightarrow \infty} L c_n = \Lim{L \rightarrow \infty} L c_{kL/2 \pi}
+	\label{eq:DefFourierTransform}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining this definition with Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Thing"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	F(k) = \frac{\sin{(ka/2)}}{k/2}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and as 
+\begin_inset Formula $L \rightarrow \infty$
+\end_inset
+
+, Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Thing2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ goes as
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	f(x) &= \Lim{L \rightarrow \infty} \sum_{n=-\infty}^{\infty} \frac{\Delta k}{2\pi} L c_n e^{i k_n x} \\
+	\Aboxed{f(x) &= \frac{1}{2\pi}\int_{-\infty}^{\infty}F(k) e^{ikx} dk}
+\label{eq:FourierInversion}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The function 
+\begin_inset Formula $F(x)$
+\end_inset
+
+ is the Fourier transform of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ and Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FourierInversion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as a continuous superposition of Fourier component, with each component now represented by a 
+\emph on
+continuous
+\emph default
+ function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+. Similarly, from Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DefFourierTransform"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FourierComps"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\Aboxed{F(k) &= \int_{\infty}^{\infty} f(x) e^{-i k x} dx}
+	\label{eq:FourierTransform}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FourierTransform"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is non-periodic analog to the expression for deriving the Fourier coefficients 
+\begin_inset Formula $c_n$
+\end_inset
+
+ in the periodic case. We call this function the 
+\emph on
+Fourier (Integral) Transform
+\emph default
+ of the function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ and it is often written as
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+F(k) \equiv \mathscr{F}\big[f(t)\big]
+\label{eq:InversionFormula}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly, Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:InversionFormula"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is known as the 
+\emph on
+Inversion Formula
+\emph default
+ or 
+\emph on
+Inverse Fourier (Integral) Transform
+\emph default
+ and is used to return the Fourier-transformed function from frequency space. It is often represented as:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+f(x) \equiv \mathscr{F}^{-1}\big[F(k)\big]
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{displayquote}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Example:
+\series default
+ Let's do a simple Fourier transform of a 
+\begin_inset CommandInset href
+LatexCommand href
+name "square-integrable function"
+target "https://en.wikipedia.org/wiki/Square-integrable_function"
+literal "false"
+
+\end_inset
+
+(this condition establishes that the function has a Fourier transform). We'll try a square pulse over the interval [-
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pi
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pi
+\end_layout
+
+\end_inset
+
+]:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+		f(x) =
+			\begin{cases}
+				1, \text{\,if\,} |x| < \pi\\
+				0, \text{\,otherwise}\\
+			\end{cases}
+	\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We take the Fourier integral transform over the non-zero interval:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	F(x) &= \frac{1}{2 \pi}\int_{-\infty}^{\infty} f(x) e^{-i k x} dx\\
+	&= \frac{1}{2 \pi}\int_{-\pi}^{\pi} e^{-i k x} dx\\
+	&= -\frac{1}{2i \pi k} e^{-i k x}\Big|_{-\pi}^{\pi}\\
+	&= -\frac{1}{2i \pi k} (e^{-i k \pi}-e^{i k \pi})\\
+	&= \frac{\sin{\pi k }}{\pi k}
+	\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{displayquote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integral transforms will prove massively useful in solving boundary value problems in the MAT
+\family typewriter
+_
+\family default
+SCI core.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{displayquote}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Example
+\series default
+ One example is diffusion in the thin film problem. Imagine that there is thin region of finite width with high concentration of some species 
+\series bold
+B
+\series default
+ situated between two 
+\begin_inset Quotes eld
+\end_inset
+
+infinite
+\begin_inset Quotes erd
+\end_inset
+
+ (thick) plate of pure 
+\series bold
+A
+\series default
+ (after Hoyt, 1-6). Diffusion from the thin film is allowed to proceed over time into the adjacent plates. The thin film is centered at 
+\begin_inset Formula $x = 0$
+\end_inset
+
+, so the concentration profile will be an even function 
+\begin_inset Formula $[\varphi(x,t) = \varphi(-x,t)]$
+\end_inset
+
+ How do we solve for the evolution of the concentration profile over time?
+\end_layout
+
+\begin_layout Standard
+This is an example in which we want to interpret this geometry as one with infinite period. When doing so we should consider using a Fourier integral transform.
+\end_layout
+
+\begin_layout Standard
+From the section above, we understand that the concentration profile 
+\begin_inset Formula $c(x,t)$
+\end_inset
+
+ can be obtained from the inverse transform of the Fourier space function 
+\begin_inset Formula $\Phi(k,t)$
+\end_inset
+
+. Above, we derived the full Fourier integral transform, but here we know that the function is even, and so we can perform a Fourier Cosine integral transform, which simplifies the mathematics and allows us to perform the transform from 
+\begin_inset Formula $[0,\infty]$
+\end_inset
+
+. The following derivation is after Hoyt, Ch. 1-8.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	f(x) = \frac{1}{\pi} \int_{-\infty}^{\infty} F(x) \cos{(kx)} dk\\
+	F(x) = \frac{1}{\pi} \int_0^{\infty} f(x) \cos{(kx)} dx
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In our case, we have:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\varphi(x,t) = \frac{1}{\pi} \int_{-\infty}^{\infty} \Phi(k,t) \cos{(kx)} dk\\
+	\Phi(k,t) = \frac{1}{\pi} \int_0^{\infty} \varphi(x,t) \cos{(kx)} dx
+	\label{eq:OddSol1}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The utility of utilizing the Fourier intergral transform is that the PDEs in space and time can be converted to ODEs in the time domain alone, which are often much easier to solve. The ability for us to do this hinges on a key property of a Fourier transform that relates the Fourier transform of the 
+\begin_inset Formula $n$
+\end_inset
+
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+th
+\end_layout
+
+\end_inset
+
+ derivative of a function to the Fourier transform of the function itself.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\mathscr{F}\big[f^{(n)}(x)\big](k) = (ik)^{n}\mathscr{F}\big[f(x)\big](k)
+\label{eq:}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This, as you will see, allows us to convert a PDE in 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ to a ODE in 
+\begin_inset Formula $t$
+\end_inset
+
+ alone. Let's apply this property to the 1D diffusion equation. First, we know we are performing a Fourier transform in 
+\begin_inset Formula $x$
+\end_inset
+
+, so the time derivative can be pulled from the integral on the left-hand side of the equation.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\mathscr{F}[\Partial{}{\varphi(x,t)}{t}] &= \frac{1}{\pi}\int_{0}^{\infty} \Partial{}{\varphi(x,t)}{t} \cos{(-ikx)} dx\\
+	&= \frac{1}{\pi}\Partial{}{}{t}\left[\int_{0}^{\infty}\varphi(x,t)\cos{(-ikx)} dx\right]\\
+	&= \frac{1}{\pi}\Partial{}{}{t}\left[\Phi(k,t)\right]
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the right-hand side of the equation is:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+		\mathscr{F}\big[D\Partial{2}{}{x}\varphi(x,t)\big] &= (ik)^2D\mathscr{F}\big[\varphi(x,t)\big]\\
+	&= -D\frac{k^2}{\pi}\int_0^{\infty}\varphi(x,t)\cos{(-ikx)} dx\\ 
+	&= -D\frac{k^2}{\pi} \Phi(k,t)
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and therefore:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\frac{1}{\cancel{\pi}}\Partial{}{}{t}\left[\Phi(k,t)\right] &= -D\frac{k^2}{\cancel{\pi}} \Phi(k,t)\\
+	\Aboxed{\Partial{}{}{t}\left[\Phi(k,t)\right] &= -Dk^2 \Phi(k,t)}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This differential equation can be solved by inspection
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+If you don't see this, that's fine, review 
+\shape italic
+Separation of Variables
+\shape default
+ — this equation is separable
+\end_layout
+
+\end_inset
+
+ to be:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\Phi(k,t) = A^{0}(k) e^{-k^2Dt}
+	\label{eq:Sol1}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $A^0(k)$
+\end_inset
+
+ is a constant that that defines the Fourier space function 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ at 
+\begin_inset Formula $t=0$
+\end_inset
+
+. To fully solve this problem and derive 
+\begin_inset Formula $\varphi(x,t)$
+\end_inset
+
+ we must next solve this value 
+\begin_inset Formula $A^0(k)$
+\end_inset
+
+ and apply the inverse Fourier transform.
+\end_layout
+
+\begin_layout Standard
+Let us consider our initial condition. Our concentration profile can be modeled as a 
+\begin_inset Formula $delta$
+\end_inset
+
+-function concentration profile, 
+\begin_inset Formula $\varphi(x,0) = \alpha \delta(x)$
+\end_inset
+
+) fixed between two infinite plates, where the integrated concentration is 
+\begin_inset Formula $\alpha$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	\int_{\infty}^{\infty} \varphi(x,0)dx = \int_{\infty}^{\infty} \alpha \delta(x) dx = \alpha
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The constant 
+\begin_inset Formula $A^0(k)$
+\end_inset
+
+ is, at 
+\begin_inset Formula $t = 0$
+\end_inset
+
+, defined by Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Sol1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:OddSol1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to be:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\Phi(k,t) &= A^{0}(k)e^{0}\\ 
+	&= \frac{1}{2\pi}\int_{0}^{\infty}\varphi(x,t) \cos{(kx)} dx
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inserting the delta function for 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+varphi
+\end_layout
+
+\end_inset
+
+(x,t) yields:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+	A^{0}(k) = \frac{\alpha}{\pi}\int_{0}^{\infty} \delta(x) \cos{(kx)} dx
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We'll take advantage of the evenness of this function and instead integrate over 
+\begin_inset Formula $[\infty, \infty]$
+\end_inset
+
+. This allows us to avoid the messiness at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ as well circumvent using the Heaviside step function.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	A^{0}(k) &= \frac{\alpha}{2\pi}\int_{-\infty}^{\infty} \delta(x) \cos{(kx)} dx\\
+	A^{0}(k) &= \frac{\alpha}{2\pi} \cos{(0)} dx\\ %Deltafunction fundamental property
+	\Aboxed{A^{0}(k) &= \frac{\alpha}{2\pi}}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, now that we have 
+\begin_inset Formula $A^{0}$
+\end_inset
+
+, we must perform the inverse transformation to find the expression for 
+\begin_inset Formula $\varphi(x,t)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{align}
+	\varphi(x,t) &= \frac{\alpha}{2\pi}\int_{-\infty}^{\infty} e^{-k^2Dt} \cos{(kx)} dk\\
+	\intertext{This can be completed through integration by parts, trigonometric identities, and completing the square... for explicit step-by-step analysis use Wolfram$|$Alpha or \href{http://www.integral-calculator.com/}{Scherfgen's Integral Calculator}. Let's state the result:}
+	\varphi(x,t) &= \frac{\alpha}{2\sqrt{\pi D t}} e^{-x^2/4Dt}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a Gaussian distribution centered at 
+\begin_inset Formula $x = 0$
+\end_inset
+
+ and which increases in width with time. This is good — it certainly makes sense intuitively.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+intertext{say:} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%u = e^{-k^2Dt} 
+\backslash
+quad du &= 2kDt e^{-k^2Dt}dk
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%v = 
+\backslash
+frac{1}{x}
+\backslash
+sin(kx) 
+\backslash
+quad dv &= 
+\backslash
+cos{(kx)}dk
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+int e^{-k^2Dt} 
+\backslash
+cos{(k x)}dk &= e^{-k^2Dt} 
+\backslash
+frac{1}{x}
+\backslash
+sin{(kx)} - 2kDt 
+\backslash
+int e^{-k^2Dt} 
+\backslash
+sin{(x)}dk
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+end{align}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{displayquote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Bessel Functions
+\end_layout
+
+\begin_layout Paragraph
+Legendre Polynomials
+\end_layout
+
+\begin_layout Paragraph
+Euler's Method
+\end_layout
+
+\begin_layout Subsubsection
+Solving Second-order Linear ODEs 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release TBD)
+\end_layout
+
+\begin_layout Enumerate
+Principle of Superposition 
+\end_layout
+
+\begin_layout Enumerate
+Series Solutions 
+\end_layout
+
+\begin_layout Subsubsection
+Laplace Transforms 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release TBD)
+\end_layout
+
+\begin_layout Subsubsection
+Stability Theory 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release TBD)
+\end_layout
+
+\end_body
+\end_document

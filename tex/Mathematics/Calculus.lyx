@@ -1,0 +1,995 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/ken/Mydocs/MSEcore/graduate-coursepack/tex/Mathematics/
+\textclass article
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+Calculus
+\end_layout
+
+\begin_layout Standard
+We assume that incoming graduate students have completed coursework in calculus including the basic calculation of derivatives, antiderivatives, definite integrals, series/sequences, and multivariate calculus. Below are outlined some more advanced calculus concepts that have specific physical relevance to concepts covered in the MSE core.
+\end_layout
+
+\begin_layout Standard
+Any college-level calculus text is suitable for supplemental study. The sections below on Total Differentials (Sec. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:totdiff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and Exact/Inexact Differentials (Sec. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:eidiff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) were adapted from the course materials of Richard Fitzpatrick at UT-Austin (available 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://farside.ph.utexas.edu/teaching/sm1/Thermal.pdf"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+Total Differentials: 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release 11/2016)
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:totdiff"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+
+\series bold
+Encountered in: MAT
+\family typewriter
+_
+\family default
+SCI 401
+\series default
+
+\shape default
+
+\end_layout
+
+\begin_layout Standard
+When there exists an explicit function of several variables such as 
+\begin_inset Formula $f = f(x,y,t)$
+\end_inset
+
+, which has 
+\begin_inset Formula $f$
+\end_inset
+
+ has a 
+\emph on
+total
+\emph default
+ differential of form: 
+\begin_inset Formula \begin{align}
+	\Diff{}{f} = \Big(\Partial{}{f}{t}\Big)_{x,y}\Diff{}{t} + \Big(\Partial{}{f}{x}\Big)_{t,y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{t,x} \Diff{}{y}
+\end{align}
+\end_inset
+
+Here, we do not assume that 
+\begin_inset Formula $f$
+\end_inset
+
+ is constant with respect any of the arguments 
+\begin_inset Formula $(x\text{,}\, y\text{, or } t)$
+\end_inset
+
+. This equation defines the differential change in the function 
+\begin_inset Formula $\Diff{}{f}$
+\end_inset
+
+ and accounts for all interdependencies between 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+, and 
+\begin_inset Formula $t$
+\end_inset
+
+. In general, the total differential can be defined as: 
+\begin_inset Formula \begin{align} \label{eq:TotDiff}
+	\Diff{}{f} = \sum\limits_{i=1}^n \Big(\Partial{}{f}{x_i}\Big)_{x_{j\neq i}}\Diff{}{x_i}
+\end{align}
+\end_inset
+
+The total differential is important when working with thermodynamic systems which is described by thermodynamic parameters (e.g. 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $T$
+\end_inset
+
+, 
+\begin_inset Formula $V$
+\end_inset
+
+) which are not necessary independent. For example, the internal energy 
+\begin_inset Formula $U$
+\end_inset
+
+ for some homogeneous system can be defined in terms of entropy 
+\begin_inset Formula $S$
+\end_inset
+
+ and volume 
+\begin_inset Formula $V$
+\end_inset
+
+; 
+\begin_inset Formula $U = U(S,V)$
+\end_inset
+
+. According to Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:TotDiff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the infinitesimal change in internal entropy is therefore: 
+\begin_inset Formula \begin{align}
+	\Diff{}{U} = \Big(\Partial{}{U}{S}\Big)_{V}\Diff{}{S} + \Big(\Partial{}{U}{V}\Big)_{S} \Diff{}{V}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Exact and Inexact Differentials 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release 11/2016)
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:eidiff"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+
+\series bold
+Encountered in: MAT
+\family typewriter
+_
+\family default
+SCI 401
+\series default
+
+\shape default
+
+\end_layout
+
+\begin_layout Standard
+Suppose we are assessing the infinitesimal change of some value: 
+\begin_inset Formula $\Diff{}{f}$
+\end_inset
+
+, in which 
+\begin_inset Formula $\Diff{}{f}$
+\end_inset
+
+ is a linear differential of the form: 
+\begin_inset Formula \begin{align}
+	\Diff{}{f} = \sum\limits_{i=1}^m M_i(x_1,x_2,...x_m)\Diff{}{x_i}.
+\end{align}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%	
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+In thermodynamics we are often concerned with linear differentials of two independent variables such that 
+\begin_inset Formula \begin{align} \label{eq:LinearDiff}
+	\Diff{}{f} = M(x,y) \Diff{}{x} + N(x,y) \Diff{}{y}.
+\end{align}
+\end_inset
+
+An exact differential is one in which 
+\begin_inset Formula $\int{\Diff{}{z}}$
+\end_inset
+
+ is path-independent. It can be shown (e.g. 
+\begin_inset CommandInset href
+LatexCommand href
+name "Wolfram Exact Differential"
+target "http://mathworld.wolfram.com/ExactDifferential.html"
+literal "false"
+
+\end_inset
+
+) that this means: 
+\begin_inset Formula \begin{align} \label{eq:ExactDiff}
+	\Diff{}{f} = \Big(\Partial{}{f}{x}\Big)_{y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{x} \Diff{}{y}.
+\end{align}
+\end_inset
+
+Which means that 
+\begin_inset Formula \begin{align} \label{eq:ExactDiff2}
+ \Big(\Partial{}{M}{y}\Big)_{x} = \Big(\Partial{}{N}{x}\Big)_{y}. %Wolfram proof.
+\end{align}
+\end_inset
+
+An inexact differential is one in which the equality defined in Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ExactDiff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (and therefore Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ExactDiff2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is not necessary true. An inexact differential is typically denoted using 
+\shape italic
+bar
+\shape default
+ notation to define the infinitesimal value: 
+\begin_inset Formula \begin{align}
+	\text{\dj} f = \Big(\Partial{}{f}{x}\Big)_{y} \Diff{}{x} + \Big(\Partial{}{f}{y}\Big)_{x} \Diff{}{y}.
+\end{align}
+\end_inset
+
+Two physical examples make this more clear: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%This example is adapted from Safkan on StackExchange. I like it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{displayquote}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%This example is adapted from Safkan on StackExchange. I like it.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Example 1:
+\series default
+ Imagine you are speaking with a classmate who recently traveled from from Chicago to Minneapolis. You know he is now in Minneapolis. Is it possible for you to know how much money he spent gas (
+\begin_inset Formula $G$
+\end_inset
+
+)? No, you can't. 
+\begin_inset Formula $G$
+\end_inset
+
+ is dependent on 
+\emph on
+how
+\emph default
+ your friend traveled to Minneapolis: his gas mileage, the cost of gas, and, of course, the route he took. 
+\begin_inset Formula $G$
+\end_inset
+
+ cannot be known without understanding the details of the path, and is therefore not path independent. The differenitial of 
+\begin_inset Formula $G$
+\end_inset
+
+ is therefore 
+\emph on
+inexact
+\emph default
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+text
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+đ
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Now, what do we know about your friend's distance, 
+\begin_inset Formula $D$
+\end_inset
+
+, to Chicago? This value does not dependent on how he traveled, the only information you need to know is his location, now, in Minneapolis. His distance to Chicago, therefore is a state variable and 
+\begin_inset Formula $\Diff{}{D}$
+\end_inset
+
+ is an 
+\emph on
+exact
+\emph default
+ differential. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%Might be better to describe this as a gravitational potential energy, even.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{displayquote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{displayquote}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%This example is adapted from Safkan on StackExchange. I like it.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Example 2:
+\series default
+ Let's reconsider a situation like that of Example 1 this within the purview of thermodynamics. Consider the internal energy 
+\begin_inset Formula $U$
+\end_inset
+
+ of a closed system. To achieve an infinitesimal change in energy 
+\begin_inset Formula $\Diff{}{U}$
+\end_inset
+
+, we provided a bit of work 
+\begin_inset Formula $\text{\dj}W$
+\end_inset
+
+ or heat 
+\begin_inset Formula $\text{\dj}Q$
+\end_inset
+
+: 
+\begin_inset Formula $\Diff{}{U} = \text{\dj}W + \text{\dj}Q$
+\end_inset
+
+ 
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+sometimes, an inexact differential will be denoted as 
+\begin_inset Formula $\delta f$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+. The work performed and heat exchanged on the system is path-dependent — the total work done depends on 
+\emph on
+how
+\emph default
+ the work was performed or heat exchanged, and so 
+\begin_inset Formula $\text{\dj}W$
+\end_inset
+
+ and 
+\begin_inset Formula $\text{\dj}Q$
+\end_inset
+
+ are inexact. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{displayquote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is sometimes useful to ask yourself about the nature of a variable to ascertain whether the differential is exact or inexact. That is, it makes sense to ask yourself: 
+\begin_inset Quotes eld
+\end_inset
+
+what is the energy of the system?
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+what is the pressure of the system
+\begin_inset Quotes erd
+\end_inset
+
+? This often helps in the identification of a state variable. However, it does not make sense to ask yourself 
+\begin_inset Quotes eld
+\end_inset
+
+what is the work of the system
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+what is the heat
+\begin_inset Quotes erd
+\end_inset
+
+ of the system — these values depend on the process. Instead, you have to ask yourself: 
+\begin_inset Quotes eld
+\end_inset
+
+what is the work done on the system along this path?
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+what is the heat exchanged during this process?
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, there are different properties we encounter during the evaluation exact differential (such as the linear differential in Eq. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LinearDiff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), and inexact differentials (written as 
+\begin_inset Formula $\text{\dj}f = M'(x,y) \Diff{}{x} + N'(x,y) \Diff{}{y}$
+\end_inset
+
+). The integral of an exact differential over a closed path is necessary zero: 
+\begin_inset Formula \begin{align}
+	\oint\Diff{}{f} \equiv 0,
+\end{align}
+\end_inset
+
+while the integral of an inexact differential over a closed path is not 
+\emph on
+necessarily
+\emph default
+ zero: 
+\begin_inset Formula \begin{align}
+	\oint\text{\dj}f\underset{n}{\neq} 0.
+\end{align}
+\end_inset
+
+where 
+\begin_inset Formula $\Big(\underset{n}{\neq}\Big)$
+\end_inset
+
+ symbolizes 
+\begin_inset Quotes eld
+\end_inset
+
+not necessarily equal to
+\begin_inset Quotes erd
+\end_inset
+
+. Indeed, when evaluating the inexact differential, it is important to consider the path. For example, the work performed a system going from a macrostate 
+\begin_inset Formula $s_i$
+\end_inset
+
+ to a macrostate 
+\begin_inset Formula $s_2$
+\end_inset
+
+ is defined by path 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+, then the total work performed is defined: 
+\begin_inset Formula \begin{align}
+	W_{L_{1}} =  \int\limits_{L_{1}} \text{\dj}W
+\end{align}
+\end_inset
+
+If we took a different path, 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+, the total work performed by be different and 
+\begin_inset Formula \begin{align}
+	W_{L_{1}} \underset{n}{\neq}  W_{L_{2}}
+\end{align}
+\end_inset
+
+A good illustration of a line integral over a scalar field is shown in the multimedia Fig. 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:LineIntegral"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+. It is clear that, depending on the path, the evaluated integral will have different values.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%Converted GIF to flv. Some loss in quality. Can embed in YouTube if better.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+includemedia
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+ width=0.4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+linewidth
+\end_layout
+
+\end_inset
+
+, height=0.3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+linewidth
+\end_layout
+
+\end_inset
+
+, activate=pageopen, addresource=./Figures/LineIntegralScalarField.flv, flashvars=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+source=./Figures/LineIntegralScalarField.flv
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics 
+	filename tex/Figures/LineIntegralScalarField.png
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+VPlayer9.swf
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An illustration of a line integral along a path in a scalar field, by Lucas V. Barbosa (own work) [Public Domain], via Wikipedia Commons. When using Adobe Pro, allow all multimedia. Click on the figure to run.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+ref{https://en.wikipedia.org/wiki/Line
+\backslash
+_integral
+\backslash
+#/media/File:Line
+\backslash
+_integral
+\backslash
+_of
+\backslash
+_scalar
+\backslash
+_field.gif}{Wikipedia Commons}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:LineIntegral"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Vector Calculus 
+\begin_inset space \hfill{}
+
+\end_inset
+
+(Release TBD)
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+
+\series bold
+Encountered in: MAT
+\family typewriter
+_
+\family default
+SCI 406, 408
+\series default
+
+\shape default
+ 
+\end_layout
+
+\end_body
+\end_document

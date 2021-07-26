@@ -1,9 +1,9 @@
-#LyX file created by tex2lyx 2.3
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /home/ken/Mydocs/MSEcore/graduate-coursepack/tex/Appendices/
+\origin unavailable
 \textclass article
 \use_default_options false
 \begin_modules
@@ -85,7 +85,6 @@ Appendix A: Release History
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset label
 LatexCommand label
 name "app:AppendixA"
@@ -95,13 +94,13 @@ name "app:AppendixA"
 
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 [leftmargin=!,labelwidth=
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 widthof
@@ -116,69 +115,72 @@ Version 1.0, 11/2016:
 ] 
 \end_layout
 
-\end_deeper
 \begin_layout Description
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 Version 2016.1, 2016-11:
 \end_layout
 
 \end_inset
 
- Initial release. 
+ Initial release.
+ 
 \end_layout
 
 \begin_layout Description
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 Version 2017.1, 2017-01:
 \end_layout
 
 \end_inset
 
- Added tensors, summation notation, and coordinate transformation. 
+ Added tensors, summation notation, and coordinate transformation.
+ 
 \end_layout
 
 \begin_layout Description
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 Version 2017.2, 2017-02:
 \end_layout
 
 \end_inset
 
- Added Fourier integral transforms. 
+ Added Fourier integral transforms.
+ 
 \end_layout
 
 \begin_layout Description
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 Version 2017.3, 2017-02:
 \end_layout
 
 \end_inset
 
- Added MATLAB introduction and resources. 
+ Added MATLAB introduction and resources.
+ 
 \end_layout
 
 \begin_layout Description
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 Version 2020.1, 2020-07:
 \end_layout
 
@@ -188,7 +190,8 @@ Version 2020.1, 2020-07:
 \shape smallcaps
 Overleaf
 \shape default
- to solicit student/faculty contribution. 
+ to solicit student/faculty contribution.
+ 
 \end_layout
 
 \end_body

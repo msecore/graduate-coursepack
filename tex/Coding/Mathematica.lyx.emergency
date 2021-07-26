@@ -80,39 +80,135 @@ knitr
 
 \begin_body
 
-\begin_layout Section
-Coding
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Mathematica---------------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\shape italic
+Mathematica
+\shape default
+ 
+\begin_inset space \hfill{}
+\end_inset
+
+
+\size normal
+(Release TBD)
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "MATLAB.lyx"
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Mathematica"
 
 \end_inset
 
  
-\begin_inset Newpage pagebreak
+\shape italic
+Mathematica
+\shape default
+ is useful for symbolic mathematical computation.
+ It is free for all students.
+\end_layout
+
+\begin_layout Subsubsection*
+Suggested Resources:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+name "The Wolfram Language: Fast Introduction for Programmers"
+target "https://www.wolfram.com/language/fast-introduction-for-programmers/interactive-usage/"
+literal "false"
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+itemsep}{0em}
+\end_layout
+
 \end_inset
 
 
-\begin_inset CommandInset include
-LatexCommand input
-filename "Mathematica.lyx"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+parskip}{0em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%	
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
  
-\begin_inset Newpage pagebreak
+\end_layout
+
+\begin_layout Enumerate
+Symbolic and Numeric Representations and Calculations 
+\end_layout
+
+\begin_layout Enumerate
+Basic Plotting: 2D, 3D and interactive 
+\end_layout
+
+\begin_layout Enumerate
+Linear Algebra: Matrix Operations and Notations 
+\end_layout
+
+\begin_layout Enumerate
+Equation Solvers (
+\begin_inset Formula $\rightarrow$
 \end_inset
 
-
-\begin_inset CommandInset include
-LatexCommand input
-filename "Python.lyx"
-
-\end_inset
-
+ step-by-step solutions with WolframAlpha access).
  
 \end_layout
 

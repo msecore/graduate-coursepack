@@ -54,3 +54,10 @@ By utilizing these texts, you are agreeing to [Northwestern's policies on eReser
 ::: displayquote
 $\left[\text{Sources are}\right]$ not to be used for any purpose other than private study, scholarship, or research. If electronic transmission of reserve material is used for purposes in excess of what constitutes "fair use," that user may be liable for copyright infringement.
 :::
+
+
+<!-- this code copies a js file to the output directory -->
+
+```{r}
+file.copy('siunitx.js', '_book/siunitx.js')
+```

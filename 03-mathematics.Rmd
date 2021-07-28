@@ -46,7 +46,7 @@ Vectors are often encountered in a bracketed vertical list to facilitate matrix 
 
 $$\mathbf{u} = u_i = 
 	\begin{bmatrix}
-    u_x \\
+    {\color{red}u_x} \\
     u_y \\
     u_z
 	\end{bmatrix} =
@@ -58,6 +58,8 @@ $$\mathbf{u} = u_i =
 	\label{eq:Vector}$$
 
 **Matrices** are tensors with a *rank* of 2. In ${\rm I\!R}^2$ a matrix has $2^{2} = 4$ components and in ${\rm I\!R}^3$ a matrix has $3^{2} = 9$ components. As with vectors, we will use the range convention when denoting a matrix, which now possesses two subscripts, $i$ and $j$. We use the example of the true stress, or [Cauchy stress tensor](https://en.wikipedia.org/wiki/Cauchy_stress_tensor), $\sigma_{ij}$:
+
+And we can try some SI units: $\SI{1}{\meter\per\second}$.
 
 $$\sigma_{ij} =  
 	\begin{bmatrix}

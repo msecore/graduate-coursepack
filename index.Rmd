@@ -56,6 +56,6 @@ $\left[\text{Sources are}\right]$ not to be used for any purpose other than priv
 :::
 
 
-```{r}
+```{r, echo=FALSE}
 file.copy('siunitx.js', '_book/siunitx.js')
 ```

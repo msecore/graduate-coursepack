@@ -1,0 +1,13 @@
+### C|2.01 {-}
+
+Cite the difference between ***atomic mass*** and ***atomic weight***.
+
+#### Solution {-}
+
+Atomic mass is the mass of an atom of an isotope. It is the sum of the masses of the nucleons (protons and neutrons) and electrons*. This is often reported in atomic mass units (amu). It is approximated by $Z + N$ ,where $Z$ is the element's atomic number and $N$ is the number of neutrons in the nucleus.
+
+Atomic weight is the weighted mean of the atomic masses of the isotopes of an element. The relative abundance of an isotope is reported with respect to its presence in the Earth's crust and atmosphere. These values are tabulated.
+
+\* Minus the mass defect. Students aren't  responsible for knowing this in an introductory Mat Sci Course, but if you are interested, see \href{https://en.wikipedia.org/wiki/Nuclear_binding_energy\#Mass_defect}{Mass Defect}. This is the reason you cannot simply add up the mass of the protons, neutrons, and electrons of an isotope and get its tabulated atomic mass.
+
+#### Student Guide {-}

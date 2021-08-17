@@ -53,4 +53,6 @@ subsubsection:mFile
 mathematica-release-tbd
 suggested-resources-1
 python-release-tbd
+practice-problems
+module-1---thermodynamics
 release-history
